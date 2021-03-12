@@ -6,3 +6,6 @@
 # This is a classification problem, therefore the scope of models that may be used is limited.
 # The one suggested in most papers I have read about the topic is the kNN classifier, however,
 # I will explore and compare various options such as logistic regression, decision trees, etc.
+
+# input: [{date, active, negative, passive, positive, political, strong, weak, sentiment, topic}] - today price
+# output: price direction - future price

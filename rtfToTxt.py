@@ -10,9 +10,9 @@ from os.path import isfile, join
 from striprtf.striprtf import rtf_to_text
 
 LOGGER = logging.getLogger('ReadInputFile')
-INPUT_DIR = './input'
-OUTPUT_FILE = './output.txt'
-TEMPLATE_FILE = './lexis_rtf_template.txt'
+INPUT_DIR = './lexisnexis'
+OUTPUT_FILE = './lexisnexis.txt'
+TEMPLATE_FILE = './templates/lexis_rtf_template.txt'
 DEBUG = True
 
 class ArgParser:
@@ -248,13 +248,13 @@ def parseCLI():
         print(f'Output File set to {OUTPUT_FILE}')
 
 
-def main():
+def rtfToTxt(inputDir, templateFile, outputFile):
     print(f"{datetime.now().strftime('%B %d, %Y %A %I:%M %p GMT')}: *** Parsing Started ***")
     args = parseCLI()
-    files = readFiles(INPUT_DIR)
-    templateReader = ReadInputFile(TEMPLATE_FILE)
+    files = readFiles(inputDir)
+    templateReader = ReadInputFile(templateFile)
     templateString = templateReader.readFileContents()
-    writer = WriteOutputFile(OUTPUT_FILE)
+    writer = WriteOutputFile(outputFile)
     superDocs = []
     for file in files:
         reader = ReadInputFile(file)
@@ -267,4 +267,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    rtfToTxt(INPUT_DIR, TEMPLATE_FILE, OUTPUT_FILE)

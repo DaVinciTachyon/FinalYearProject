@@ -7,5 +7,48 @@
 # This is yet to be fully decided. This will allow the process to be streamlined.
 # However, I will look into seeing which one will be the right choice. The articles will be sources from proquest.
 
-# in proquest articles, rich text format?
-# 
+def getDictionary():
+    import pandas as pd
+
+    data = pd.read_excel (r"./dictionaries/inquirerbasic.xls") 
+    df = pd.DataFrame(data, columns= ['Entry', 'Positiv', 'Negativ']).to_numpy()
+    dictionary = {}
+    for index, item in enumerate(df):
+        dictionary[item[0]] = item[1:]
+    return dictionary
+
+def getArticles():
+    from os import walk
+
+    path = './proquest/'
+    _, _, filenames = next(walk(path))
+
+    articles = []
+
+    for f in filenames:
+        files = open(path + f, 'r')
+        content = files.read()
+        a = content.split('____________________________________________________________')
+        articles.extend(a[1:-1])
+        files.close()
+    return articles
+
+import numpy as np
+
+dictionary = getDictionary()
+articles = getArticles()
+
+for a in articles:
+    words = a.split()
+    total = len(words)
+    positive = 0
+    negative = 0
+    for word in words:
+        upperWord = word.upper()
+        if upperWord in dictionary:
+            attributes = dictionary[upperWord]
+            if 'Positiv' in attributes:
+                positive += 1
+            if 'Negativ' in attributes:
+                negative += 1
+    print(total, positive, negative)
