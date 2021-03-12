@@ -29,26 +29,40 @@ def getArticles():
         files = open(path + f, 'r')
         content = files.read()
         a = content.split('____________________________________________________________')
+        a = list(map(str.strip, a))
         articles.extend(a[1:-1])
         files.close()
     return articles
 
-import numpy as np
+def getArticleDate(article):
+    line = [s for s in articles[0].splitlines() if 'Last updated' in s]
+    date = line[0].split(':')[1].strip().split('-')
+    date = [int(s) for s in date]
+    return [date[2], date[1], date[0]]
+
+def getArticleAnalysis(articles, dictionary):
+    import numpy as np
+
+    breakdowns = []
+
+    for a in articles:
+        date = getArticleDate(a)
+        words = a.split()
+        total = len(words)
+        positive = 0
+        negative = 0
+        for word in words:
+            upperWord = word.upper()
+            if upperWord in dictionary:
+                attributes = dictionary[upperWord]
+                if 'Positiv' in attributes:
+                    positive += 1
+                if 'Negativ' in attributes:
+                    negative += 1
+        breakdowns.append([date, total, positive, negative])
+    
+    return breakdowns
 
 dictionary = getDictionary()
 articles = getArticles()
-
-for a in articles:
-    words = a.split()
-    total = len(words)
-    positive = 0
-    negative = 0
-    for word in words:
-        upperWord = word.upper()
-        if upperWord in dictionary:
-            attributes = dictionary[upperWord]
-            if 'Positiv' in attributes:
-                positive += 1
-            if 'Negativ' in attributes:
-                negative += 1
-    print(total, positive, negative)
+print(getArticleAnalysis(articles, dictionary))
