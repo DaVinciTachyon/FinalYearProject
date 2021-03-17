@@ -65,4 +65,4 @@ def getArticleAnalysis(articles, dictionary):
 
 dictionary = getDictionary()
 articles = getArticles()
-print(getArticleAnalysis(articles, dictionary))
+analysis = getArticleAnalysis(articles, dictionary)
