@@ -2,9 +2,9 @@
 # It will use lexis nexis in order to gather the required information.
 # It will then manipulate it to fit the requirements.
 
-def getPrices():
-    pricesFilename = "prices.json"
+pricesFilename = "prices.json"
 
+def getPrices():
     import os.path
     import json
 
@@ -32,5 +32,12 @@ def getPrices():
 
     return data
 
+def getPricesExcel():
+    import pandas as pd
+    dataFrame = pd.read_json(pricesFilename)
+    keys = [ 'close', 'high', 'low', 'open', 'symbol', 'volume' ]
+    dataFrame = dataFrame[keys]
+    dataFrame.to_excel('prices.xlsx')
 
-print(len(getPrices()))
+getPrices()
+getPricesExcel()
