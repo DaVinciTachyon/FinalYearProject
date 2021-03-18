@@ -55,6 +55,37 @@ def getArticleAnalysis(articles, dictionary):
     
     return breakdowns
 
+def getZScores(sentiment):
+    dates = []
+    articles = []
+    totalWords = []
+    positiveSentiment = []
+    negativeSentiment = []
+    for s in sentiment:
+        dates.append(s['date'])
+        articles.append(s['articles'])
+        totalWords.append(s['totalWords'])
+        positiveSentiment.append(s['positiveSentiment'])
+        negativeSentiment.append(s['negativeSentiment'])
+
+    import pandas as pd
+    import numpy as np
+    import scipy.stats as stats
+    for i in range(len(negativeSentiment)):
+        negativeSentiment[i] = np.round((negativeSentiment[i] * 100.0) / totalWords[i], decimals=2)
+    for i in range(len(positiveSentiment)):
+        positiveSentiment[i] = np.round((positiveSentiment[i] * 100.0) / totalWords[i], decimals=2)
+    for i in range(len(totalWords)):
+        totalWords[i] = np.round((totalWords[i] * 100.0) / articles[i], decimals=2)
+    totalWords = stats.zscore(totalWords)
+    negativeSentiment = stats.zscore(negativeSentiment)
+    positiveSentiment = stats.zscore(positiveSentiment)
+
+    zScoreSentiment = []
+    for i in range(len(sentiment)):
+        zScoreSentiment.append({ 'date': dates[i], 'articles': articles[i], 'totalWords': np.round(totalWords[i], decimals=2), 'positiveSentiment': np.round(positiveSentiment[i], decimals=2), 'negativeSentiment': np.round(negativeSentiment[i], decimals=2) })
+    return zScoreSentiment
+
 def getArticleSentiment():
     dictionary = getDictionary()
     articles = getArticles()
@@ -85,4 +116,5 @@ def getArticleSentimentByDate():
                     negative += secondaryEntry['negativeSentiment']
             sentimentByDate.append({ 'date': date, 'articles': articles, 'totalWords': total, 'positiveSentiment': positive, 'negativeSentiment': negative })
     import operator
-    return sorted(sentimentByDate, key = operator.itemgetter('date'))
+    sentimentByDate = sorted(sentimentByDate, key = operator.itemgetter('date'))
+    return getZScores(sentimentByDate)
