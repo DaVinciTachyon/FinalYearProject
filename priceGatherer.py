@@ -1,8 +1,14 @@
-# The price gatherer gathers stock prices and changes for the company being analysed.
-# It will use lexis nexis in order to gather the required information.
-# It will then manipulate it to fit the requirements.
-
 pricesFilename = "prices.json"
+
+def filterKeys(data):
+    keys = [ 'date', 'close', 'high', 'low', 'open', 'symbol', 'volume' ]
+    nData = []
+    for entry in data:
+        filteredEntry = {}
+        for key in keys:
+            filteredEntry[key] = entry[key]
+        nData.append(filteredEntry)
+    return nData
 
 def getPrices():
     import os.path
@@ -27,17 +33,15 @@ def getPrices():
         r = requests.get(url = URL, params = PARAMS)
         data = r.json()
 
+        import operator
+        data = sorted(data, key = operator.itemgetter('date'))
+
         with open(pricesFilename, 'w') as json_file:
             json.dump(data, json_file)
 
-    return data
+    return filterKeys(data)
 
 def getPricesExcel():
     import pandas as pd
-    dataFrame = pd.read_json(pricesFilename)
-    keys = [ 'close', 'high', 'low', 'open', 'symbol', 'volume' ]
-    dataFrame = dataFrame[keys]
+    dataFrame = pd.read_json(getPrices())
     dataFrame.to_excel('prices.xlsx')
-
-getPrices()
-getPricesExcel()

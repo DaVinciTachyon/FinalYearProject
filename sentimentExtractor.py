@@ -1,11 +1,5 @@
-# The sentiment extractor gathers articles and extracts sentiment from them,
-# this is done by analysing word choices.
-# This may extract different features as well,
-# such as negative vs positive sentiment, as required later on.
-# It is currently going to be inspired by rocksteady.
-# In theory rocksteady may be used, however, it may be more beneficial to create a version myself.
-# This is yet to be fully decided. This will allow the process to be streamlined.
-# However, I will look into seeing which one will be the right choice. The articles will be sources from proquest.
+# TODO uses proquest. should use lexis nexis?
+# TODO currently grabs entire article...differentiation between texts?
 
 def getDictionary():
     import pandas as pd
@@ -35,10 +29,8 @@ def getArticles():
     return articles
 
 def getArticleDate(article):
-    line = [s for s in articles[0].splitlines() if 'Last updated' in s]
-    date = line[0].split(':')[1].strip().split('-')
-    date = [int(s) for s in date]
-    return [date[2], date[1], date[0]]
+    line = [s for s in article.splitlines() if 'Last updated' in s]
+    return "".join(line[0].split(':')[1].strip().split())
 
 def getArticleAnalysis(articles, dictionary):
     import numpy as np
@@ -59,10 +51,38 @@ def getArticleAnalysis(articles, dictionary):
                     positive += 1
                 if 'Negativ' in attributes:
                     negative += 1
-        breakdowns.append([date, total, positive, negative])
+        breakdowns.append({ 'date': date, 'totalWords': total, 'positiveSentiment': positive, 'negativeSentiment': negative })
     
     return breakdowns
 
-dictionary = getDictionary()
-articles = getArticles()
-analysis = getArticleAnalysis(articles, dictionary)
+def getArticleSentiment():
+    dictionary = getDictionary()
+    articles = getArticles()
+    return getArticleAnalysis(articles, dictionary)
+
+def getArticleSentimentByDate():
+    sentiment = getArticleSentiment()
+    sentimentByDate = []
+    for i in range(len(sentiment)):
+        included = False
+        entry = sentiment[i]
+        date = entry['date']
+        for secondaryEntry in sentimentByDate:
+            if date == secondaryEntry['date']:
+                included = True
+                break
+        if not included:
+            articles = 1
+            total = entry['totalWords']
+            positive = entry['positiveSentiment']
+            negative = entry['negativeSentiment']
+            for j in range(i + 1, len(sentiment)):
+                secondaryEntry = sentiment[j]
+                if date == secondaryEntry['date']:
+                    articles += 1
+                    total += secondaryEntry['totalWords']
+                    positive += secondaryEntry['positiveSentiment']
+                    negative += secondaryEntry['negativeSentiment']
+            sentimentByDate.append({ 'date': date, 'articles': articles, 'totalWords': total, 'positiveSentiment': positive, 'negativeSentiment': negative })
+    import operator
+    return sorted(sentimentByDate, key = operator.itemgetter('date'))

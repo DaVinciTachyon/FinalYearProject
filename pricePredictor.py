@@ -9,3 +9,13 @@
 
 # input: [{date, active, negative, passive, positive, political, strong, weak, sentiment, topic}] - today price
 # output: price direction - future price
+
+from priceGatherer import getPrices
+from sentimentExtractor import getArticleSentimentByDate
+
+sentiment = getArticleSentimentByDate()
+for i in range(len(sentiment)):
+    print(sentiment[i])
+# prices = getPrices()
+# for i in range(len(prices)):
+#     print(prices[i])
