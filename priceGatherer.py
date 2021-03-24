@@ -6,9 +6,21 @@ def filterKeys(data):
     for entry in data:
         filteredEntry = {}
         for key in keys:
-            filteredEntry[key] = entry[key]
+            if(key == 'open'):
+                filteredEntry['openPrice'] = entry[key]
+            else:
+                filteredEntry[key] = entry[key]
         nData.append(filteredEntry)
     return nData
+
+def addReturns(prices):
+    import math
+    returnLengths = [ 1, 7, 14, 21 ]
+    for i in range(len(prices)):
+        for l in returnLengths:
+            if(i >= l):
+                prices[i]["return{}Day".format(l)] = math.log(prices[i]['close']/prices[i-l]['close'])
+    return prices
 
 def getPrices():
     import os.path
@@ -40,8 +52,3 @@ def getPrices():
             json.dump(data, json_file)
 
     return filterKeys(data)
-
-def getPricesExcel():
-    import pandas as pd
-    dataFrame = pd.read_json(getPrices())
-    dataFrame.to_excel('prices.xlsx')
