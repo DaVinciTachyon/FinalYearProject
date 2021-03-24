@@ -81,21 +81,27 @@ def displayGraphs(prices, sentiment, pricesColumns, sentimentColumns):
 
     import matplotlib.pyplot as plt
 
+    colours = ["b", "g", "r", "c", "m", "y", "k", "w"]
+    colourN = 0
+    fontSize = 11
+
     fig, ax = plt.subplots()
     for f in pricesFrames:
-        ax.plot(f, color="red", marker="o")
-    ax.set_xlabel("date", fontsize=11)
-    ax.set_ylabel("price", color="red", fontsize=11)
+        ax.plot(f, color=colours[colourN], marker="o")
+        colourN += 1
+    ax.set_xlabel("date", fontsize=fontSize)
+    ax.set_ylabel("price", fontsize=fontSize)
 
     ax2 = ax.twinx()
     for f in sentimentFrames:
-        ax2.plot(f, color="blue", marker="o")
-    ax2.set_ylabel("sentiment", color="blue", fontsize=11)
+        ax2.plot(f, color=colours[colourN], marker="o")
+        colourN += 1
+    ax2.set_ylabel("sentiment", fontsize=fontSize)
     plt.show()
-    # fig.savefig('priceVsSentiment.jpg',
-    #             format='jpeg',
-    #             dpi=100,
-    #             bbox_inches='tight')
+    fig.savefig('priceVsSentiment.jpg',
+                format='jpeg',
+                dpi=100,
+                bbox_inches='tight')
 
 sentiment = getArticleSentimentByDate()
 prices = getPrices()
