@@ -21,9 +21,6 @@ def getPricesExcel():
     dataFrame = pd.read_json(json.dumps(prices))
     dataFrame.to_excel('prices.xlsx')
 
-def VAR():
-    print('hi')
-
 def getDateTime(date):
     import datetime
     y, m, d = [int(x) for x in date.split('-')]
@@ -135,7 +132,7 @@ def getInOutSeries(prices, sentiment, pricesColumns, sentimentColumns):
         inp.append(entry)
     return inp, outp
                 
-def singlePointPredictor(prices, sentiment, pricesColumns, sentimentColumns):
+def singlePointPredictor(prices, sentiment, pricesColumns, sentimentColumns): # TODO use more models
     prices, sentiment = getDisplaySeries(prices, sentiment)
     X, y = getInOutSeries(prices, sentiment, pricesColumns, sentimentColumns)
     from sklearn.neighbors import KNeighborsClassifier
@@ -169,9 +166,28 @@ def singlePointPredictor(prices, sentiment, pricesColumns, sentimentColumns):
 sentiment = getArticleSentimentByDate()
 prices = getPrices()
 
+def getNextDayReturn(prices, sentiment): # TODO use sentiment
+    import numpy as np
+    prices = addReturns(prices)
+    x = y = x2 = y2 = xy = n = 0
+    for i in range(1, len(prices) - 1):
+        xi = prices[i]['return1Day']
+        yi = prices[i + 1]['return1Day']
+        x += xi; y += yi
+        x2 += xi * xi; y2 += yi * yi
+        xy += xi * yi
+        n += 1
+    correlation = (n * xy - x * y)/(np.sqrt(n * x2 - x * x) * np.sqrt(n * y2 - y * y))
+    mean = (x + yi)/(n + 1)
+    error = 0 # FIXME normally distributed
+    return mean + correlation * prices[len(prices) - 1]['return1Day'] + error
+
+# def timeSeriesPredictor(prices, sentiment, pricesColumns, sentimentColumns):
+
 # getPricesExcel()
 # VAR()
 # displayGraphs(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
-sModel, sAccuracy = singlePointPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
-print(sAccuracy)
+# sModel, sAccuracy = singlePointPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
+# print(sAccuracy)
+print(getNextDayReturn(prices, sentiment))
 # tModel, tAccuracy = timeSeriesPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
