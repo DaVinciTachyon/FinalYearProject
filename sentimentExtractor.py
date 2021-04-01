@@ -1,6 +1,9 @@
 # TODO uses proquest. should use lexis nexis?
 # TODO currently grabs entire article...differentiation between texts?
 
+# source = 'proquest'
+source = 'lexisnexis'
+
 def getDictionary():
     import pandas as pd
 
@@ -12,25 +15,63 @@ def getDictionary():
     return dictionary
 
 def getArticles():
-    from os import walk
+    if(source == 'proquest'):
+        from os import walk
 
-    path = './proquest/'
-    _, _, filenames = next(walk(path))
+        path = './proquest/'
+        _, _, filenames = next(walk(path))
 
-    articles = []
+        articles = []
 
-    for f in filenames:
-        files = open(path + f, 'r')
+        for f in filenames:
+            files = open(path + f, 'r')
+            content = files.read()
+            a = content.split('____________________________________________________________')
+            a = list(map(str.strip, a))
+            articles.extend(a[1:-1])
+            files.close()
+    elif(source == 'lexisnexis'):
+        files = open('./lexisnexis_out.txt', 'r')
         content = files.read()
         a = content.split('____________________________________________________________')
         a = list(map(str.strip, a))
-        articles.extend(a[1:-1])
+        articles = a[:-1]
         files.close()
     return articles
 
 def getArticleDate(article):
-    line = [s for s in article.splitlines() if 'Last updated' in s]
-    return "".join(line[0].split(':')[1].strip().split())
+    if(source == 'proquest'):
+        line = [s for s in article.splitlines() if 'Last updated' in s]
+        return "".join(line[0].split(':')[1].strip().split())
+    elif(source == 'lexisnexis'):
+        line = [s for s in article.splitlines() if 'LOAD-DATE' in s]
+        textDate = line[0].split(':')[1].strip().split()
+        textDate[1] = textDate[1].split(",")[0]
+        if(textDate[0] == "January"):
+            month = 1
+        elif(textDate[0] == "February"):
+            month = 2
+        elif(textDate[0] == "March"):
+            month = 3
+        elif(textDate[0] == "April"):
+            month = 4
+        elif(textDate[0] == "May"):
+            month = 5
+        elif(textDate[0] == "June"):
+            month = 6
+        elif(textDate[0] == "July"):
+            month = 7
+        elif(textDate[0] == "August"):
+            month = 8
+        elif(textDate[0] == "September"):
+            month = 9
+        elif(textDate[0] == "October"):
+            month = 10
+        elif(textDate[0] == "November"):
+            month = 11
+        elif(textDate[0] == "December"):
+            month = 12
+        return textDate[2] + "-" + f"{month:0>2}" + "-" + f"{textDate[1]:0>2}"
 
 def getArticleAnalysis(articles, dictionary):
     import numpy as np

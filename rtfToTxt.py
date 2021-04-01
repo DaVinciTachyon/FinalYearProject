@@ -11,7 +11,7 @@ from striprtf.striprtf import rtf_to_text
 
 LOGGER = logging.getLogger('ReadInputFile')
 INPUT_DIR = './lexisnexis'
-OUTPUT_FILE = './lexisnexis.txt'
+OUTPUT_FILE = 'lexisnexis_out.txt'
 TEMPLATE_FILE = './templates/lexis_rtf_template.txt'
 DEBUG = True
 
@@ -220,7 +220,7 @@ def writeParsedDocumentsToFile(writer, documents, templateString):
                                                  doc['body'],
                                                  doc['loaddate'],
                                                  doc['language'],
-                                                 doc['pubtype']))
+                                                 doc['pubtype']) + '\n____________________________________________________________\n')
         print(f'Written doc {counter} of {totalDocs} into {OUTPUT_FILE}')
         counter += 1
 

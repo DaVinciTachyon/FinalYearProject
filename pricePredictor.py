@@ -166,7 +166,7 @@ def singlePointPredictor(prices, sentiment, pricesColumns, sentimentColumns): # 
 sentiment = getArticleSentimentByDate()
 prices = getPrices()
 
-def getNextDayReturn(prices, sentiment): # TODO use sentiment
+def getNextDayReturn(prices, sentiment): # FIXME use sentiment
     import numpy as np
     prices = addReturns(prices)
     x = y = x2 = y2 = xy = n = 0
@@ -185,9 +185,8 @@ def getNextDayReturn(prices, sentiment): # TODO use sentiment
 # def timeSeriesPredictor(prices, sentiment, pricesColumns, sentimentColumns):
 
 # getPricesExcel()
-# VAR()
-# displayGraphs(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
+displayGraphs(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
 # sModel, sAccuracy = singlePointPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
 # print(sAccuracy)
-print(getNextDayReturn(prices, sentiment))
+# print(getNextDayReturn(prices, sentiment))
 # tModel, tAccuracy = timeSeriesPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
