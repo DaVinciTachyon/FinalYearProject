@@ -1,24 +1,11 @@
-# The predictor then gathers the output from the previous to sections 
-# and uses a machine learning model in order to create a prediction for the market.
-# I am originally considering it to be a simply up/down predictor, however,
-# there is room for expansion, in the sense of predicting the size of the shift,
-# as well as determining what timeframe it may be done in.
-# This is a classification problem, therefore the scope of models that may be used is limited.
-# The one suggested in most papers I have read about the topic is the kNN classifier, however,
-# I will explore and compare various options such as logistic regression, decision trees, etc.
-
-# input: [{date, active, negative, passive, positive, political, strong, weak, sentiment, topic}] - today price
-# output: price direction - future price
-
-from priceGatherer import getPrices, addReturns
+from priceGatherer import getPrices
 from sentimentExtractor import getArticleSentimentByDate
 import pandas as pd
 
 def getPricesExcel():
-    prices = addReturns(getPrices())
     import pandas as pd
     import json
-    dataFrame = pd.read_json(json.dumps(prices))
+    dataFrame = pd.read_json(json.dumps(getPrices()))
     dataFrame.to_excel('prices.xlsx')
 
 def getDateTime(date):
@@ -99,6 +86,14 @@ def displayGraphs(prices, sentiment, pricesColumns, sentimentColumns):
         ax2.plot(f, color=colours[colourN], marker="o")
         colourN += 1
     ax2.set_ylabel("sentiment", fontsize=fontSize)
+
+    legend = []
+    for p in pricesColumns:
+        legend.append(p)
+    for s in sentimentColumns:
+        legend.append(s)
+    fig.legend(legend)
+
     plt.show()
     fig.savefig('priceVsSentiment.jpg',
                 format='jpeg',
@@ -132,7 +127,7 @@ def getInOutSeries(prices, sentiment, pricesColumns, sentimentColumns):
         inp.append(entry)
     return inp, outp
                 
-def singlePointPredictor(prices, sentiment, pricesColumns, sentimentColumns): # TODO use more models
+def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns): # TODO use more models
     prices, sentiment = getDisplaySeries(prices, sentiment)
     X, y = getInOutSeries(prices, sentiment, pricesColumns, sentimentColumns)
     from sklearn.neighbors import KNeighborsClassifier
@@ -166,27 +161,34 @@ def singlePointPredictor(prices, sentiment, pricesColumns, sentimentColumns): # 
 sentiment = getArticleSentimentByDate()
 prices = getPrices()
 
-def getNextDayReturn(prices, sentiment): # FIXME use sentiment
+def getNextDayReturn(prices, sentiment):
     import numpy as np
-    prices = addReturns(prices)
-    x = y = x2 = y2 = xy = n = 0
+    
+    s = []
+    x = []
+    y = []
+    j = 0
     for i in range(1, len(prices) - 1):
-        xi = prices[i]['return1Day']
-        yi = prices[i + 1]['return1Day']
-        x += xi; y += yi
-        x2 += xi * xi; y2 += yi * yi
-        xy += xi * yi
-        n += 1
-    correlation = (n * xy - x * y)/(np.sqrt(n * x2 - x * x) * np.sqrt(n * y2 - y * y))
-    mean = (x + yi)/(n + 1)
-    error = 0 # FIXME normally distributed
-    return mean + correlation * prices[len(prices) - 1]['return1Day'] + error
+        while(j < len(sentiment) and greaterThanDate(prices[i]['date'], sentiment[j]['date'])):
+            j += 1
+        if(j < len(sentiment) and equalDate(sentiment[j]['date'], prices[i]['date'])):
+            s.append(sentiment[j]['negativeSentiment'])
+        else:
+            s.append(0)
+        x.append(prices[i]['return1Day'])
+        y.append(prices[i + 1]['return1Day'])
+    lastSentiment = s[len(s) - 1]
+    lastReturn = y[len(y) - 1]
+    returnsCorr = np.corrcoef(x, y)[0][1]
+    sentimentCorr = np.corrcoef(s, y)[0][1]
+    x.append(lastReturn)
+    mean = np.mean(x)
 
-# def timeSeriesPredictor(prices, sentiment, pricesColumns, sentimentColumns):
+    error = 0 # FIXME currently assuming normally distributed
+    return mean + returnsCorr * lastReturn + sentimentCorr * lastSentiment + error
 
 # getPricesExcel()
-displayGraphs(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
-# sModel, sAccuracy = singlePointPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
+# displayGraphs(prices, sentiment, ['return1Day'], ['negativeSentiment'])
+# sModel, sAccuracy = singlePointEstimator(prices, sentiment, ['return1Day'], ['negativeSentiment', 'positiveSentiment'])
 # print(sAccuracy)
-# print(getNextDayReturn(prices, sentiment))
-# tModel, tAccuracy = timeSeriesPredictor(prices, sentiment, ['close'], ['negativeSentiment', 'positiveSentiment'])
+print(getNextDayReturn(prices, sentiment))

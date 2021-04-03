@@ -1,3 +1,3 @@
-# An intelligent sentiment analysis system for ‘predicting’ price changes in financial markets
+# An intelligent sentiment proxy analysis system for estimating price changes in financial markets
 
 TODO - required python packages

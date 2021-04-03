@@ -1,13 +1,10 @@
-# TODO uses proquest. should use lexis nexis?
-# TODO currently grabs entire article...differentiation between texts?
-
-# source = 'proquest'
-source = 'lexisnexis'
+source = 'proquest'
+# source = 'lexisnexis'
 
 def getDictionary():
     import pandas as pd
 
-    data = pd.read_excel (r"./dictionaries/inquirerbasic.xls") 
+    data = pd.read_excel(r"./dictionaries/inquirerbasic.xls") 
     df = pd.DataFrame(data, columns= ['Entry', 'Positiv', 'Negativ']).to_numpy()
     dictionary = {}
     for index, item in enumerate(df):
@@ -15,14 +12,13 @@ def getDictionary():
     return dictionary
 
 def getArticles():
+    from os import walk
+
+    path = f"./{source}/"
+    _, _, filenames = next(walk(path))
+
+    articles = []
     if(source == 'proquest'):
-        from os import walk
-
-        path = './proquest/'
-        _, _, filenames = next(walk(path))
-
-        articles = []
-
         for f in filenames:
             files = open(path + f, 'r')
             content = files.read()

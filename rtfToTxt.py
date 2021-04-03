@@ -13,7 +13,7 @@ LOGGER = logging.getLogger('ReadInputFile')
 INPUT_DIR = './lexisnexis'
 OUTPUT_FILE = 'lexisnexis_out.txt'
 TEMPLATE_FILE = './templates/lexis_rtf_template.txt'
-DEBUG = True
+DEBUG = False
 
 class ArgParser:
     def __init__(self):
