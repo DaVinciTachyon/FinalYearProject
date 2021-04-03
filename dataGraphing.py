@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from dataCleanUp import removeNoReturn
 
+colours = ["b", "g", "r", "c", "m", "y", "k", "w"]
+fontSize = 11
+
 def getDataFrames(data, names):
     dates = []
     for d in data:
@@ -21,14 +24,12 @@ def getDataFrames(data, names):
 
     return frames
 
-def displayGraphs(prices, sentiment, pricesColumns, sentimentColumns):
+def displayPriceVsSentiment(prices, sentiment, pricesColumns, sentimentColumns):
     prices = removeNoReturn(prices, pricesColumns)
     pricesFrames = getDataFrames(prices, pricesColumns)
     sentimentFrames = getDataFrames(sentiment, sentimentColumns)
 
-    colours = ["b", "g", "r", "c", "m", "y", "k", "w"]
     colourN = 0
-    fontSize = 11
 
     fig, ax = plt.subplots()
     for f in pricesFrames:

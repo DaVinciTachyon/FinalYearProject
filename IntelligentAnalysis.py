@@ -1,6 +1,6 @@
 from priceGatherer import getPrices
 from sentimentExtractor import getArticleSentimentByDate
-from dataGraphing import displayGraphs
+from dataGraphing import displayPriceVsSentiment
 from dataTabling import getExcel
 from dataCleanUp import getOverlappingSeries
 from returnEstimator import singlePointEstimator, getNextDayReturn
@@ -13,7 +13,8 @@ if __name__ == "__main__": # determine all vars such as source here
     prices, sentiment = getOverlappingSeries(prices, sentiment)
 
     # getExcel(prices, 'prices')
-    # displayGraphs(prices, sentiment, ['return1Day'], ['negativeSentiment'])
+    # displayPriceVsSentiment(prices, sentiment, ['return1Day'], ['negativeSentiment'])
+    displayPriceVsSentiment(prices, sentiment, ['return1Day'], ['articles'])
     # sModel, sAccuracy = singlePointEstimator(prices, sentiment, ['return1Day', 'return7Day', 'return14Day', 'return21Day'], ['negativeSentiment', 'positiveSentiment'])
     # print(sAccuracy)
     # print(getNextDayReturn(prices, sentiment))
