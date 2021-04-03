@@ -2,7 +2,6 @@
 
 ## TODO list
 
-- [ ] Descriptive Statistics
 - [ ] More models for single point estimator
 - [ ] RTF to TXT for lexis nexis
 - [ ] results comparisons

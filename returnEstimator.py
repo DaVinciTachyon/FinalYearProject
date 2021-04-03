@@ -26,7 +26,7 @@ def getInOutSeries(prices, sentiment, pricesColumns, sentimentColumns):
             for c in sentimentColumns:
                 entry.append(0)
         x.append(entry)
-        y.append(prices[i + 1]['close'] > prices[i]['close'])
+        y.append(prices[i + 1]['return1Day'] > 0)
     return x, y
                 
 def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns): # TODO use more models
