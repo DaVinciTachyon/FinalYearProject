@@ -7,11 +7,6 @@ from returnEstimator import singlePointEstimator, getNextDayReturn
 from correlation import getAutoCorrelationWithLags, getReturnSentimentCorrelations
 from descriptiveStatistics import getDescriptiveStatistics
 
-# determine all vars such as source here
-# add zeros to overlapping
-# store tidied data as json
-# rtf to json and store
-
 if __name__ == "__main__":
     source = "lexisnexis"
     # source = "proquest"

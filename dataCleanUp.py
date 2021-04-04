@@ -9,7 +9,7 @@ def removeNoReturn(prices, pricesColumns):
                 lag = newLag
     return prices[lag:]
 
-def getOverlappingSeries(prices, sentiment):
+def getOverlappingSeries(prices, sentiment): # FIXME add zeros to overlapping
     if(greaterThanDate(sentiment[0]['date'], prices[0]['date'])):
         newPrices = []
         for price in prices:

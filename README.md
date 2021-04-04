@@ -2,7 +2,6 @@
 
 ## Todo List
 
-- [ ] RTF to TXT for lexis nexis
 - [ ] More models for single point estimator
 - [ ] results comparisons
 - [ ] predict next day return instead of T/F
