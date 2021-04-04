@@ -1,5 +1,5 @@
 from priceGatherer import getPrices
-from sentimentExtractor import getArticleSentimentByDate
+from sentimentExtractor import getArticleSentimentByDate, setSource
 from dataGraphing import displayPriceVsSentiment
 from dataTabling import getExcel
 from dataCleanUp import getOverlappingSeries
@@ -7,17 +7,26 @@ from returnEstimator import singlePointEstimator, getNextDayReturn
 from correlation import getAutoCorrelationWithLags, getReturnSentimentCorrelations
 from descriptiveStatistics import getDescriptiveStatistics
 
-if __name__ == "__main__": # determine all vars such as source here
+# determine all vars such as source here
+# add zeros to overlapping
+# store tidied data as json
+# rtf to json and store
+
+if __name__ == "__main__":
+    source = "lexisnexis"
+    # source = "proquest"
+
+    setSource(source)
     sentiment = getArticleSentimentByDate()
     prices = getPrices()
 
     oPrices, oSentiment = getOverlappingSeries(prices, sentiment)
 
-    # getExcel(prices, 'prices')
-    # displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['negativeSentiment'])
+    getExcel(prices, 'prices/prices')
+    displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['negativeSentiment'])
     # displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['articles'])
-    sModel, sAccuracy = singlePointEstimator(oPrices, oSentiment, ['return1Day', 'return7Day', 'return14Day', 'return21Day'], ['negativeSentiment', 'positiveSentiment'])
-    print(sAccuracy)
+    # sModel, sAccuracy = singlePointEstimator(oPrices, oSentiment, ['close', 'high', 'low', 'openPrice', 'volume', 'return1Day', 'return7Day', 'return14Day', 'return21Day'], ['articles', 'totalWords', 'negativeSentiment', 'positiveSentiment'])
+    # print(sAccuracy)
     # print(getNextDayReturn(oPrices, oSentiment))
     # returnsCorr = getAutoCorrelationWithLags(prices, 'return1Day', 1, 5)
     # print(returnsCorr)

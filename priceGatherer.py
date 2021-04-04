@@ -1,4 +1,10 @@
-pricesFilename = "prices.json"
+import os.path
+import json
+import requests
+from dotenv import load_dotenv
+import os
+
+pricesFilename = "./prices/prices.json"
 
 def filterKeys(data):
     keys = [ 'date', 'close', 'high', 'low', 'open', 'symbol', 'volume' ]
@@ -23,17 +29,10 @@ def addReturns(prices):
     return prices
 
 def getPrices():
-    import os.path
-    import json
-
     if os.path.isfile(pricesFilename):
         with open(pricesFilename) as json_file:
             data = json.load(json_file)
     else:
-        import requests
-        from dotenv import load_dotenv
-        import os
-
         load_dotenv()
         apiToken = os.environ.get("IEX_CLOUD_API_TOKEN")
 
