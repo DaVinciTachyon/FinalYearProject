@@ -1,5 +1,5 @@
-from priceGatherer import getPrices
-from sentimentExtractor import getArticleSentimentByDate, setSource
+from priceGatherer import getPrices, addReturns
+from sentimentExtractor import getArticleSentimentByDate, setSource, getZScores
 from dataGraphing import displayPriceVsSentiment
 from dataTabling import getExcel
 from dataCleanUp import getOverlappingSeries
@@ -16,6 +16,11 @@ if __name__ == "__main__":
     prices = getPrices()
 
     oPrices, oSentiment = getOverlappingSeries(prices, sentiment)
+
+    sentiment = getZScores(sentiment)
+    oSentiment = getZScores(oSentiment)
+    prices = addReturns(prices)
+    oPrices = addReturns(oPrices)
 
     getExcel(prices, 'prices/prices')
     displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['negativeSentiment'])

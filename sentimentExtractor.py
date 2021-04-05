@@ -110,17 +110,11 @@ def getZScores(sentiment):
         negativeSentiment.append(s['negativeSentiment'])
 
     for i in range(len(negativeSentiment)):
-        if totalWords[i] > 0:
-            negativeSentiment[i] = np.round((negativeSentiment[i] * 100.0) / totalWords[i], decimals=2)
-        else:
-            negativeSentiment[i] = 0
+        negativeSentiment[i] = np.round((negativeSentiment[i] * 100.0) / totalWords[i], decimals=2) if totalWords[i] > 0 else 0
     for i in range(len(positiveSentiment)):
-        if totalWords[i] > 0:
-            positiveSentiment[i] = np.round((positiveSentiment[i] * 100.0) / totalWords[i], decimals=2)
-        else:
-            positiveSentiment[i] = 0
+        positiveSentiment[i] = np.round((positiveSentiment[i] * 100.0) / totalWords[i], decimals=2) if totalWords[i] > 0 else 0
     for i in range(len(totalWords)):
-            totalWords[i] = np.round((totalWords[i] * 100.0) / articles[i], decimals=2)
+        totalWords[i] = np.round((totalWords[i] * 100.0) / articles[i], decimals=2) if articles[i] > 0 else 0
     totalWords = stats.zscore(totalWords)
     negativeSentiment = stats.zscore(negativeSentiment)
     positiveSentiment = stats.zscore(positiveSentiment)
@@ -138,7 +132,7 @@ def getArticleSentiment():
 def getArticleSentimentByDate():
     if isfile(f"./articles/{source}/output/sentiment.json"):
         with open(f"./articles/{source}/output/sentiment.json") as json_file:
-            zscores = json.load(json_file)
+            sentimentByDate = json.load(json_file)
     else:
         sentiment = getArticleSentiment()
         sentimentByDate = []
@@ -165,10 +159,9 @@ def getArticleSentimentByDate():
                 sentimentByDate.append({ 'date': date, 'articles': articles, 'totalWords': total, 'positiveSentiment': positive, 'negativeSentiment': negative })
         import operator
         sentimentByDate = sorted(sentimentByDate, key = operator.itemgetter('date'))
-        zscores = getZScores(sentimentByDate)
         with open(f"./articles/{source}/output/sentiment.json", 'w') as json_file:
-            json.dump(zscores, json_file)
-    return zscores
+            json.dump(sentimentByDate, json_file)
+    return sentimentByDate
 
 def extractArticles():
     if isfile(f"./articles/{source}/output/articles.json"):
