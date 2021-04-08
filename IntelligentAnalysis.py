@@ -24,7 +24,9 @@ if __name__ == "__main__":
 
     # getExcel(prices, 'prices/prices')
     # displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['negativeSentiment'])
+    displayPriceVsSentiment(prices, sentiment, [], ['negativeSentiment'])
     # displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['articles'])
+    displayPriceVsSentiment(prices, sentiment, ['close'], [])
     # sModel, sAccuracy = singlePointEstimator(oPrices, oSentiment, ['close', 'volume', 'return1Day', 'return7Day', 'return14Day', 'return21Day'], ['articles', 'totalWords', 'negativeSentiment', 'positiveSentiment'])
     # print(sAccuracy)
     # print(getNextDayReturn(oPrices, oSentiment))
@@ -42,18 +44,18 @@ if __name__ == "__main__":
     # print("same day", sameDayCorr)
     # print("return to sentiment", returnSentCorr)
     # print("sentiment to return", sentReturnCorr)
-    returns = []
-    for i in range(1, len(prices)):
-        returns.append(prices[i]['return1Day'])
-    getDescriptiveStatistics(returns, "1 Day Returns")
-    displayHist(returns, 100, "1 day returns")
-    closingPrices = []
-    for p in prices:
-        closingPrices.append(p['close'])
-    getDescriptiveStatistics(closingPrices, "Closing Prices")
-    displayHist(closingPrices, 100, "closing prices")
-    negSentiment = []
-    for n in sentiment:
-        negSentiment.append(n['negativeSentiment'])
-    getDescriptiveStatistics(negSentiment, "Negative Sentiment")
-    displayHist(negSentiment, 100, "negative sentiment")
+    # returns = []
+    # for i in range(1, len(prices)):
+    #     returns.append(prices[i]['return1Day'])
+    # getDescriptiveStatistics(returns, "1 Day Returns")
+    # displayHist(returns, 100, "1 day returns")
+    # closingPrices = []
+    # for p in prices:
+    #     closingPrices.append(p['close'])
+    # getDescriptiveStatistics(closingPrices, "Closing Prices")
+    # displayHist(closingPrices, 100, "closing prices")
+    # negSentiment = []
+    # for n in sentiment:
+    #     negSentiment.append(n['negativeSentiment'])
+    # getDescriptiveStatistics(negSentiment, "Negative Sentiment")
+    # displayHist(negSentiment, 100, "negative sentiment")

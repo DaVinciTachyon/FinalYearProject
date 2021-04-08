@@ -32,17 +32,19 @@ def displayPriceVsSentiment(prices, sentiment, pricesColumns, sentimentColumns):
     colourN = 0
 
     fig, ax = plt.subplots()
-    for f in pricesFrames:
-        ax.plot(f, color=colours[colourN], marker="o")
-        colourN += 1
-    ax.set_xlabel("date", fontsize=fontSize)
-    ax.set_ylabel("price", fontsize=fontSize)
+    if len(pricesColumns) > 0:
+        for f in pricesFrames:
+            ax.plot(f, color=colours[colourN], marker="o")
+            colourN += 1
+        ax.set_xlabel("date", fontsize=fontSize)
+        ax.set_ylabel("price", fontsize=fontSize)
 
     ax2 = ax.twinx()
-    for f in sentimentFrames:
-        ax2.plot(f, color=colours[colourN], marker="o")
-        colourN += 1
-    ax2.set_ylabel("sentiment", fontsize=fontSize)
+    if len(sentimentColumns) > 0:
+        for f in sentimentFrames:
+            ax2.plot(f, color=colours[colourN], marker="o")
+            colourN += 1
+        ax2.set_ylabel("sentiment", fontsize=fontSize)
 
     legend = []
     for p in pricesColumns:
