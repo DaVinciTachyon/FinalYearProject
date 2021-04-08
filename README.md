@@ -2,6 +2,7 @@
 
 ## Todo List
 
+- [ ] Download RTF without formatting, the fix the rtf extractor
 - [ ] More models for single point estimator
 - [ ] results comparisons
 - [ ] predict next day return instead of T/F

@@ -37,7 +37,7 @@ def getOverlappingSeries(prices, sentiment):
         if(greaterThanDate(sentiment[i]['date'], prices[i]['date'])):
             sentiment.insert(i, {'date': prices[i]['date'], 'articles': 0, 'totalWords': 0, 'positiveSentiment': 0, 'negativeSentiment': 0})
         elif(greaterThanDate(prices[i]['date'], sentiment[i]['date'])):
-            prices.insert(i, {'date': sentiment[i]['date'], 'close': prices[i - 1]['close'], 'high': prices[i - 1]['close'], 'low': prices[i - 1]['close'], 'openPrice': prices[i - 1]['close'], 'symbol': prices[i]['symbol'], 'volume': 0})
+            prices.insert(i, {'date': sentiment[i]['date'], 'close': prices[i - 1]['close'], 'symbol': prices[i]['symbol'], 'volume': 0})
         else:
             i += 1
     return prices, sentiment

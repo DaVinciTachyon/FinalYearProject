@@ -3,7 +3,7 @@ import numpy as np
 import scipy.stats as stats
 
 def getDescriptiveStatistics(array, name):
-    print(name)
+    print(name, "Descriptive Statistics")
     # Mean
     print("Mean", statistics.mean(array))
     # Standard Error

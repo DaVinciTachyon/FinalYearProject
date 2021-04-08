@@ -7,15 +7,12 @@ import os
 pricesFilename = "./prices/prices.json"
 
 def filterKeys(data):
-    keys = [ 'date', 'close', 'high', 'low', 'open', 'symbol', 'volume' ]
+    keys = [ 'date', 'close', 'symbol', 'volume' ]
     nData = []
     for entry in data:
         filteredEntry = {}
         for key in keys:
-            if(key == 'open'):
-                filteredEntry['openPrice'] = entry[key]
-            else:
-                filteredEntry[key] = entry[key]
+            filteredEntry[key] = entry[key]
         nData.append(filteredEntry)
     return nData
 

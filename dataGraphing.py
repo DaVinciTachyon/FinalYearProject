@@ -56,3 +56,11 @@ def displayPriceVsSentiment(prices, sentiment, pricesColumns, sentimentColumns):
                 format='jpeg',
                 dpi=100,
                 bbox_inches='tight')
+
+def displayHist(x, bins, name):
+    import seaborn as sns
+    sns.set_style("white")
+    sns.distplot(x, bins=bins)
+    plt.xlabel(name)
+    plt.ylabel("Frequency")
+    plt.show()
