@@ -33,8 +33,6 @@ documentTemplate = {
 }
 
 def getDictionary():
-    import pandas as pd
-
     data = pd.read_excel(r"./dictionaries/inquirerbasic.xls") 
     df = pd.DataFrame(data, columns= ['Entry', 'Positiv', 'Negativ']).to_numpy()
     dictionary = {}

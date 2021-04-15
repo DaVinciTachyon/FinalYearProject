@@ -3,6 +3,7 @@ import json
 import requests
 from dotenv import load_dotenv
 import os
+import math
 
 pricesFilename = "./prices/prices.json"
 
@@ -17,7 +18,6 @@ def filterKeys(data):
     return nData
 
 def addReturns(prices):
-    import math
     returnLengths = [ 1, 7, 14, 21 ]
     for i in range(len(prices)):
         for l in returnLengths:
