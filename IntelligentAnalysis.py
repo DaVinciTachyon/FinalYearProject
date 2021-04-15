@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # getExcel(prices, 'prices/prices')
     # displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['negativeSentiment'])
     displayPriceVsSentiment(prices, sentiment, [], ['negativeSentiment'])
-    # displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['articles'])
+    displayPriceVsSentiment(oPrices, oSentiment, ['return1Day'], ['articles'])
     displayPriceVsSentiment(prices, sentiment, ['close'], [])
     # sModel, sAccuracy = singlePointEstimator(oPrices, oSentiment, ['close', 'volume', 'return1Day', 'return7Day', 'return14Day', 'return21Day'], ['articles', 'totalWords', 'negativeSentiment', 'positiveSentiment'])
     # print(sAccuracy)

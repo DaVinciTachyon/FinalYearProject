@@ -38,9 +38,14 @@ def displayPriceVsSentiment(prices, sentiment, pricesColumns, sentimentColumns):
             colourN += 1
         ax.set_xlabel("date", fontsize=fontSize)
         ax.set_ylabel("price", fontsize=fontSize)
-
-    ax2 = ax.twinx()
-    if len(sentimentColumns) > 0:
+    elif len(sentimentColumns) > 0:
+        for f in sentimentFrames:
+            ax.plot(f, color=colours[colourN], marker="o")
+            colourN += 1
+        ax.set_ylabel("sentiment", fontsize=fontSize)
+    
+    if len(sentimentColumns) > 0 and len(pricesColumns) > 0:
+        ax2 = ax.twinx()
         for f in sentimentFrames:
             ax2.plot(f, color=colours[colourN], marker="o")
             colourN += 1
