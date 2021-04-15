@@ -16,41 +16,41 @@ The libraries used had three main purposes: file handling, data tidying and math
 
 \subsubsection{File Handling}
 
-In order to handle the files downloaded from *lexisnexis* and *proquest*, various libraries and modules had to be used. The libraries and modules being `sys`, `os` and `striprtf`.
+In order to handle the files downloaded from \emph{lexisnexis} and \emph{proquest}, various libraries and modules had to be used. The libraries and modules being \verb|sys|, \verb|os| and \verb|striprtf|.
 
-The `sys` module provides functions and variables used to manipulate different parts of the Python runtime environment. It is used to create a global variable which allowed the setting of a source for files, and allowed this to be used throughout the various files in the program. The source being the choice between using *lexisnexis* and *proquest* files.
+The \verb|sys| module provides functions and variables used to manipulate different parts of the Python runtime environment. It is used to create a global variable which allowed the setting of a source for files, and allowed this to be used throughout the various files in the program. The source being the choice between using \emph{lexisnexis} and \emph{proquest} files.
 
-The `os` module provides functions and variables used to perform operating system tasks. It is used to access environment variables, as well as to help parse through files in a given directory.
+The \verb|os| module provides functions and variables used to perform operating system tasks. It is used to access environment variables, as well as to help parse through files in a given directory.
 
-The `striprtf` library is used to translate rtf to a python string. When files are downloaded from *lexinexis* they are in rtf format, This library is used to help parsed the informaiton in these files into a usable format.
+The \verb|striprtf| library is used to translate rtf to a python string. When files are downloaded from \emph{lexinexis} they are in rtf format. This library is used to help parsed the information in these files into a usable format.
 
 \subsubsection{Data Tidying}
 
-In order to tidy up the data extracted from articles and make it usable in the context required the use of some libraries is needed. These libraries and modules are `pandas`, `json`, `copy`, `datetime` and `operator`.
+In order to tidy up the data extracted from articles and make it usable in the context required the use of some libraries is needed. These libraries and modules are \verb|pandas|, \verb|json|, \verb|copy|, \verb|datetime| and \verb|operator|.
 
-The `pandas` is an open source data analysis and manipulation tool. This library is used to aid in the tabling of data. This was useful in order to use this data within graphs and to create an excel spreadsheet. For graphing timeseries, this library was especially useful with it's `to_datetime()` function which allowed the dates to be appropriately used as indices. This is significant especially when comparing two separate time series, as it spaced the values according to date and not which datapoint it is along the sequence.
+The \verb|pandas| is an open source data analysis and manipulation tool. This library is used to aid in the tabling of data. This was useful in order to use this data within graphs and to create an excel spreadsheet. For graphing timeseries, this library was especially useful with it's \verb|to_datetime()| function which allowed the dates to be appropriately used as indices. This is significant especially when comparing two separate time series, as it spaced the values according to date and not which datapoint it is along the sequence.
 
-The `json` library is used to dump json data from files and the extract it back from the file in order to cache the information extracted for future use.
+The \verb|json| library is used to dump json data from files and the extract it back from the file in order to cache the information extracted for future use.
 
-The `copy` library is used to create deepcopies of json objects. This is necessary as the copies had to be completely separate from the original version, and due to how python works this cannot simply be done through a shallow copy. Therefore the library was used to facilitate this.
+The \verb|copy| library is used to create deepcopies of json objects. This is necessary as the copies had to be completely separate from the original version, and due to how python works this cannot simply be done through a shallow copy. Therefore the library was used to facilitate this.
 
-The `datetime` module supplies classes for manipulating dates and times. As they are usually stored in strings they can be complex to perform operations with. The library makes this process a lot more straightforward.
+The \verb|datetime| module supplies classes for manipulating dates and times. As they are usually stored in strings they can be complex to perform operations with. The library makes this process a lot more straightforward.
 
-The `operator` module exports a set of efficient functions corresponding to the intrinsic operators of Python. It is used sort arrays of json objects that contain a given key. This was very useful when ordering data entries by date.
+The \verb|operator| module exports a set of efficient functions corresponding to the intrinsic operators of Python. It is used sort arrays of json objects that contain a given key. This was very useful when ordering data entries by date.
 
 \subsubsection{Mathematical Operations}
 
-In order to perform mathematical operations appropriately multiple libraries are used. This is to avoid the recreation of tested and efficient functions, and avoid any potential errors when recreating them. These libraries and modules are `numpy`, `statistics`, `scipy`, `math` and `sklearn`.
+In order to perform mathematical operations appropriately multiple libraries are used. This is to avoid the recreation of tested and efficient functions, and avoid any potential errors when recreating them. These libraries and modules are \verb|numpy|, \verb|statistics|, \verb|scipy|, \verb|math| and \verb|sklearn|.
 
-The `numpy` is a Python library used for working with arrays. It also has functions for working in domain of linear algebra, fourier transform, and matrices.
+The \verb|numpy| is a Python library used for working with arrays. It also has functions for working in domain of linear algebra, fourier transform, and matrices.
 
-The `statistics` is a built-in Python library for descriptive statistics.
+The \verb|statistics| is a built-in Python library for descriptive statistics.
 
-The `scipy` is a collection of mathematical algorithms and convenience functions built on the `numpy` extension of Python. It adds significant power to the interactive Python session by providing the user with high-level commands and classes for manipulating and visualizing data. Specifically the `scipy.stats` module was used. Similarly, to the `statistics` library it was used to gather various types of statistical information.
+The \verb|scipy| is a collection of mathematical algorithms and convenience functions built on the \verb|numpy| extension of Python. It adds significant power to the interactive Python session by providing the user with high-level commands and classes for manipulating and visualizing data. Specifically the \verb|scipy.stats| module was used. Similarly, to the \verb|statistics| library it was used to gather various types of statistical information.
 
-The `math` module is a built-in module that you can use for mathematical tasks. It is used specifically for the `log()` function contained within.
+The \verb|math| module is a built-in module that you can use for mathematical tasks. It is used specifically for the \verb|log()| function contained within.
 
-The `sklearn` library is an incredibly useful machine learning library. The `sklearn` library contains a lot of efficient tools for machine learning and statistical modeling including classification, regression, clustering and dimensionality reduction. It is used for the machine learning functionality required for the `singlePointEstimator`. These being various trainable models, appropriately metric measuring functions, and some utility functions.
+The \verb|sklearn| library is an incredibly useful machine learning library. The \verb|sklearn| library contains a lot of efficient tools for machine learning and statistical modeling including classification, regression, clustering and dimensionality reduction. It is used for the machine learning functionality required for the \verb|singlePointEstimator|. These being various trainable models, appropriately metric measuring functions, and some utility functions.
 
 \subsection{Visual Studio Code}
 
@@ -58,33 +58,23 @@ Visual Studio Code is a freeware source-code editor made by Microsoft for Window
 
 \subsection{Git}
 
-TODO What?
-TODO Why?
-TODO How?
+Git is a version control system. Git tracks the changes you make to files, so you have a record of what has been done, and you can revert to specific versions should you ever need to. Git allows changes by multiple people to all be merged into one source. This can be used to create features then once they are complete merge them into a final version of the system.
 
 \subsection{Command-Line Interface}
 
-TODO What?
-TODO Why?
-TODO How?
+A command-line interface processes commands to a computer program in the form of lines of text. It is used to execute the programs developed, git commands and any other required commands.
 
 \subsection{AntConc 3.5.9}
 
-TODO What?
-TODO Why?
-TODO How?
+AntConc is a freeware corpus analysis toolkit for concordancing and text analysis. It is used for preliminary text analysis of the articles downloaded from \emph{lexisnexis} and \emph{proquest}. It can be used to create words lists, n-grams, concordance plots, amongst other useful tools that may be used to examine word choices in texts.
 
 \subsection{Rocksteady 0.4}
 
-TODO What?
-TODO Why?
-TODO How?
+Rocksteady is a sentiment analysis tool. It creates a timeline of sentiment, and allows the filtering as well as visualisation of this data. It is used within this project to understand how the sentiment proxy extraction process works.
 
 \subsection{Gretl}
 
-TODO What?
-TODO Why?
-TODO How?
+Gretl is an open-source statistical package, mainly for econometrics. The name is an acronym for Gnu Regression, Econometrics and Time-series Library. It has both a graphical user interface and a command-line interface. It was mainly used for vector autoregression within this project.
 
 \section{Setting up the System}
 TODO
