@@ -113,6 +113,7 @@ def getZScores(sentiment):
         positiveSentiment[i] = np.round((positiveSentiment[i] * 100.0) / totalWords[i], decimals=2) if totalWords[i] > 0 else 0
     for i in range(len(totalWords)):
         totalWords[i] = np.round((totalWords[i] * 100.0) / articles[i], decimals=2) if articles[i] > 0 else 0
+    articles = stats.zscore(articles)
     totalWords = stats.zscore(totalWords)
     negativeSentiment = stats.zscore(negativeSentiment)
     positiveSentiment = stats.zscore(positiveSentiment)
