@@ -2,39 +2,168 @@
 
 \chapter{Design}
 
+This chapter discusses the overall design of the project, it's architecture and the individual components.
+
 \section{Brief}
-TODO
+
+The project is '\thesistitle'. It aims to understand the relationship between sentiment proxy and the market through creating a tool which aids in the analysis of sentiment proxy and market price data. Secondarily, this information is used to create estimations of the next day's returns for a given stock. The datasets required and organising of said datasets was a very important part of the project, which had to be executed with a high regard for precision and speed. The project revolved around the sentiment proxy and market price datasets.
+
 \section{Requirements Gathering for System Design}
-TODO
+
+Gathering the correct requirements for the system was an essential part of development. It is important to understand the limits of such a project, as well as understand how similar projects have attempted solving the problems that may come up. For this reason the reading of various research papers which attempted to perform a similar task was essential. These helped give a guideline of what the project structure was going to look like. The design was considered in relation to the requirements of this project, however, these papers helped expedite some design choices. The final design required understanding what information is required as an input for the system, and how it is structured. Then it is important to understand what the outputs of the system are. This then allows the conceptualisation of a pipeline which will achieve the required results. Finally, the pipeline must be refined and broken down into it's various parts. This allows a comprehensive and understandable design for the project.
+
 \subsection{Obtaining \& Understanding Datasets}
-TODO
+
+The dataset requirements for the project are stock prices and sentiment proxies, both over time, and a dictionary containing words and their corresponding sentiment attributes. In order to fulfill these requirements three different source were required.
+
+\subsubsection{Price Source}
+
+One source is one which allows the gathering of stock prices. The requirements for this source are that it:
+\begin{itemize}
+    \item allows the extraction of prices for a specific company
+    \item allows the extraction of daily prices over a large period of time
+    \item gives pieces of information beyond closing prices such as the volume of trades on that day
+\end{itemize}
+The source chosen is IEX Cloud.
+
+\paragraph{IEX Cloud}
+
+IEX Cloud is a financial data infrastructure platform that connects developers and financial data creators. It provides an api which allows access to a large amount of data centered around stock prices, including minute by minute prices for a given stock. The particular endpoint that was required for this project returns historical prices. This endpoint was perfect as it allowed the return of up to 5 years of data-points within the free tier. If there were expansion to be made it would even allow the return of the entire lifetime of a stock if the tier were upgraded. A few more points in favour of the use of IEX Cloud are that it is available at any time of day any day of the week, and it it is simple to use with good customer support in case of issues.
+
+\subsubsection{Sentiment Proxy Source}
+
+Another source is one which allows the gathering of sentiment proxy data. The requirements for this source are that:
+\begin{itemize}
+    \item allows the extraction of sentiment proxy for a specific company
+    \item allows the extraction of sentiment proxy over a large period of time
+    \item allows extraction of sentiment proxies in a batch manner
+    \item gives differing kinds sources, for example newspapers, academic articles
+\end{itemize}
+The sources explored are LexisNexis and Proquest, with the final decision having been LexisNexis.
+
+\paragraph{Proquest}
+
+Proquest provides access to many different databases containing scholarly journals, newspapers, wire feeds, reports, etc. Using a trinity account, access is allowed 30 of these databases. Some of the databases included are:
+\begin{itemize}
+    \item European Newsstream
+    \item ProQuest Historical Newspapers: The New York Times with Index
+    \item ABI/INFORM Global‎
+\end{itemize}
+For a comprehensive and up to date list of databases, it can be looked up on the website itself with trinity credentials. Proquest even allows the selection of specific databases to be searched. Allowing for more specificity in datasources. Depending on the database articles can go back a very long time, especially with the Historical Newspapers sources. Proquest can search for a speciifc company then allows the download of up to 50 articles at a time.
+
+\paragraph{LexisNexis}
+
+LexisNexis is a research tool for news, companies and markets insights, multiple legal practice areas, and business and science biographies. For the purposes of this project, it has an extensive an reliable library with hundreds of different sources, containing many kinds of articles including newspapers, magazines and journals. An interesting point to make is that it is recommeded by the Californian Supreme Court and published Court of Appeal opinions in the US as an accurate, authentic, up-to-date, and reliable source for citing and quoting. It allows for a very detailed search of it's sources, as in it allows to search by type of source as well as allowing the use of boolean expressions within the search parameters. For a full list of sources it can be found under the sources tab once logged in with trinity credentials. For our purposes it allows the search of these articles for a given company. It then allows the batch download of up to 500 articles at a time.
+
+\paragraph{Source Choice}
+
+There are a few reasons for having chosen LexisNexis over Proquest as the final:
+\begin{itemize}
+    \item the quantity of news sources
+    \item the reliability of news sources
+    \item the ability to download much larger batch sizes
+\end{itemize}
+All of these factors allow for a more reliable, and much larger set of articles available for the project, allowing for more accurate final results.
+
+\subsubsection{Dictionary Source}
+
+The final source is one which supplies words and their corresponding sentiment attributes. This is essential for being able to understand what sentiment proxies are indicating. The requirements for this source are that:
+\begin{itemize}
+    \item it has an comprehensive set of words
+    \item it has been built in relation to sentiment proxy analysis
+    \item it has generic positive and negative sentiment attributes
+\end{itemize}
+The dictionary chosen is one provided by rocksteady. It is a generic dictionary in relation to economic terms. As far as I have understood, the information gathered for it was based on the Inquirer newspaper. It has 11,788 word entries with over 183 attributes that may be assigned to each word, including the generic positive and negative. This makes it quite an extensive and deep dictionary, on top of it fulfilling the requirements for the project.
+
 \subsection{Users Interacting with the System}
-TODO
+
+It is important that the project has the ability to produce certain outputs. Many of these being various statistics and graphing elements. The focus was on making sure all the required pieces of information were available. Since the userbase for this program is mainly computer scientists, the interface could be left in the command line.
+
 \section{System Architecture Design}
-TODO
-\subsection{more subsections}
-TODO
+
+The design of the system is very important when it comes to understanding it's functionality, and purpose. The general purpose as discussed is taking sentiment proxy data and price data, then analysing it and making estimations with it.
+
+It can be broken down into 3 main components, with the arrangement seen in figure \ref{fig:overallstructure}. These being:
+\begin{itemize}
+    \item \texttt{The Price Gatherer} -- Gathers of all of the required price data in a date sorted array
+    \item \texttt{The Sentiment Gatherer} -- Gathers of all of the required sentiment data in a date sorted array
+    \item \texttt{The Analyser} -- Takes the data from the other two components and analyses it in various ways as well as run it through an estimator
+\end{itemize}
+Each of component has a very specific role within the system, and will be broken down further.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm,height=10cm,keepaspectratio]{design/OverallStructure.png}
+    \caption{Overall Structure}
+    \label{fig:overallstructure}
+\end{figure}
+
+\subsection{The Price Gatherer}
+
+The Price Gatherer's purpose is to build a timeline of prices for a given company. It takes in data-points in reference to a given company's prices ordered by date and filters them in order to adapt them to the system. I can be broken down into 3 stages, arranged as seen in figure \ref{fig:pricegathererstructure}:
+\begin{itemize}
+    \item \texttt{The Price Source} -- Handles the gathering of price values
+    \item \texttt{Key Filtering} -- Filters the raw data and extracts the desired keys for each data-point
+    \item \texttt{The Return Adder} -- Adds returns to the data-points as extra keys
+\end{itemize}
+
+The overall output of this section is an array of json objects, ordered by the date key. Each of these objects containing the keys, the exception being the return keys as will be discussed:
+\begin{itemize}
+    \item \texttt{date} -- the date of the data-point
+    \item \texttt{close} -- the closing price for the date of the data-point
+    \item \texttt{symbol} -- the symbol representing the company this data is about
+    \item \texttt{volume} -- the volume of trades for the date of the data-point
+    \item \texttt{return1Day} -- the return in relation to 1 data-point previous
+    \item \texttt{return7Day} -- the return in relation to 7 data-points previous
+    \item \texttt{return14Day} -- the return in relation to 14 data-points previous
+    \item \texttt{return21Day} -- the return in relation to 21 data-points previous
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm,height=10cm,keepaspectratio]{design/PriceGathererStructure.png}
+    \caption{Price Gatherer Structure}
+    \label{fig:pricegathererstructure}
+\end{figure}
+
+\paragraph{The Price Source}
+
+The purpose of the price source component is to contact the IEX Cloud API and collect daily price points for a given period. Due to the limitations of the tier chosen with the platform, the maximum period allowed is the past 5 years.
+
+\paragraph{Key Filtering}
+
+The IEX Cloud API returns an array of json objects, ordered by date, with each object containing the date, close, symbol and volume keys, as well as many others. This component filters out only the desired keys, removing the ones that are not required within the system. This allows the data to managed more easily, as well as any processes being executed faster, and anything that is stored requires less memory.
+
+\paragraph{The Return Adder}
+
+The keys missing after the key filtering are those that determine the return values. This component adds them to each entry. The return for a given n determines the difference in closing prices between the current entry and the entry n days before. The returns require previous entries, therefore the first n entries will not have a return given n, the number of previous entries required.
+
+\subsection{The Sentiment Gatherer}
+
+The Sentiment Gatherer's purpose is to build a timeline of sentiment for a given company. It takes in articles and a dictionary and processes them together in order to create an array of sentiment values ordered by date.
+
+TODO what? why? how?
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm,height=10cm,keepaspectratio]{design/SentimentGathererStructure.png}
+    \caption{Sentiment Gatherer Structure}
+    \label{fig:sentimentgathererstructure}
+\end{figure}
+
+TODO what? why? how?
+
+\subsection{The Analyser}
+TODO what? why? how?
+
 \section{Scope of Project}
-TODO
+TODO what? why? how?
 \section{Design Summary}
-TODO
+TODO what? why? how?
 
 % \label{latexchapter}
-% \LaTeX{}, or more properly ``\LaTeXe{}'', is a very useful document processing program. It is very widely used, widely available, stable and free. Famously, \TeX, upon which \LaTeX{} is built, was originally developed by the eminent American mathematician Donald Knuth because he was tired of ugly mathematics books \cite{shustek2008interview}. Although it has a learning curve (made much less forbidding by online tools and resources -- see below), it allows the writer to concentrate more fully on the content, and takes care of most everything else.
-
-% While it can be used as a word processor, it is a \emph{typesetting} system, and Knuth's idea was that it could be used to produce beautiful looking books:
 % \begin{quote}
 % \emph{\LaTeX{} is a macro package which enables authors to typeset and print their work at the highest typographical quality, using a predefined, professional layout.}\footnote{This is from \citet{oetiker2001not}. Did we mention that you should minimise your use of footnotes?}
 % \end{quote}
-% \LaTeX{} has great facilities for setting out equations and a powerful and very widely supported bibliographic system called BibTeX, which takes the pain out of referencing.
-
-% Three useful online resources make \LaTeX~much better:
 % \begin{enumerate}[(1)]
-% \item An excellent online \LaTeX{} environment called ``Overleaf'' is available at \url{http://www.overleaf.com} and runs in a modern web browser. It's got this template available -- search for a TCD template. Overleaf can work in conjunction with Dropbox, Google Drive and, in beta, GitHub.
-% \item Google Scholar, at \url{http://scholar.google.com}, provides BibTeX entries for most of the academic references it finds.
 % \item An indispensable and very fine introduction to using \LaTeX{} called \emph{``The not so short introduction to LATEX 2$\varepsilon$''} by \citet{oetiker2001not} is online at \url{https://doi.org/10.3929/ethz-a-004398225}. Browse it before you use \LaTeX~for the first time and  read it carefully when you get down to business.
 % \end{enumerate}
-% Other tools worth mentioning include:
-% \begin{itemize}
-% \item \texttt{Draw.io} -- an online drawing package that can output PDFs to Google Drive -- see \url{https://www.draw.io}.
-% \end{itemize}

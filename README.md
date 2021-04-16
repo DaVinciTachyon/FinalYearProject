@@ -2,9 +2,9 @@
 
 ## Todo List
 
-- [ ] Download RTF without formatting, the fix the rtf extractor
+- [ ] Vector Autoregression
+- [ ] Command line interface
 - [ ] More models for single point estimator
 - [ ] results comparisons
-- [ ] predict next day return instead of T/F
 - [ ] Layout python packages - make it easy to install
-- [ ] Vector Autoregression
+- [ ] predict next day return instead of T/F
