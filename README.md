@@ -5,11 +5,9 @@ Final Year Project
 ## Todo
 
 - To Implement
-  - Vector Autoregression (Autoregression) (exogeneous Var)
-  - Additional ML Models
   - Correlation error
+  - Vector Autoregression (Autoregression) (exogeneous Var)
   - Python packages install
-  - Next day return instead of T/F
 - Implementation
   - Diagrams
   - Efficiencies such as += vs "".join()
@@ -17,15 +15,19 @@ Final Year Project
 - Discussion and Conclusion
   - Define LexisNexis Articles and their types - call it article corpus?
   - Define sentiment proxy
-  - Define Gamestop - why gamestop? What happened? Why did it happen? gamestop bubble?
+  - Define proxy
+  - Define Gamestop - why gamestop? What happened? Why did it happen? gamestop bubble? reaction of small investors to big investors? quote? ordinary company pos->neg->pos return
   - Define Descriptive Statistics Elements
   - Define Correlation
   - Define Vector Autoregression
+  - explore ml models, in futre distinguih between them, explore differences
   - Use results explored in slides
   - (pos sent vs neg sent) ratio vs returns + error
   - volume vs returns - volume indicated change, change indicates sentiment
   - Graphs/Diagrams
-  - Conditional Vs Unconditional Returns - Change sample size
+  - Conditional (same descriptive stats no matter sample size) Vs Unconditional (descriptive stats change) Returns - Change sample size - look at different periods
+  - models based on modellers view of world
+  - correlaiton between magnitude of returns
   - Display all values then narrow down to statistically significant values
   - bring up receiver/sender bias - feedback loop
   - economic policy uncertainty index
@@ -36,12 +38,27 @@ Final Year Project
   - How many std devs in sentiment for 1 std dev in price
   - mean reversal - movement around mean
   - efficient market hypothesis
+  - small error when market is well behaved
+  - statistically signifant >90%
 - Background
 - Introduction
-  - What have I learnt?
-  - Qualitative -> Quantitative -> Market Dynamics
+  - What have I learnt? nlp, financial concepts, econometrics, behavioural psychology
+  - innovative system
+  - statistical estimation
+  - change in facts, not absolute facts
+  - 0 point motion
+  - bachelier
+  - naive trader vs informaed trader
+  - demand vs supply
+  - created system that is more than the sum of its parts
+  - research papers
+  - systematically organised corpus of texts
+  - studied domain, unerstand how to computerise it
+  - Qualitative -> Quantitative -> Market Dynamics (description -> correlation -> causation/dependence)
+  - diffentiate between correlation and causation, causation has to be stastically significant
   - What is impacting the market?
   - conceptualisation
+  - negative words are important < 2,3 %, otherwise lie, if high negative sentiment, important news
 - Nomenclature
 - Abstract
 - Ackowledgments

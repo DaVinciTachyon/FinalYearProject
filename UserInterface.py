@@ -3,7 +3,7 @@ from sentimentExtractor import getArticleSentimentByDate, setSource, getZScores
 from dataGraphing import displayPriceVsSentiment, displayHist
 from dataTabling import getExcel
 from dataCleanUp import getOverlappingSeries
-from returnEstimator import singlePointEstimator, getNextDayReturn
+from returnEstimator import singlePointEstimator
 from correlation import getAutoCorrelationWithLags, getReturnSentimentCorrelations
 from descriptiveStatistics import getDescriptiveStatistics
 
@@ -119,6 +119,7 @@ def getSinglePointEstimatorMenu(oPrices, oSentiment):
     priceKeys = getPriceKeys(oPrices)
     sentimentKeys = getSentimentKeys(oSentiment)
     model, accuracy = singlePointEstimator(oPrices, oSentiment, priceKeys, sentimentKeys)
+    print("Model Name: ", model.__class__.__name__)
     print("Model Accuracy: ", accuracy)
 
 def selectDataset(prices, sentiment):

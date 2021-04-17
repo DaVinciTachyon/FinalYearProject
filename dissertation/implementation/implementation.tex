@@ -28,7 +28,7 @@ The \verb|striprtf| library is used to translate rtf to a python string. When fi
 
 \subsubsection{Data Tidying}
 
-In order to tidy up the data extracted from articles and make it usable in the context required the use of some libraries is needed. These libraries and modules are \verb|pandas|, \verb|json|, \verb|copy|, \verb|datetime| and \verb|operator|.
+In order to tidy up the data extracted from articles and make it usable in the context required the use of some libraries is needed. These libraries and modules are \verb|pandas|, \verb|json|, \verb|copy|, \verb|datetime|, \verb|operator|, \verb|matplotlib|, \verb|seaborn| and \verb|warnings|.
 
 The \verb|pandas| is an open source data analysis and manipulation tool. This library is used to aid in the tabling of data. This was useful in order to use this data within graphs and to create an excel spreadsheet. For graphing timeseries, this library was especially useful with it's \verb|to_datetime()| function which allowed the dates to be appropriately used as indices. This is significant especially when comparing two separate time series, as it spaced the values according to date and not which datapoint it is along the sequence.
 
@@ -40,9 +40,15 @@ The \verb|datetime| module supplies classes for manipulating dates and times. As
 
 The \verb|operator| module exports a set of efficient functions corresponding to the intrinsic operators of Python. It is used sort arrays of json objects that contain a given key. This was very useful when ordering data entries by date.
 
+The \verb|matplotlib| library provides an object-oriented API for embedding plots into applications using general-purpose GUI toolkits like Tkinter, wxPython, Qt, or GTK. It therefore aids in the creation and display of graphs within the system.
+
+The \verb|seaborn| library is a data visualization library based on matplotlib. It helps the graphs look more aesthetically pleasing as well helping them become cleaere, therefore easier to read.
+
+The \verb|warnings| module is used in order to supress warnings. This helps make the program be easier to read for an end user.
+
 \subsubsection{Mathematical Operations}
 
-In order to perform mathematical operations appropriately multiple libraries are used. This is to avoid the recreation of tested and efficient functions, and avoid any potential errors when recreating them. These libraries and modules are \verb|numpy|, \verb|statistics|, \verb|scipy|, \verb|math| and \verb|sklearn|.
+In order to perform mathematical operations appropriately multiple libraries are used. This is to avoid the recreation of tested and efficient functions, and avoid any potential errors when recreating them. These libraries and modules are \verb|numpy|, \verb|statistics|, \verb|scipy|, \verb|math|, \verb|sklearn| and \verb|time|.
 
 The \verb|numpy| is a Python library used for working with arrays. It also has functions for working in domain of linear algebra, fourier transform, and matrices.
 
@@ -53,6 +59,8 @@ The \verb|scipy| is a collection of mathematical algorithms and convenience func
 The \verb|math| module is a built-in module that you can use for mathematical tasks. It is used specifically for the \verb|log()| function contained within.
 
 The \verb|sklearn| library is an incredibly useful machine learning library. The \verb|sklearn| library contains a lot of efficient tools for machine learning and statistical modeling including classification, regression, clustering and dimensionality reduction. It is used for the machine learning functionality required for the \verb|singlePointEstimator|. These being various trainable models, appropriately metric measuring functions, and some utility functions.
+
+The \verb|time| module provides various time-related functions. Most of the functions defined in this module call platform C library functions with the same name. This important because it is used to time some elements of the system, and these timings must be precise.
 
 \subsection{Visual Studio Code}
 
