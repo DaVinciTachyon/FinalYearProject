@@ -52,27 +52,3 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns): # 
     
     model = KNeighborsClassifier(n_neighbors=highestAccuracyK).fit(X, y)
     return model, highestAccuracy
-
-def getNextDayReturn(prices, sentiment):    
-    s = []
-    x = []
-    y = []
-    j = 0
-    for i in range(1, len(prices) - 1):
-        while(j < len(sentiment) and greaterThanDate(prices[i]['date'], sentiment[j]['date'])):
-            j += 1
-        if(j < len(sentiment) and equalDate(sentiment[j]['date'], prices[i]['date'])):
-            s.append(sentiment[j]['negativeSentiment'])
-        else:
-            s.append(0)
-        x.append(prices[i]['return1Day'])
-        y.append(prices[i + 1]['return1Day'])
-    lastSentiment = s[len(s) - 1]
-    lastReturn = y[len(y) - 1]
-    returnsCorr = getCorrelation(x, y)
-    sentimentCorr = getCorrelation(s, y)
-    x.append(lastReturn)
-    mean = np.mean(x)
-
-    error = 0 # FIXME currently assuming normally distributed
-    return mean + returnsCorr * lastReturn + sentimentCorr * lastSentiment + error
