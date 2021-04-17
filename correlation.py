@@ -1,8 +1,9 @@
-import numpy as np
+import scipy.stats as stats
 from dateUtil import greaterThanDate, equalDate
 
 def getCorrelation(x, y):
-    return np.corrcoef(x, y)[0][1]
+    lr = stats.linregress(x, y)
+    return lr.rvalue, lr
 
 def getCorrelationWithLag(array, column1, column2, start, lag):
     x = []

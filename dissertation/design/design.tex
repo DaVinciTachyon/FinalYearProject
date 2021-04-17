@@ -194,6 +194,10 @@ The purpose of the component is to take the JSON object produced from the previo
 
 \subsection{The Analyser}
 
+In order to organise and utilise all of the various components in a fast and easy way, a command line menu was created. This is known as the User Interface.
+
+One more component was made to be used as a predecessor for some of these components, depending on the data that is desired to be analysed. It will be referred to as the Joiner. It's purpose is to join the sentiment and prices data-sets where they overlap.
+
 The Analyser's purpose is to take the timelines produced by the Price Gatherer and the Sentiment Gatherer and analyse them in various different ways. It is a set of unrelated components which allow for the full analysis required in order to understand the data in the way desired for this project. The sub-components build for this component are the following:
 \begin{itemize}
     \item \texttt{Return Vs Sentiment Grapher} -- Allows the graphing of sentiment keys and price keys in a time-series
@@ -203,10 +207,6 @@ The Analyser's purpose is to take the timelines produced by the Price Gatherer a
     \item \texttt{Descriptive Statistics} -- Calculates and displays descriptive statistics of given key
     \item \texttt{Vector Autoregressor} -- Calculate Vector Autoregression elements
 \end{itemize}
-
-One more component was made to be used as a predecessor for some of these components, depending on the data that is desired to be analysed. It will be referred to as the Joiner. It's purpose is to join the sentiment and prices data-sets where they overlap.
-
-In order to organise and utilise all of the various components in a fast and easy way, a command line menu was created. This is known as the User Interface.
 
 \paragraph{The User Interface}
 

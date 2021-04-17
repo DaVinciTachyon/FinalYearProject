@@ -185,16 +185,20 @@ def getAutoCorrelatorMenu(prices, sentiment):
     correlations = getAutoCorrelationWithLags(dataset, column, start, lag)
     print(f"{column} Auto Correlation")
     for i in range(lag):
-        print(i + 1, "day lag", correlations[i])
+        correlation, lr = correlations[i]
+        print(i + 1, "day lag", correlation)
 
 def getReturnVsSentimentCorrelatorMenu(oPrices, oSentiment):
     print("Return Vs Sentiment Correlator")
 
     sameDayCorr, returnSentCorr, sentReturnCorr = getReturnSentimentCorrelations(oPrices, oSentiment)
     print("return1Day/negativeSentiment Correlation")
-    print("same day", sameDayCorr)
-    print("1 day lag return1Day to negativeSentiment", returnSentCorr)
-    print("1 day lag negativeSentiment to return1Day", sentReturnCorr)
+    correlation, lr = sameDayCorr
+    print("same day", correlation)
+    correlation, lr = returnSentCorr
+    print("1 day lag return1Day to negativeSentiment", correlation)
+    correlation, lr = sentReturnCorr
+    print("1 day lag negativeSentiment to return1Day", correlation)
 
 def getDescriptiveStatisticsMenu(prices, sentiment):
     keys, dataset, _ = selectDataset(prices, sentiment)

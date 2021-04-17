@@ -5,8 +5,9 @@ Final Year Project
 ## Todo
 
 - To Implement
-  - Correlation error
   - Vector Autoregression (Autoregression) (exogeneous Var)
+  - sentiment error given limited sample size
+  - be able to test different periods
   - Python packages install
 - Implementation
   - Diagrams
@@ -28,6 +29,7 @@ Final Year Project
   - Conditional (same descriptive stats no matter sample size) Vs Unconditional (descriptive stats change) Returns - Change sample size - look at different periods
   - models based on modellers view of world
   - correlaiton between magnitude of returns
+  - correlation error, pvalue, etc.
   - Display all values then narrow down to statistically significant values
   - bring up receiver/sender bias - feedback loop
   - economic policy uncertainty index
