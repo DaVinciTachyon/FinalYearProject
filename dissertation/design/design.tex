@@ -6,15 +6,15 @@ This chapter discusses the overall design of the project, it's architecture and 
 
 \section{Brief}
 
-The project is '\thesistitle'. It aims to understand the relationship between sentiment proxy and the market through creating a tool which aids in the analysis of sentiment proxy and market price data. Secondarily, this information is used to create estimations of the next day's returns for a given stock. The datasets required and organising of said datasets was a very important part of the project, which had to be executed with a high regard for precision and speed. The project revolved around the sentiment proxy and market price datasets.
+The project is '\thesistitle'. It aims to understand the relationship between sentiment proxy and the market through creating a tool which aids in the analysis of sentiment proxy and market price data. Secondarily, this information is used to create estimations of the next day's returns for a given stock. The data-sets required and organising of said data-sets was a very important part of the project, which had to be executed with a high regard for precision and speed. The project revolved around the sentiment proxy and market price data-sets.
 
 \section{Requirements Gathering for System Design}
 
 Gathering the correct requirements for the system was an essential part of development. It is important to understand the limits of such a project, as well as understand how similar projects have attempted solving the problems that may come up. For this reason the reading of various research papers which attempted to perform a similar task was essential. These helped give a guideline of what the project structure was going to look like. The design was considered in relation to the requirements of this project, however, these papers helped expedite some design choices. The final design required understanding what information is required as an input for the system, and how it is structured. Then it is important to understand what the outputs of the system are. This then allows the conceptualisation of a pipeline which will achieve the required results. Finally, the pipeline must be refined and broken down into it's various parts. This allows a comprehensive and understandable design for the project.
 
-\subsection{Obtaining \& Understanding Datasets}
+\subsection{Obtaining \& Understanding Data-sets}
 
-The dataset requirements for the project are stock prices and sentiment proxies, both over time, and a dictionary containing words and their corresponding sentiment attributes. In order to fulfill these requirements three different source were required.
+The data-set requirements for the project are stock prices and sentiment proxies, both over time, and a dictionary containing words and their corresponding sentiment attributes. In order to fulfil these requirements three different source were required.
 
 \subsubsection{Price Source}
 
@@ -28,7 +28,7 @@ The source chosen is IEX Cloud.
 
 \paragraph{IEX Cloud}
 
-IEX Cloud is a financial data infrastructure platform that connects developers and financial data creators. It provides an api which allows access to a large amount of data centered around stock prices, including minute by minute prices for a given stock. The particular endpoint that was required for this project returns historical prices. This endpoint was perfect as it allowed the return of up to 5 years of data-points within the free tier. If there were expansion to be made it would even allow the return of the entire lifetime of a stock if the tier were upgraded. A few more points in favour of the use of IEX Cloud are that it is available at any time of day any day of the week, and it it is simple to use with good customer support in case of issues.
+IEX Cloud is a financial data infrastructure platform that connects developers and financial data creators. It provides an API which allows access to a large amount of data centred around stock prices, including minute by minute prices for a given stock. The particular endpoint that was required for this project returns historical prices. This endpoint was perfect as it allowed the return of up to 5 years of data-points within the free tier. If there were expansion to be made it would even allow the return of the entire lifetime of a stock if the tier were upgraded. A few more points in favour of the use of IEX Cloud are that it is available at any time of day any day of the week, and it it is simple to use with good customer support in case of issues.
 
 \subsubsection{Sentiment Proxy Source}
 
@@ -43,17 +43,17 @@ The sources explored are LexisNexis and Proquest, with the final decision having
 
 \paragraph{Proquest}
 
-Proquest provides access to many different databases containing licenced scholarly journals, newspapers, wire feeds, reports, etc. Using a trinity account, access is allowed 30 of these databases. Some of the databases included are:
+Proquest provides access to many different databases containing licensed scholarly journals, newspapers, wire feeds, reports, etc. Using a trinity account, access is allowed 30 of these databases. Some of the databases included are:
 \begin{itemize}
     \item European Newsstream
     \item ProQuest Historical Newspapers: The New York Times with Index
     \item ABI/INFORM Global‎
 \end{itemize}
-For a comprehensive and up to date list of databases, it can be looked up on the website itself with trinity credentials. Proquest even allows the selection of specific databases to be searched. Allowing for more specificity in datasources. Depending on the database articles can go back a very long time, especially with the Historical Newspapers sources. Proquest can search for a speciifc company then allows the download of up to 50 articles at a time.
+For a comprehensive and up to date list of databases, it can be looked up on the website itself with trinity credentials. Proquest even allows the selection of specific databases to be searched. Allowing for more specificity in data-sources. Depending on the database articles can go back a very long time, especially with the Historical Newspapers sources. Proquest can search for a specific company then allows the download of up to 50 articles at a time.
 
 \paragraph{LexisNexis}
 
-LexisNexis is a research tool for news, companies and markets insights, multiple legal practice areas, and business and science biographies. For the purposes of this project, it has an extensive, reliable and quite importantly licenced library with hundreds of different sources, containing many kinds of articles including newspapers, magazines and journals. An interesting point to make is that it is recommeded by the Californian Supreme Court and published Court of Appeal opinions in the US as an accurate, authentic, up-to-date, and reliable source for citing and quoting. It allows for a very detailed search of it's sources, as in it allows to search by type of source as well as allowing the use of boolean expressions within the search parameters. For a full list of sources it can be found under the sources tab once logged in with trinity credentials. For our purposes it allows the search of these articles for a given company. It then allows the batch download of up to 500 articles at a time.
+LexisNexis is a research tool for news, companies and markets insights, multiple legal practice areas, and business and science biographies. For the purposes of this project, it has an extensive, reliable and quite importantly licensed library with hundreds of different sources, containing many kinds of articles including newspapers, magazines and journals. An interesting point to make is that it is recommended by the Californian Supreme Court and published Court of Appeal opinions in the US as an accurate, authentic, up-to-date, and reliable source for citing and quoting. It allows for a very detailed search of it's sources, as in it allows to search by type of source as well as allowing the use of Boolean expressions within the search parameters. For a full list of sources it can be found under the sources tab once logged in with trinity credentials. For our purposes it allows the search of these articles for a given company. It then allows the batch download of up to 500 articles at a time.
 
 \paragraph{Source Choice}
 
@@ -73,15 +73,13 @@ The final source is one which supplies words and their corresponding sentiment a
     \item it has been built in relation to sentiment proxy analysis
     \item it has generic positive and negative sentiment attributes
 \end{itemize}
-The dictionary chosen is one provided by rocksteady. It is a generic dictionary in relation to economic terms. As far as I have understood, the information gathered for it was based on the Inquirer newspaper. It has 11,788 word entries with over 183 attributes that may be assigned to each word, including the generic positive and negative. This makes it quite an extensive and deep dictionary, on top of it fulfilling the requirements for the project.
+The dictionary chosen is one provided by Rocksteady. It is a generic dictionary in relation to economic terms. As far as I have understood, the information gathered for it was based on the Inquirer newspaper. It has 11,788 word entries with over 183 attributes that may be assigned to each word, including the generic positive and negative. This makes it quite an extensive and deep dictionary, on top of it fulfilling the requirements for the project.
 
 A potential expansion and focus to the dictionary may improve it. This would mean adding more words, and changing the attribute values to be more in line with the problem being looked at and even the company being examined. A more specific dictionary may be found, or even a mix of both of these suggestions may cause great improvement in the result accuracy.
 
 \subsection{Users Interacting with the System}
 
-It is important that the project has the ability to produce certain outputs. Many of these being various statistics and graphing elements. The focus was on making sure all the required pieces of information were available. Since the userbase for this program is mainly computer scientists, the interface could be left in the command line.
-
-TODO
+It is important that the project has the ability to produce certain outputs. Many of these being various statistics and graphing elements. The focus was on making sure all the required pieces of information were available. Since the user base for this program is mainly computer scientists, the interface could be left in the command line. It is formed by a set of menus which allows many different all the required kinds of of operations. However, they are all executed in the command line.
 
 \section{System Architecture Design}
 
@@ -110,7 +108,7 @@ The Price Gatherer's purpose is to build a timeline of prices for a given compan
     \item \texttt{The Return Adder} -- Adds returns to the data-points as extra keys
 \end{itemize}
 
-The overall output of this section is an array of json objects, ordered by the date key. Each of these objects containing the keys, the exception being the return keys as will be discussed:
+The overall output of this section is an array of JSON objects, ordered by the date key. Each of these objects containing the keys, the exception being the return keys as will be discussed:
 \begin{itemize}
     \item \texttt{date} -- the date of the data-point
     \item \texttt{close} -- the closing price for the date of the data-point
@@ -135,7 +133,7 @@ The purpose of the price source component is to contact the IEX Cloud API and co
 
 \paragraph{Key Filtering}
 
-The IEX Cloud API returns an array of json objects, ordered by date, with each object containing the date, close, symbol and volume keys, as well as many others. This component filters out only the desired keys, removing the ones that are not required within the system. This allows the data to managed more easily, as well as any processes being executed faster, and anything that is stored requires less memory. This thus simplifies the process. However, it does create room for future expansion and potential improvement in understanding, as more specificity would be added.
+The IEX Cloud API returns an array of JSON objects, ordered by date, with each object containing the date, close, symbol and volume keys, as well as many others. This component filters out only the desired keys, removing the ones that are not required within the system. This allows the data to managed more easily, as well as any processes being executed faster, and anything that is stored requires less memory. This thus simplifies the process. However, it does create room for future expansion and potential improvement in understanding, as more specificity would be added.
 
 \paragraph{The Return Adder}
 
@@ -148,12 +146,12 @@ The Sentiment Gatherer's purpose is to build a timeline of sentiment for a given
     \item \texttt{The Article Source} -- Handles the gathering of articles
     \item \texttt{The Article Parser} -- Parses the raw articles into a format usable by the system
     \item \texttt{The Dictionary} -- Handles the extraction of the dictionary from it's source
-    \item \texttt{Key Filtering} -- Filters the dicitonary entries and extracts only the desired keys
+    \item \texttt{Key Filtering} -- Filters the dictionary entries and extracts only the desired keys
     \item \texttt{The Sentiment Extractor} -- Uses the dictionary entries in order to extract frequencies of sentiment from the articles
     \item \texttt{Z-Scores} -- Modifies the sentiment extracted from absolute values to relative values using z-scores
 \end{itemize}
 
-The overall output of this section is an array of json objects, ordered by the date key. Each of these objects containing the keys:
+The overall output of this section is an array of JSON objects, ordered by the date key. Each of these objects containing the keys:
 \begin{itemize}
     \item \texttt{date} -- date of the data-point
     \item \texttt{articles} -- z-score of number of articles
@@ -176,11 +174,11 @@ The purpose of the article source is to provide the articles that will be used i
 
 \paragraph{The Article Parser}
 
-The purpose of this component is to take the imported files and parse them into a format usable by the system, this being json. This is required for LexisNexis as the articles downloaded have the rich text format. The output of this component returns an array of json objects, this allows metadata to be stored alongside the body of the article itself.
+The purpose of this component is to take the imported files and parse them into a format usable by the system, this being JSON. This is required for LexisNexis as the articles downloaded have the rich text format. The output of this component returns an array of JSON objects, this allows metadata to be stored alongside the body of the article itself.
 
 \paragraph{The Dictionary}
 
-The purpose of this component is to handle the extraction of the dictionary into a json object array from the excel sheet it is stored in.
+The purpose of this component is to handle the extraction of the dictionary into a JSON object array from the excel sheet it is stored in.
 
 \paragraph{Key Filtering}
 
@@ -188,17 +186,17 @@ The purpose of this component is to filter only the desired keys from the dictio
 
 \paragraph{The Sentiment Extractor}
 
-The purpose of the component is to extract sentiment frequencies from the articles, using the dictionary as a reference. What this means is that it tallies the number of words belonging to each desired attribute for each article. The articles are then joined by date, tallied appropriately, and ordered by date. The output is an array of json objects which represent the absolute values of the different attributes required.
+The purpose of the component is to extract sentiment frequencies from the articles, using the dictionary as a reference. What this means is that it tallies the number of words belonging to each desired attribute for each article. The articles are then joined by date, tallied appropriately, and ordered by date. The output is an array of JSON objects which represent the absolute values of the different attributes required.
 
 \paragraph{Z-Scores}
 
-The purpose of the component is to take the json object produced from the previous component and get the z-scores of the number of articles, of the total number of words in relation to the number of articles, and of each of the sentiment attributes in relation to the total number of words.
+The purpose of the component is to take the JSON object produced from the previous component and get the z-scores of the number of articles, of the total number of words in relation to the number of articles, and of each of the sentiment attributes in relation to the total number of words.
 
 \subsection{The Analyser}
 
 The Analyser's purpose is to take the timelines produced by the Price Gatherer and the Sentiment Gatherer and analyse them in various different ways. It is a set of unrelated components which allow for the full analysis required in order to understand the data in the way desired for this project. The sub-components build for this component are the following:
 \begin{itemize}
-    \item \texttt{Return Vs Sentiment Grapher} -- Allows the graphing of sentiment keys and price keys in a timeseries
+    \item \texttt{Return Vs Sentiment Grapher} -- Allows the graphing of sentiment keys and price keys in a time-series
     \item \texttt{Single Point Estimator} -- Uses machine learning model to estimate next day returns
     \item \texttt{Autocorrelator} -- Calculates correlation of key with itself with given lag
     \item \texttt{Return Vs Sentiment Correlator} -- Calculates correlation of given keys with predefined lags
@@ -206,46 +204,46 @@ The Analyser's purpose is to take the timelines produced by the Price Gatherer a
     \item \texttt{Vector Autoregressor} -- Calculate Vector Autoregression elements
 \end{itemize}
 
-One more component was made to be used as a predecessor for some of these components, depending on the data that is desired to be analysed. It will be referred to as the Joiner. It's purpose is to join the sentiment and prices datasets where they overlap.
+One more component was made to be used as a predecessor for some of these components, depending on the data that is desired to be analysed. It will be referred to as the Joiner. It's purpose is to join the sentiment and prices data-sets where they overlap.
+
+In order to organise and utilise all of the various components in a fast and easy way, a command line menu was created. This is known as the User Interface.
+
+\paragraph{The User Interface}
+
+This is an essential part for the usability of the system create. It allows a user to navigate through the system, and analyse the data in any desired way, given the constraints of the system. It is a set of menu's which allow the selection of any given component and the selected that is desired in the analysis.
 
 \paragraph{The Joiner}
 
-TODO what? why? how?
+For certain parts of the analysis the data being analysed should be overlapping appropriately. This is an important feature as the price and sentiment data-set have different start and end dates. As well as this not all dates that are covered by one are covered by the other, therefore data must be inserted in these cases, with the assumption that there was no activity for the data that did not exist previously. This has two main cases the first being a day with not sentiment, the assumption can be made that the day has zero sentiment, allowing an appropriate object to be inserted. As for days with no price the assumption can be made that the prices did not vary and the return was 0. However, this case is rare, and no examples of such a situation have been seen.
 
 \paragraph{Return Vs Sentiment Grapher}
 
-TODO what? why? how?
+The purpose of this component is to allow the creation of graphs which compare various columns between the prices data-set and the sentiment data-set. It however also allows the graphing of multiple columns in the one data-set, as well as graphing columns from only one data-set. This allows the creation of any graph desired. The graphs are graphed against the date of the data-point.
 
 \paragraph{Single Point Estimator}
 
-TODO what? why? how?
+The purpose of this component is to explore the applications of machine learning models in this area. The models take in data from a given date, this being sentiment and price data and estimate whether the nest day would have a positive or negative return. This allows for the comparison between machine learning methods and mathematical methods. The output of this component is two fold. The first item returned is the accuracy of the most accurate model. The second item returned is said model, thus allowing for potential future use and/or storage. This area could be explored in a lot more depth through the use of a more substantial amount of models, hyperparameters and the like.
 
 \paragraph{Autocorrelator}
 
-TODO what? why? how?
+The autocorrelator allows for the calculation of the correlation of a given column in a given data-set with itself, and it displays the information with n days of lag, where n is selected by the user. This is to help understand how closely related the data is with itself in nearby days, allowing for insight into whether there is a possibility of this data affecting itself. It is important to note, however, that high values of correlation only indicate that there is a potential relationship between days, and does not indicate necessarily causation.
 
 \paragraph{Return Vs Sentiment Correlator}
 
-TODO what? why? how?
+The return vs sentiment correlator allows for the calculation of three kind of correlation. These are correlation between negative sentiment and 1 day return on the same day, the correlation between these when 1 day return is one day after the negative sentiment, and the correlation between these when negative sentiment is one day after the 1 day return. An expansion to this component would be to allow for different amount of lag between these data-sets. Similarly to the autocorrelator it is important to note, however, that high values of correlation only indicate that there is a potential relationship between elements, and does not indicate necessarily causation.
 
 \paragraph{Descriptive Statistics}
 
-TODO what? why? how?
+The purpose of the component is to gather a column from the data-set and explore it's descriptive statistics, in order to understand said column better. On top of the descriptive statistics, this component prints out a graph which allows for a visual element. This can be of great aid when trying to understand the significance of the descriptive statistics.
 
 \paragraph{Vector Autoregressor}
 
-TODO what? why? how?
+The purpose of this component is to explore causation between return and negative sentiment column using vector auto-regression. This adds a layer of rigorousness to the previously explored correlations, as it allows for the understanding of not just what is correlated but which columns cause data in other columns to change. This removes elements such as coincidence.
 
 \section{Scope of Project}
-TODO what? why? how?
+
+The scope of the project was mainly limited by the data being explored. Many columns were removed from the various data-sources in order to simplify this. The data-set being explored is therefore limited it a general analysis. This can be seen through the use of the generic sentiment columns as well as the basic price columns. On top of this only a certain amount of depth was explored with the machine learning models, correlation and causation. For these reasons I believe there is very large amount of potential expansion to the project, and therefore the understand of the data and its relationships.
 
 \section{Design Summary}
-TODO what? why? how?
 
-% \label{latexchapter}
-% \begin{quote}
-% \emph{\LaTeX{} is a macro package which enables authors to typeset and print their work at the highest typographical quality, using a predefined, professional layout.}\footnote{This is from \citet{oetiker2001not}. Did we mention that you should minimise your use of footnotes?}
-% \end{quote}
-% \begin{enumerate}[(1)]
-% \item An indispensable and very fine introduction to using \LaTeX{} called \emph{``The not so short introduction to LATEX 2$\varepsilon$''} by \citet{oetiker2001not} is online at \url{https://doi.org/10.3929/ethz-a-004398225}. Browse it before you use \LaTeX~for the first time and  read it carefully when you get down to business.
-% \end{enumerate}
+This chapter provides a brief overview of the project, the system design, the handling of the required data and its sources, user interaction with the system, it's design architecture, an explanation of the system components and the scope of the project.
