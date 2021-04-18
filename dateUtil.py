@@ -1,4 +1,5 @@
 import datetime
+from dateutil.relativedelta import relativedelta
 
 def getShortDateString(date):
     date = date.split()
@@ -69,6 +70,12 @@ def getLongDateString(date):
         y = int(date[2])
         d = int(date[1].split(",")[0])
     return datetime.datetime(y, m, d).strftime('%Y-%m-%d')
+
+def toString(date):
+    return date.strftime('%Y-%m-%d')
+
+def subtractYears(date, years):
+    return date - relativedelta(years=years)
 
 def getFullDashedDateString(date):
     y, m, d = [int("".join(x.split())) for x in date.split('-')]

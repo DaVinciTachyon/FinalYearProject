@@ -5,9 +5,8 @@ Final Year Project
 ## Todo
 
 - To Implement
-  - Vector Autoregression (Autoregression) (exogeneous Var)
   - sentiment error given limited sample size
-  - be able to test different periods
+  - Vector Autoregression (Autoregression) (exogeneous Var)
   - Python packages install
 - Implementation
   - Diagrams

@@ -6,6 +6,7 @@ from dataCleanUp import getOverlappingSeries
 from returnEstimator import singlePointEstimator
 from correlation import getAutoCorrelationWithLags, getReturnSentimentCorrelations
 from descriptiveStatistics import getDescriptiveStatistics
+from dateUtil import getDashedDateTime, subtractYears, greaterThanOrEqualDate, toString
 
 def getWelcomeMessage():
     print("This is an tool which aids in the analysis of return and sentiment relationships")
@@ -42,25 +43,50 @@ def UserInterface():
         tool = input("Please select your tool: ").strip()
         if tool.isdigit():
             tool = int(tool)
+        if isinstance(tool, int) and tool > 0 and tool < 8:
+            print("1: 1 year", "2: 2 year", "3: 3 year", "4: maximum available", sep="\t")
+            sampleSize = input("Please select the length of your sample size: ")
+            if sampleSize.isdigit():
+                sampleSize = int(sampleSize)
+            if isinstance(sampleSize, int) and sampleSize > 0 and sampleSize < 4:
+                pV, sV, oPV, oSV = selectPeriods(sampleSize, prices, sentiment, oPrices, oSentiment)
+            else:
+                pV, sV, oPV, oSV = prices, sentiment, oPrices, oSentiment
         if tool == 1:
-            getReturnVsSentimentGrapherMenu(prices, sentiment, oPrices, oSentiment)
+            getReturnVsSentimentGrapherMenu(pV, sV, oPV, oSV)
         elif tool == 2:
-            getSinglePointEstimatorMenu(oPrices, oSentiment)
+            getSinglePointEstimatorMenu(oPV, oSV)
         elif tool == 3:
-            getAutoCorrelatorMenu(prices, sentiment)
+            getAutoCorrelatorMenu(pV, sV)
         elif tool == 4:
-            getReturnVsSentimentCorrelatorMenu(oPrices, oSentiment)
+            getReturnVsSentimentCorrelatorMenu(oPV, oSV)
         elif tool == 5:
-            getDescriptiveStatisticsMenu(prices, sentiment)
+            getDescriptiveStatisticsMenu(pV, sV)
         elif tool == 6:
             getVectorAutoregressorMenu()
         elif tool == 7:
-            getExcelMenu(prices, sentiment, oPrices, oSentiment)
+            getExcelMenu(pV, sV, oPV, oSV)
         elif tool == 8:
             quit = True
         else:
             print("Please try again\n")
     print("Thank you, goodbye")
+
+def selectPeriods(period, prices, sentiment, oPrices, oSentiment):
+    pV = selectPeriod(period, prices)
+    sV = selectPeriod(period, sentiment)
+    oPV = selectPeriod(period, oPrices)
+    oSV = selectPeriod(period, oSentiment)
+    return pV, sV, oPV, oSV
+
+def selectPeriod(period, dataset):
+    date = getDashedDateTime(dataset[len(dataset) - 1]['date'])
+    startDate = subtractYears(date, period)
+    nDataset = []
+    for e in dataset:
+        if greaterThanOrEqualDate(e["date"], toString(startDate)):
+            nDataset.append(e)
+    return nDataset
 
 def createMenuString(elements):
     menuString = ""
