@@ -95,46 +95,316 @@ The technologies that have been used to implement the system have been covered. 
 The system is run as a script using the terminal. The commmand for initiating the program being \verb|python IntelligentAnalysis.py|. This is assuming that the default version of python running is version 3.9, otherwise the command may have to be modified slightly to accomodate for this. The full codebase can be found at the following url: \url{https://github.com/DaVinciTachyon/FinalYearProject}. This command is run from the root directory of this git repository.
 
 \subsection{The Price Gatherer}
-TODO what? why? how?
+
+The Price Gatherer has a straightforward flow. Thus making the understanding of it's implementation quite simple.
+
 \subsubsection{The Price Source}
-TODO what? why? how?
+
+The Price Source component has one main function. That is to contact the IEX Cloud API and return the past 5 years of price points for a given stock.
+
+This component does require a bit of set up in order to have access to the api:
+\begin{enumerate}
+    \item Register for IEX Cloud
+    \item Gain access to and retrieve an API key
+    \item Insert API key into environment variables
+\end{enumerate}
+
+Once these steps are done the component itself can be used. The component can be divided into a few different steps:
+\begin{enumerate}
+    \item Check if the cache exists
+    \begin{itemize}
+        \item If cache exists, load items from cache
+        \item otherwise, continue
+    \end{itemize}
+    \item Load API key from environment
+    \item Create API request, with certain important information:
+    \begin{itemize}
+        \item URL -- This contains the API Key and Stock Symbol
+        \item API Key
+        \item Stock Symbol
+        \item Period desired -- This is set to 5 years given the payment tier chosen on the website
+    \end{itemize}
+    \item Gather API response into JSON String
+    \item Sort the JSON array by date
+    \item Cache the data
+\end{enumerate}
+
+An important item to highlight within this procedure are the use of a caching system. This allows for a large speed up in the process of gathering prices, when the program is run for a second time. As well as this it save a lot of money in API fees and network access fees. The caching system in this case is the creation of a json file, however, it may be optimised to use a database.
+
+In order to get the cache, the program check whether the file containing th edata exists, if it does it opens the file and loads the data as a json string. It can be seen below:
+\begin{lstlisting}[caption=Loading Prices Cache]
+if os.path.isfile(pricesFilename):
+    with open(pricesFilename) as json_file:
+        data = json.load(json_file)
+\end{lstlisting}
+The cache is the created by opening a file and simple dumping the json string within, as can be seen here:
+\begin{lstlisting}[caption=Creation of Prices Cache]
+with open(pricesFilename, 'w') as json_file:
+    json.dump(data, json_file)
+\end{lstlisting}
+
+Another item to not is the sorting of the JSON array. This is usually a more complex process, however, the \verb|operator| module eases this process significantly.
+\begin{lstlisting}[caption=Sort JSON Array]
+sorted(data, key = operator.itemgetter('date'))
+\end{lstlisting}
+
 \subsubsection{Key Filtering}
-TODO what? why? how?
+
+The key filtering process takes in the full dataset and the keys desired for each element of the dataset. It then creates a new dataset with only the desired keys extracted. This is currently a \verb|for| loop which goes through the entire dataset adding each entry individually.
+\begin{lstlisting}[caption=Filtering Desired Keys]
+for entry in originalDataset:
+    filteredEntry = {}
+    for key in keys:
+        filteredEntry[key] = entry[key]
+    newDataset.append(filteredEntry)
+\end{lstlisting}
+The current solution has a time complexity of \verb|O(N)|, where N is the length of the dataset. Some research has been done in order to find a more efficient solution, however, so far this has been unsuccessful.
+
 \subsubsection{The Return Adder}
-TODO what? why? how?
+
+This component requires an array of numbers for the returns to create. What this means the that it will reveceive a 1 in the array if it wants to calculate 21 days returns. It then loops through the dataset adding the appropriate returns to the given entry.
+
+The return cannot be added to the first n days, this is simply done using an \verb|if| statement to make sure to not attempt this before it is possible.
+
+The formula used for return is $log(\frac{r_t}{r_{t - l}})$ where $r$ is the return, $t$ is the current day, and $l$ is the number of days being used.
+
+The final code put this all togther in the following way:
+\begin{lstlisting}[caption=Adding Returns]
+for t in range(len(prices)):
+    for l in returnLengths:
+        if(t >= l):
+            prices[t][f"return{l}Day"] = math.log(prices[t]['close']/prices[t-l]['close'])
+\end{lstlisting}
+
 \subsection{The Sentiment Gatherer}
-TODO what? why? how?
+
+The Sentiment Gatherer can be divided into three main subsections, each one of those being divided into two components. It is important to not that the first two main subsections can be run in parallel, and must be run before the last. The Article Source and Article PArser compose this first subsection. This can be run in parallel to the Dictionary and Key Filtering components. However, they must all be run before the Sentiment Extractor and consequently the Z-Scores components.
+
 \subsubsection{The Article Source}
-TODO what? why? how?
+
+The Article Source component has one main function. That is to gather the dowloaded articles and import them into the system.
+
+This component requires a bit of set up:
+\begin{enumerate}
+    \item Log into LexisNexis with Trinity credentials
+    \item Search for a given company
+    \item Download articles, this part has a few steps:
+    \begin{enumerate}
+        \item Select rtf format
+        \item Remove formatting from files
+        \item Download 500 files by giving an appropriate range -- this is the maximum available for downloading at once
+        \item Repeat from step (a) 5 times
+    \end{enumerate}
+    \item Wait 2 hours -- Once 5 downloads have been executed, LexisNexis does not allow any more dowloads for 2 hours
+    \item Repeat from step 1 as many times as necessary
+\end{enumerate}
+Using this process 7000 articles were dowloaded for this iteration of the system, for the given company, which will be discussed later on. The reason for the choice of 7000 article is due to the fact that they cover the 5 year range covered by the Price Source quite thoroughly. They are a significant amount of articles, however more could be dowloaded. That said they covered the requirements for this project.
+
+There was though of automating this procedure in order to improve up this process. This would expedite the process and lead to the ability to download a lot more articles. There were a few reasons this was not done:
+\begin{itemize}
+    \item The 2 hour wait is still required, therefore the process would not be expedited significantly
+    \item The amount of articles gathered manually were sufficent for this project
+    \item There was a focus on creating other parts of this project, as the creation of this automation would require a significant amount of time
+\end{itemize}
+
+Once these step are executed and the downloaded files are placed in the correct directory the component functionality is complete.
+
 \subsubsection{The Article Parser}
-TODO what? why? how?
+
+The Article Parser Component gathers the articles and turns them into a format usable by the system. The component can be broken down similarly to the Price Source component with some differences:
+\begin{enumerate}
+    \item Check if the cache exists
+    \begin{itemize}
+        \item If cache exists, load items from cache
+        \item otherwise, continue
+    \end{itemize}
+    \item Find all files with articles
+    \item Iterate through all the files, doing the following:
+    \begin{enumerate}
+        \item Read the contents of the file and assign them to an rich text format (rtf) string
+        \item Parse the rtf string into a legible string using the \verb|rtf_to_text()| function
+        \item Split the string into the articles contained
+        \item Parse the article strings into a JSON object containing the required content and metadata
+        \item Append the articles to a JSON array
+    \end{enumerate}
+    \item Cache the article JSON array
+\end{enumerate}
+
+The caching system is identical to the Price Source, the JSON array is dumped to a file and extracted from the file when required.
+
+The extraction of the articles from the file into an rtf string has a point that should be highlighted. The way this works requires each line to be extracted separately, then concatenated to the previous, until the full file is extracted. This part of the program was given in order to aid in the project, however it was quite inefficient. The original code looked like this:
+\begin{lstlisting}[caption=Slow Text Extraction]
+fileContent = ''
+for line in file:
+    if line.strip() != '':
+        fileContent += line + "\n"
+    else:
+        fileContent += line
+\end{lstlisting}
+The improvement made to the code then looked like this:
+\begin{lstlisting}[caption=Optimised Text Extraction]
+fileContent = "".join([f"{line}\n" if line.strip() != '' else f"{line}" for line in file])
+\end{lstlisting}
+Beyond reducing the number of lines in the program and looking cleaner, this change creates a radical change in the speed of the program. The program was run on the 7000 articles, and originally was let run for 12 hours before being terminated. Then once the change was made the program consistently finishes within 5 minutes. The reason for this being such a big deal is that if there were more articles added, the entire program would have be run again. The reason for the for the speed difference explains why there is such a large timing difference.
+
+The original way uses the \verb|+=| operator, what this means is that an array is created for the original string, as a string is a character array, then a new character array is created with the new appropriate length in order to allow for the change. This is quite a costly process both timewise and spacewise, and it is repeated for every line in every file. It is important to remember that each time this process is executed the array becomes bigger, making it a slower process each time.
+
+The optimised method used the the \verb|"".join()| function. The way works is that it creates a set of strings one for each line, then does the joining only once. Therefore the large array array has to be created only once and does not have to have its size change.
+
+The final point to discuss is the parsing of the python string into a JSON array. In order to utilise the information in an easier manner, some metadata is extracted alongside the content of the article itself. Each article is represented by a JSON object with the following keys:
+\begin{itemize}
+    \item \texttt{title} -- The article title
+    \item \texttt{source} -- The name of the publication the article was published in
+    \item \texttt{date} -- The date the article was published
+    \item \texttt{copyright} -- The type of copyright of the article
+    \item \texttt{length} -- The length of the body of the article
+    \item \texttt{section} -- If the article is divided into parts, this will indicate which part this is
+    \item \texttt{language} -- The language the article is in, for this project, the articles are in English
+    \item \texttt{pubtype} -- The type of publication the article was published in - newspaper, magazine, etc.
+    \item \texttt{subject} -- Key words which describe the article contents
+    \item \texttt{geographic} -- The locaiton of publication
+    \item \texttt{loaddate} -- The date the article was uploaded to the the Article Source
+    \item \texttt{byline} -- The author(s) of the article
+    \item \texttt{body} -- The contents of the article
+\end{itemize}
+These metadata items are extracted into the array from the original string by using certain indicators withing the text. An example of such an indicator would be that the line containing the source thatsrts with \verb|"Source:"|. This is executed in the code the following way:
+\begin{lstlisting}[caption=Source Extraction]
+if tempLine.startswith('Source:') and extractValue(line) != '':
+    document['source'] = extractValue(line)
+\end{lstlisting}
+The \verb|extractValue| function simple removes the indicator, allowing for the extraction of the value only.
+
+The special case is the body. This still has indicators. The indicator of the start of the body is simply a line only containing \verb|"Body"| and the end of it is simple represent by \verb|"End of Document"|. The lines within these two indicatos are simply concatenated with each other and assigned to the correct key at the end. The \verb|+=| operator is used for this. There is room for creation of efficiency, however, due to the relatively short nature of these articles, this is efficient enough for use within this process currently. In the future this would be an area to explore the creation of such efficiencies.
+
 \subsubsection{The Dictionary}
-TODO what? why? how?
+
+The dictionary is extracted from the Rocksteady files. If there were future development to this project it may be worth spending time adding more entries, as well as making the sentiment choice more specific to the context of the articles that are chosen. An example of such a thing would be that for a company such as Gamestop the word game may have positive sentiment, even though in general it may have no sentiment attached.
+
+The extraction of the entries from the excel file is very simply achieved with the use of the pandas library. The following function extracts all the entries and associates each item to it's correct row and column.
+\begin{lstlisting}[caption=Dictionary Extraction]
+data = pd.read_excel(r"./dictionaries/inquirerbasic.xls") 
+\end{lstlisting}
+
 \subsubsection{Key Filtering}
-TODO what? why? how?
+
+This process of extracting only the desired sentiment attribute columns is achieved through the use of a dataframe. It takes the dataset from the previous component and an array containing the titles of the desired columns as inputs, and returns only said columns.
+\begin{lstlisting}[caption=Key Filtering Dataframe]
+df = pd.DataFrame(data, columns= ['Entry', 'Positiv', 'Negativ']).to_numpy()
+\end{lstlisting}
+The dataframe is then turned into a dictionary object. What this does is it assigns the values of the desired sentiment attribute columns to the word itself. The object will have the following format: \verb|{ word: [ sentimentColumnValue ] }|. This is achieve with the following segment of code:
+\begin{lstlisting}[caption=Dictionary Creation]
+dictionary = {}
+for index, item in enumerate(df):
+    dictionary[item[0]] = item[1:]
+\end{lstlisting}
+It is important to note that \verb|item[0]| is the word itself and the rest of the items in the array are the sentiment attribute column values.
+
 \subsubsection{The Sentiment Extractor}
-TODO what? why? how?
+
+This component can be broken down into two steps:
+\begin{enumerate}
+    \item Extraction
+    \item Date Joining
+\end{enumerate}
+
+\paragraph{Extraction}
+
+This step takes in the articles from the Article Parser and the Dictionary from the Key Filtering. It then creates a new array of JSON Objects. Each object represent an article. Each object has the following keys:
+\begin{itemize}
+    \item \texttt{date} -- The date key from the article
+    \item \texttt{totalWords} -- The length key from the article
+    \item \texttt{positiveSentiment} -- The number of words that have the \verb|Positiv| attribute determined by the dictionary
+    \item \texttt{negativeSentiment} -- The number of words that have the \verb|Negativ| attribute determined by the dictionary
+\end{itemize}
+If more sentiment attributes were to be included they would have an extra key assigned to them. The sentiment attribute keys are found by iterating through all the words in the body of the article and tallying the words according to which columns are labeled true in the dictionary.
+
+\paragraph{Date Joining}
+
+This step takes the array created in the previous step and merges all of the elements on any given day together. This means the final JSON object will be an array ordered by date with the following keys:
+\begin{itemize}
+    \item \texttt{date} -- The date of the articles
+    \item \texttt{articles} -- The total number of articles on said day
+    \item \texttt{totalWords} -- The total number of words in all the articles
+    \item \texttt{positiveSentiment} -- The number of words that have the \verb|Positiv| attribute determined by the dictionary in all the articles
+    \item \texttt{negativeSentiment} -- The number of words that have the \verb|Negativ| attribute determined by the dictionary in all the articles
+\end{itemize}
+Similarly to the Price Gatherer, the array is ordered by date in the following way:
+\begin{lstlisting}[caption=JSON Array Ordered by Date]
+sentimentByDate = sorted(sentimentByDate, key = operator.itemgetter('date'))
+\end{lstlisting}
+
 \subsubsection{Z-Scores}
-TODO what? why? how?
+
+This component can be divided into four steps:
+\begin{enumerate}
+    \item Column Separation
+    \item Percentage Calculation
+    \item Z-Score Calculation
+    \item Object Assignment
+\end{enumerate}
+
+\paragraph{Column Separation}
+
+The array created in the Sentiment Extractor is iterated through and an array is created for each key within the objects. This means that each key will have its own array.
+
+\paragraph{Percentage Calculation}
+
+In this project it is important to undesrtand relative amounts. Therefore a few different percentages must be calculated. The sentiment columns are replaced with the percentage of sentiment words in relation to the total number of words for that article. The totalWords column is replaced with the percentage of words in relation to the number of articles.
+
+\paragraph{Z-Score Calculation}
+
+The \verb|scipy.stats| module is then used to calculate the z-score for each in element in each of the arrays, excluding the \verb|date| array. An example of this is:
+\begin{lstlisting}[caption=Z-Score Calculation]
+articles = stats.zscore(articles)
+\end{lstlisting}
+
+\paragraph{Object Assignment}
+
+The final step in the component is create an array from the separated array with the following keys:
+\begin{itemize}
+    \item \texttt{date} -- date of the data-point
+    \item \texttt{articles} -- z-score of number of articles
+    \item \texttt{totalWords} -- z-score of number of total words
+    \item \texttt{positiveSentiment} -- z-score of number of positive sentiment words
+    \item \texttt{negativeSentiment} -- z-score of number of negative sentiment words
+\end{itemize}
+This will still be ordered by date, as the order was never changed.
+
 \subsection{The Analyser}
-TODO what? why? how?
+
+The Analyser is composed of various unrelated components, which are preceded by three components which allow the other to achieve their tasks efficently, and in an easy to execute manner. The inital three components are the following: 
+\begin{itemize}
+    \item The User Interface
+    \item The Joiner
+    \item The Sample Size Manipulator
+\end{itemize}
+
 \subsubsection{The User Interface}
 TODO what? why? how?
+
 \subsubsection{The Joiner}
 TODO what? why? how?
+
 \subsubsection{The Sample Size Manipulator}
 TODO what? why? how?
+
 \subsubsection{Return Vs Sentiment Grapher}
 TODO what? why? how?
+
 \subsubsection{Single Point Estimator}
 TODO what? why? how?
+
 \subsubsection{Autocorrelator}
 TODO what? why? how?
+
 \subsubsection{Return Vs Sentiment Correlator}
 TODO what? why? how?
+
 \subsubsection{Descriptive Statistics}
 TODO what? why? how?
+
 \subsubsection{Vector Autoregressor}
 TODO what? why? how?
+
 \section{Implementation Summary}
 TODO what? why? how?

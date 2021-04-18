@@ -4,6 +4,7 @@ import requests
 from dotenv import load_dotenv
 import os
 import math
+import operator
 
 pricesFilename = "./prices/prices.json"
 
@@ -22,7 +23,7 @@ def addReturns(prices):
     for i in range(len(prices)):
         for l in returnLengths:
             if(i >= l):
-                prices[i]["return{}Day".format(l)] = math.log(prices[i]['close']/prices[i-l]['close'])
+                prices[i][f"return{l}Day"] = math.log(prices[i]['close']/prices[i-l]['close'])
     return prices
 
 def getPrices():
@@ -41,7 +42,6 @@ def getPrices():
         r = requests.get(url = URL, params = PARAMS)
         data = r.json()
 
-        import operator
         data = sorted(data, key = operator.itemgetter('date'))
 
         with open(pricesFilename, 'w') as json_file:

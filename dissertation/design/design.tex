@@ -94,7 +94,7 @@ It can be broken down into 3 main components, with the arrangement seen in figur
 Each of component has a very specific role within the system, and will be broken down further.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm,height=10cm,keepaspectratio]{design/OverallStructure.png}
+    \includegraphics[width=15cm,height=5cm,keepaspectratio]{design/OverallStructure.png}
     \caption{Overall Structure}
     \label{fig:overallstructure}
 \end{figure}
@@ -122,7 +122,7 @@ The overall output of this section is an array of JSON objects, ordered by the d
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm,height=10cm,keepaspectratio]{design/PriceGathererStructure.png}
+    \includegraphics[width=15cm,height=5cm,keepaspectratio]{design/PriceGathererStructure.png}
     \caption{Price Gatherer Structure}
     \label{fig:pricegathererstructure}
 \end{figure}
@@ -161,20 +161,22 @@ The overall output of this section is an array of JSON objects, ordered by the d
 \end{itemize}
 The reasoning for using z-scores is due to the fact that it allows to examine the change between days rather than the full days themselves, since this project is studying the change in market values.
 
+TODO - insert diagram
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm,height=10cm,keepaspectratio]{design/SentimentGathererStructure.png}
+    \includegraphics[width=15cm,height=5cm,keepaspectratio]{design/SentimentGathererStructure.png}
     \caption{Sentiment Gatherer Structure}
     \label{fig:sentimentgathererstructure}
 \end{figure}
 
 \paragraph{The Article Source}
 
-The purpose of the article source is to provide the articles that will be used in the system and import them.
+The purpose of the article source is to provide the articles that will be used in the system.
 
 \paragraph{The Article Parser}
 
-The purpose of this component is to take the imported files and parse them into a format usable by the system, this being JSON. This is required for LexisNexis as the articles downloaded have the rich text format. The output of this component returns an array of JSON objects, this allows metadata to be stored alongside the body of the article itself.
+The purpose of this component is to import the files and parse them into a format usable by the system, this being JSON. This is required for LexisNexis as the articles downloaded have the rich text format. The output of this component returns an array of JSON objects, this allows metadata to be stored alongside the body of the article itself.
 
 \paragraph{The Dictionary}
 

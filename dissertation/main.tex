@@ -1,32 +1,9 @@
 \documentclass[a4paper,oneside,12pt]{book}
 
-%----------------------------------------------------------------------------------------
-%	README!
-%   Welcome. It's worth having a read through this file
-%   to set up the broad parameters, such as the name of
-%   the degree, the school/department, the type of work
-%   (dissertation/Final Year Project/report, etc. as well
-%   as your own details.
-%----------------------------------------------------------------------------------------
-
-%----------------------------------------------------------------------------------------
-%	COVER PAGE
-%   The cover page is laid out in title/title.tex. You can choose a colour
-%   or black and white logo
-%----------------------------------------------------------------------------------------
-
-%----------------------------------------------------------------------------------------
-%	THESIS INFORMATION
-%   Put title, author name, degree, type of work, school, department in here
-%   It will be used for the title page and for the embedded PDF information
-%----------------------------------------------------------------------------------------
-
 \newcommand{\thesistitle}{An intelligent sentiment proxy analysis system for estimating price changes in financial markets}
 \newcommand{\degree}{B.A. (Mod.) Integrated Computer Science}
 \newcommand{\typeofthesis}{Final Year Project}
 \newcommand{\authorname}{Michael McGuinness}
-%% Do not put your Student ID in the document, as TCD will not publish
-%% documents that contain both your name and your Student ID.
 
 \newcommand{\keywords}{sentiment, finance, sentiment analysis, markets}
 \newcommand{\school}{\href{http://www.scss.tcd.ie}{School of Computer Science and Statistics}}
@@ -64,30 +41,27 @@
 \usepackage{enumerate} % fancy enumerations like (i) (ii) or (a) (b) and suchlike
 \usepackage{booktabs} % To thicken table lines
 \usepackage{fancyhdr}
+\usepackage{listings}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{red},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
-\pagestyle{plain} % Embrace simplicity!
+\pagestyle{plain}
 
-%% The Mechanical engineers require your name and ID on the top of every page.
-%% Uncomment the following block if you want your name and ID at the top of
-%% (almost) every page.
-
-%\pagestyle{fancy}
-%\fancyhf{} % sets both header and footer to nothing
-%\renewcommand{\headrulewidth}{0pt}
-%\cfoot{\thepage}
-%\ifdefined\authorid
-%\chead{\it \authorname\ (\authorid)}
-%\else
-%\chead{\it \authorname}
-%\fi
-%% End of block
-
-%% It is not a requirement of the university that the font should be sans-serif, but
-%% the Mechanical engineers require it. Comment out the following line to disable it
-\renewcommand{\familydefault}{\sfdefault} %use the sans-serif font as default
-
-%% If you're not using sans-serif, consider using Palatino instead of the LaTeX standard
-%\usepackage{mathpazo} % Use the Palatino font by default if you prefer it to Computer Modern
+\renewcommand{\familydefault}{\sfdefault}
 
 \renewcommand{\theequation}{\arabic{equation}} %% use continuous equation numbers
 
@@ -129,6 +103,7 @@ TODO - thank who you gotta thank
 \tableofcontents
 \listoffigures
 \listoftables
+\lstlistoflistings
 \newpage
 \section*{\Huge{Nomenclature}}
 
@@ -160,6 +135,7 @@ TODO
 \input{background/background.tex}
 \input{design/design.tex}
 \input{implementation/implementation.tex}
+\input{resultsEvaluation/resultsEvaluation.tex}
 \input{conclusion/conclusion.tex}
 \bibliographystyle{unsrtnat}
 \bibliography{bibs/sample}
