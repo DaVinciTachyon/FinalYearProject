@@ -200,7 +200,7 @@ There are three components that are predecessors of the main analyser components
 \begin{itemize}
     \item \texttt{The User Interface} -- A command line menu was created in order to organise and utilise all of the various components in a fast and easy way
     \item \texttt{The Joiner} -- It joins the sentiment and prices data-sets where they overlap. Creating two new data-sets.
-    \item \texttt{The Sample Size Manipulator} -- This allows for different periods to be explored within the dataset
+    \item \texttt{The Period Selector} -- This allows for different periods to be explored within the dataset
 \end{itemize}
 
 The Analyser's purpose is to take the timelines produced by the Price Gatherer and the Sentiment Gatherer and analyse them in various different ways. It is a set of unrelated components which allow for the full analysis required in order to understand the data in the way desired for this project. The sub-components build for this component are the following:
@@ -221,9 +221,9 @@ This is an essential part for the usability of the system create. It allows a us
 
 For certain parts of the analysis the data being analysed should be overlapping appropriately. This is an important feature as the price and sentiment data-set have different start and end dates. As well as this not all dates that are covered by one are covered by the other, therefore data must be inserted in these cases, with the assumption that there was no activity for the data that did not exist previously. This has two main cases the first being a day with not sentiment, the assumption can be made that the day has zero sentiment, allowing an appropriate object to be inserted. As for days with no price the assumption can be made that the prices did not vary and the return was 0. However, this case is rare, and no examples of such a situation have been seen.
 
-\paragraph{The Sample Size Manipulator}
+\paragraph{The Period Selector}
 
-The purpose of this component is quite straight forward. It allows for the narrowing of scope. This is done by allowing for the selection of subsets of the main datasets.
+The purpose of this component is quite straight forward. It allows for the narrowing of scope. This is done by allowing for the selection of subsets of the main datasets by selecting a shorted period to examine.
 
 \paragraph{Return Vs Sentiment Grapher}
 

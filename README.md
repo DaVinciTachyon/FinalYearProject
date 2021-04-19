@@ -4,14 +4,15 @@ Final Year Project
 
 ## Todo
 
+- reference for why given structure
+- reference for why given returns calculated a given
+- reference for why specific formulae and structure picked
+
+- Implementation
 - To Implement
   - sentiment error given limited sample size
   - Vector Autoregression (Autoregression) (exogeneous Var)
   - Python packages install
-- Implementation
-  - Diagrams
-  - Efficiencies such as += vs "".join()
-  - Caching
 - Discussion and Conclusion
   - Define LexisNexis Articles and their types - call it article corpus?
   - Define sentiment proxy

@@ -150,7 +150,7 @@ sorted(data, key = operator.itemgetter('date'))
 
 \subsubsection{Key Filtering}
 
-The key filtering process takes in the full dataset and the keys desired for each element of the dataset. It then creates a new dataset with only the desired keys extracted. This is currently a \verb|for| loop which goes through the entire dataset adding each entry individually.
+The key filtering process takes in the full data-set and the keys desired for each element of the data-set. It then creates a new data-set with only the desired keys extracted. This is currently a \verb|for| loop which goes through the entire data-set adding each entry individually.
 \begin{lstlisting}[caption=Filtering Desired Keys]
 for entry in originalDataset:
     filteredEntry = {}
@@ -158,11 +158,11 @@ for entry in originalDataset:
         filteredEntry[key] = entry[key]
     newDataset.append(filteredEntry)
 \end{lstlisting}
-The current solution has a time complexity of \verb|O(N)|, where N is the length of the dataset. Some research has been done in order to find a more efficient solution, however, so far this has been unsuccessful.
+The current solution has a time complexity of \verb|O(N)|, where N is the length of the data-set. Some research has been done in order to find a more efficient solution, however, so far this has been unsuccessful.
 
 \subsubsection{The Return Adder}
 
-This component requires an array of numbers for the returns to create. What this means the that it will reveceive a 1 in the array if it wants to calculate 21 days returns. It then loops through the dataset adding the appropriate returns to the given entry.
+This component requires an array of numbers for the returns to create. What this means the that it will reveceive a 1 in the array if it wants to calculate 21 days returns. It then loops through the data-set adding the appropriate returns to the given entry.
 
 The return cannot be added to the first n days, this is simply done using an \verb|if| statement to make sure to not attempt this before it is possible.
 
@@ -287,7 +287,7 @@ data = pd.read_excel(r"./dictionaries/inquirerbasic.xls")
 
 \subsubsection{Key Filtering}
 
-This process of extracting only the desired sentiment attribute columns is achieved through the use of a dataframe. It takes the dataset from the previous component and an array containing the titles of the desired columns as inputs, and returns only said columns.
+This process of extracting only the desired sentiment attribute columns is achieved through the use of a dataframe. It takes the data-set from the previous component and an array containing the titles of the desired columns as inputs, and returns only said columns.
 \begin{lstlisting}[caption=Key Filtering Dataframe]
 df = pd.DataFrame(data, columns= ['Entry', 'Positiv', 'Negativ']).to_numpy()
 \end{lstlisting}
@@ -376,23 +376,211 @@ The Analyser is composed of various unrelated components, which are preceded by 
 \begin{itemize}
     \item The User Interface
     \item The Joiner
-    \item The Sample Size Manipulator
+    \item The Period Selector
 \end{itemize}
 
 \subsubsection{The User Interface}
-TODO what? why? how?
+
+The User Interface is essential towards creating a navigatable environment for users of the system. In a very basic sense it is a set of menus which allows the selection of which tool to use within the Analyser, and selected the desired parameters for these tools.
+
+These menus work by showing a user a set of options, and allowing the user to put in a number in order to select one of these. This methods allows for full usage of the program, and allows limitations to be imposed so that it may not be abused. The steps to achievinng one of the menus is the following:
+\begin{enumerate}
+    \item Print out the options so that the user may know what they are
+    \item Request the input
+    \item Ensure the input is an integer, and convert the string input to one
+    \item Select the appropriate the appropriate function to run given the option selected, or repeat the question if the input was erroneous
+\end{enumerate}
+
+\paragraph{Step 1}
+
+The options can be laid out with the following code:
+\begin{lstlisting}[caption=Menu Options]
+print("1: 1 year", "2: 2 year", "3: 3 year", "4: maximum available", sep="\t")
+\end{lstlisting}
+
+\paragraph{Step 2}
+
+Python has a function to simplify the process of gathering the input. The input has the \verb|strip()| function run on it in order to remove beginning and ending whitespace, just incase this is done by mistake.
+\begin{lstlisting}[caption=Get Input]
+sampleSize = input("Please select the length of your sample size: ").strip()
+\end{lstlisting}
+
+\paragraph{Step 3}
+
+In order to ensure the input is a valid integer the follwing statement is run. It simply checks if the input is a digit, and if it is it converts it to an integer.
+\begin{lstlisting}[caption=Check if Integer]
+if sampleSize.isdigit():
+        sampleSize = int(sampleSize)
+\end{lstlisting}
+
+\paragraph{Step 4}
+
+The correct function is selected in one of two methods.
+\begin{enumerate}
+    \item A set of \verb|if|/\verb|elif| statements, since a \verb|switch-case| statement does not exist in python
+    \begin{lstlisting}[caption=If/Elif Statements]
+    if section == 1:
+        dataset = prices
+    elif section == 2:
+        dataset = sentiment
+    \end{lstlisting}
+    \item Check if the input is an integer and in the desired range, and can be given into the function
+    \begin{lstlisting}[caption=Integer Range Choice]
+    if isinstance(column, int) and column > 0 and column <= len(keys):
+        column = keys[column - 1]
+    \end{lstlisting}
+\end{enumerate}
+
+The \verb|isinstance| function allows the system to determine if a variable is an instance of a given type. In this case if it is an \verb|int|.
+
+Both of the allow for the situation where an input is entered incorrectly. In these cases the \verb|else| option is chosen which asks you to try again, and the boolean which determines whether the item has been chosen is set kept as false, since it is set to true in other cases.
 
 \subsubsection{The Joiner}
-TODO what? why? how?
 
-\subsubsection{The Sample Size Manipulator}
-TODO what? why? how?
+The Joiner wants the prices and sentiment data-sets to overlap. This has a requires a few step to be excuted in ored to be achieved:
+\begin{enumerate}
+    \item Select start date -- this will be the start date of the data-set that starts later between the two
+    \item Select end date -- this will be the end date of the data-set that ends earlier between the two
+    \item Find the element indexes for start and end dates for both data-sets
+    \item Create data-sets with new start and end indexes
+    \item Add empty elements to days where the datset does not have a day the other does, in order to have fully overlapping data-sets
+\end{enumerate}
+
+For step 4, this can be achieved using the following notation within Python: \verb|prices[priceStart:priceEnd], sentiment[sentStart:sentEnd]|, where the indexes have been previously discovered.
+
+For step 5, the empty objects are the following:
+\begin{itemize}
+    \item For a day with no sentiment
+    \begin{lstlisting}[caption=No Sentiment Day]
+    {'date': prices[i]['date'], 'articles': 0, 'totalWords': 0, 'positiveSentiment': 0, 'negativeSentiment': 0}
+    \end{lstlisting}
+    \item For a day with no price activity
+    \begin{lstlisting}[caption=No Price Day]
+    {'date': sentiment[i]['date'], 'close': prices[i - 1]['close'], 'symbol': prices[i]['symbol'], 'volume': 0}
+    \end{lstlisting}
+\end{itemize}
+
+It is important to note that this step is done on the the full values of these arrays, then the z-scores are calculated afterwards.
+
+\subsubsection{The Period Selector}
+
+This item has it's own menu that runs after the tool to use has been selected. It allows the choice between 4 different periods. These being:
+\begin{itemize}
+    \item 1 year -- The data-sets returned will start 1 year before the end date of the data-sets, and have all the following values
+    \item 2 years -- The data-sets returned will start 2 years before the end date of the data-sets, and have all the following values
+    \item 3 years -- The data-sets returned will start 3 years before the end date of the data-sets, and have all the following values
+    \item maximum available -- The full data-sets will be used
+\end{itemize}
+This is done by getting the date of the last element, and subtracting the appropriate time from it. The date is an instance of \verb|datetime|, not a string.
+\begin{lstlisting}[caption=Subtract years]
+date - relativedelta(years=years)    
+\end{lstlisting}
+All of the elements with a date including and past the start date are then return as the data-set to be used.
 
 \subsubsection{Return Vs Sentiment Grapher}
-TODO what? why? how?
+
+The menu for this component allows the user to select the prices columns and sentiment columns they which to visualise.
+
+The first step towards creating these graphs is inserting the objects into dataframes, where the indexes are the sets of dates as \verb|datetime| instances. This enables them to be used as timeseries.
+
+The next step is to use the \verb|matplotlib| library in order to create the graphs themselves. The figure on which the graph will be displayed needs to be split into two subplots. These will be overlapping each other, with the x-axis being the date, and the y-axis being on one side representative of the price and the other the sentiment.
+
+\begin{lstlisting}[caption=Split Window into Multiple Subplots]
+    fig, ax = plt.subplots()  
+\end{lstlisting}
+\begin{lstlisting}[caption=Create Overlapping Subplot]
+    ax2 = ax.twinx()
+\end{lstlisting}
+\begin{lstlisting}[caption=Plot Dataset]
+    ax.plot(dataset, color=colour, marker="o") 
+\end{lstlisting}
+\begin{lstlisting}[caption=Plot Legend]
+    fig.legend(legend)
+\end{lstlisting}
+\begin{lstlisting}[caption=Save picture of plot]
+    fig.savefig('priceVsSentiment.jpg', format='jpeg', dpi=100, bbox_inches='tight')
+\end{lstlisting}
+
+TODO sample graph
 
 \subsubsection{Single Point Estimator}
-TODO what? why? how?
+
+The Single Point Estimator can be broken down into 4 main steps:
+\begin{enumerate}
+    \item Create input and output series
+    \item Input/Output Series Shuffling
+    \item Model Testing
+    \item Return Highest Accuracy Model and its accuracy
+\end{enumerate}
+
+\paragraph{Create input and output series}
+
+The first step changes the prices and sentiment JSON object arrays into an array containing all of the desired columns, excluding date, as an array for each entry. As well as creating a second array with Boolean values for whether the next day's return is positive or negative. An example of this is if the close and volume columns are desired from the prices data-set and the negative sentiment column is desired from the sentiment data-set, the input series array elements would look like this \verb|[ closeValue, volumeValue, negativeSentimentValue ]|. If the next day's return for a given entry is positive, the output series element would be \verb|True|.
+
+\paragraph{Input/Output Series Shuffling}
+
+The shuffling simply randomises the order of the entries, so that there is no bias based on date. This is done using the function given by the \verb|sklearn.utils| module in the following way:
+\begin{lstlisting}[caption=Shuffle series]
+X, y = shuffle(X, y)
+\end{lstlisting}
+This function shuffles the order of both series while mainting the correspondece between the two sets.
+
+\paragraph{Model Testing}
+
+The model testing itself can be broken down into a discrete set of steps common accross all models. The difference being that some models require hyperparameter training, meanwhile others do not. These steps are:
+\begin{itemize}
+    \item \texttt{Hyperparameter Training} -- A hyperparameter is a parameter whose value is used to control the learning process. Ranges of values are given and iterated through, the highest accuracy value is stored and used to create a final model.
+    \item \texttt{K-Folds Cross-Validator} -- It provides train/test indices to split data in train/test sets. Split dataset into k consecutive folds (without shuffling by default). Each fold is then used once as a validation while the k - 1 remaining folds form the training set. This implementation uses 2 folds. This is an arbitrary value, further exploration may lead to finding a more suitable value. The \verb|kf.split(inputDataset)| is the function which excutes the split on the dataset.
+    \begin{enumerate}
+        \item \texttt{model.fit()} -- Train the model on the training dataset
+        \item \texttt{model.predict()} -- Create a predicted output set given the test input dataset
+        \item \texttt{accuracy\_score()} -- Calculate the accuracy of the values predicted from the model against the test output dataset
+    \end{enumerate}
+    \item \texttt{mean(kFoldAccuracies)} -- The mean accuracy of the accuracies calculated for each of the folds is set as the accuracy for the given hyperparameter
+    \item \texttt{max(hyperparameterAccuracies)} -- The maximum accuracy of the accuracies calculated for the various hyperparameters is set as the defined accuracy for the model
+    \item \texttt{timer} -- The \verb|perf_counter()| function from the \verb|time| module is used to time the training and discovery of hyperparameter for the model. The start time is set to before the iteration through the hyperparameters, and the end time is just after.
+    \item \texttt{max(modelAccuracies)} -- The accuracy of the highest accuracy model as well as the trained model itself are returned
+\end{itemize}
+An example of the steps being executed on the KNeighborsClassifier is following:
+\begin{lstlisting}[caption=KNeighborsClassifier Example]
+kf = KFold(n_splits=2)
+
+startTime = perf_counter()
+K = range(1, 10)
+highestAccuracyK = 0
+highestKNNAccuracy = 0
+for k in K:
+    accuracies = []
+    for train, test in kf.split(X):
+        model = KNeighborsClassifier(n_neighbors=k).fit(X[train], y[train])
+        pY = model.predict(X[test])
+        accuracies.append(accuracy_score(y[test], pY))
+    accuracies = np.array(accuracies)
+    accuracy = np.mean(accuracies)
+    if(accuracy > highestKNNAccuracy):
+        highestKNNAccuracy = accuracy
+        highestAccuracyK = k
+print("Processed: ", model.__class__.__name__)
+print("Time: ", round((perf_counter() - startTime) * 1000), "ms")
+\end{lstlisting}
+
+TODO
+hyperparameter training
+choice of accuracy vs mean squared error
+graphs
+
+TODO explain all models, differences, why chosen
+\begin{itemize}
+    \item KNeighborsClassifier - k hyperparameter
+    \item DecisionTreeClassifier
+    \item GaussianProcessClassifier
+    \item AdaBoostClassifier
+    \item RandomForestClassifier - n hyperparameter
+\end{itemize}
+
+\paragraph{Return Highest Accuracy Model and its accuracy}
+
+The accuracy of the different models is compared and the highest accuracy model is returned to the user.
 
 \subsubsection{Autocorrelator}
 TODO what? why? how?
