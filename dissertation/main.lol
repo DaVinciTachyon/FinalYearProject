@@ -26,3 +26,5 @@
 \contentsline {lstlisting}{\numberline {4.26}Save picture of plot}{31}{lstlisting.4.26}%
 \contentsline {lstlisting}{\numberline {4.27}Shuffle series}{32}{lstlisting.4.27}%
 \contentsline {lstlisting}{\numberline {4.28}KNeighborsClassifier Example}{33}{lstlisting.4.28}%
+\contentsline {lstlisting}{\numberline {4.29}Example AutoCorrelator Output when lag}{37}{lstlisting.4.29}%
+\contentsline {lstlisting}{\numberline {4.30}Example Return Vs Sentiment Output}{37}{lstlisting.4.30}%

@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 from dataCleanUp import removeNoReturn
+import seaborn as sns
 
-colours = ["b", "g", "r", "c", "m", "y", "k", "w"]
 fontSize = 11
+marker = ""
+linewidth = 1
 
 def getDataFrames(data, names):
     dates = []
@@ -30,24 +32,26 @@ def displayPriceVsSentiment(prices, sentiment, pricesColumns, sentimentColumns):
     sentimentFrames = getDataFrames(sentiment, sentimentColumns)
 
     colourN = 0
+    colours = sns.color_palette("muted", len(pricesColumns) + len(sentimentColumns))
+    sns.set_style("white")
 
     fig, ax = plt.subplots()
     if len(pricesColumns) > 0:
         for f in pricesFrames:
-            ax.plot(f, color=colours[colourN], marker="o")
+            ax.plot(f, color=colours[colourN], marker=marker, linewidth=linewidth)
             colourN += 1
         ax.set_xlabel("date", fontsize=fontSize)
         ax.set_ylabel("price", fontsize=fontSize)
     elif len(sentimentColumns) > 0:
         for f in sentimentFrames:
-            ax.plot(f, color=colours[colourN], marker="o")
+            ax.plot(f, color=colours[colourN], marker=marker, linewidth=linewidth)
             colourN += 1
         ax.set_ylabel("sentiment", fontsize=fontSize)
     
     if len(sentimentColumns) > 0 and len(pricesColumns) > 0:
         ax2 = ax.twinx()
         for f in sentimentFrames:
-            ax2.plot(f, color=colours[colourN], marker="o")
+            ax2.plot(f, color=colours[colourN], marker=marker, linewidth=linewidth)
             colourN += 1
         ax2.set_ylabel("sentiment", fontsize=fontSize)
 
@@ -65,7 +69,6 @@ def displayPriceVsSentiment(prices, sentiment, pricesColumns, sentimentColumns):
                 bbox_inches='tight')
 
 def displayHist(x, bins, name):
-    import seaborn as sns
     sns.set_style("white")
     sns.distplot(x, bins=bins)
     plt.xlabel(name)

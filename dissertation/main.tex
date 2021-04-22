@@ -77,58 +77,17 @@
 \begin{document}
 \input{title/title.tex}
 \pagenumbering{roman}
-\section*{\Huge{Declaration}}
-\vspace{1cm}
-I hereby declare that this \typeofthesis\ is entirely my own work and that it has not been submitted as an exercise for a degree at this or any other university.
-
-\vspace{1cm}
-I have read and I understand the plagiarism provisions in the General Regulations of the University Calendar for the current year, found at \url{http://www.tcd.ie/calendar}.
-\vspace{1cm}
-
-I have also completed the Online Tutorial on avoiding plagiarism `Ready Steady Write', located at \url{http://tcd-ie.libguides.com/plagiarism/ready-steady-write}.
-\vspace{3cm}
-
-Signed:~\rule{5cm}{0.3pt}\hfill Date:~\rule{5cm}{0.3pt}
-
-\chapter*{Abstract}
-TODO - 400 words
-
+\input{declaration/declaration.tex}
+\input{abstract/abstract.tex}
 \newpage
-\onehalfspacing\raggedright %\raggedright turns off justification and hypenation
-
-\section*{\Huge{Acknowledgements}}
-
-TODO - thank who you gotta thank
+\input{acknowledgements/acknowledgements.tex}
 
 \tableofcontents
 \listoffigures
 \listoftables
 \lstlistoflistings
 \newpage
-\section*{\Huge{Nomenclature}}
-
-TODO
-
-% \begin{tabular}{lp{9cm}l}
-% A&Area of the wing&$m^{2}$\\
-% B\\
-% C& Roman letters first, with capitals\ldots\\
-% a&then lower case.\\
-% b\\
-% c\\
-% $\Gamma$&Followed by Greek capitals\ldots\\
-% $\alpha$&then lower case greek symbols.\\
-% $\beta$\\
-% $\epsilon$\\
-% TLA&Finally, three letter acronyms and other abbreviations arranged alphabetically\\
-% \end{tabular}
-% \vspace{2cm}
-
-% If a parameter has a typical unit that is used throughout your report, then it should be included here on the right hand side.
-
-% If you have a very mathematical report, then you may wish to divide the nomenclature list into functions and variables, and then sub- and super-scripts.
-
-% Note that Roman mathematical symbols are typically in a serif font in italics.
+\input{nomenclature/nomenclature.tex}
 
 \mainmatter
 \input{introduction/introduction.tex}

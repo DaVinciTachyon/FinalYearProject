@@ -7,16 +7,15 @@ Final Year Project
 - reference for why given structure
 - reference for why given returns calculated a given
 - reference for why specific formulae and structure picked
+- If I say something show reference, similar projects, etc.
+- reference definitions
+- reference datacamp.com for ml models
 
-- Implementation
 - To Implement
   - sentiment error given limited sample size
-  - Vector Autoregression (Autoregression) (exogeneous Var)
   - Python packages install
 - Discussion and Conclusion
   - Define LexisNexis Articles and their types - call it article corpus?
-  - Define sentiment proxy
-  - Define proxy
   - Define Gamestop - why gamestop? What happened? Why did it happen? gamestop bubble? reaction of small investors to big investors? quote? ordinary company pos->neg->pos return
   - Define Descriptive Statistics Elements
   - Define Correlation
@@ -43,7 +42,11 @@ Final Year Project
   - small error when market is well behaved
   - statistically signifant >90%
 - Background
+- Results Evaluation
 - Introduction
+  - Define high level requirements
+  - Define sentiment proxy
+  - Define proxy
   - What have I learnt? nlp, financial concepts, econometrics, behavioural psychology
   - innovative system
   - statistical estimation

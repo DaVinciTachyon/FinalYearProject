@@ -139,7 +139,6 @@ def getReturnVsSentimentGrapherMenu(prices, sentiment, oPrices, oSentiment):
     displayPriceVsSentiment(priceValues, sentimentValues, priceColumns, sentimentColumns)
 
 def getSinglePointEstimatorMenu(oPrices, oSentiment):
-    # TODO Look at more models, get to choose?
     print("Single Point Estimator")
 
     priceKeys = getPriceKeys(oPrices)

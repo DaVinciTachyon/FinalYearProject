@@ -2,7 +2,7 @@
 
 \chapter{Design}
 
-This chapter discusses the overall design of the project, it's architecture and the individual components.
+This chapter discusses the overall design of the project, its architecture and the individual components.
 
 \section{Brief}
 
@@ -10,7 +10,7 @@ The project is '\thesistitle'. It aims to understand the relationship between se
 
 \section{Requirements Gathering for System Design}
 
-Gathering the correct requirements for the system was an essential part of development. It is important to understand the limits of such a project, as well as understand how similar projects have attempted solving the problems that may come up. For this reason the reading of various research papers which attempted to perform a similar task was essential. These helped give a guideline of what the project structure was going to look like. The design was considered in relation to the requirements of this project, however, these papers helped expedite some design choices. The final design required understanding what information is required as an input for the system, and how it is structured. Then it is important to understand what the outputs of the system are. This then allows the conceptualisation of a pipeline which will achieve the required results. Finally, the pipeline must be refined and broken down into it's various parts. This allows a comprehensive and understandable design for the project.
+Gathering the correct requirements for the system was an essential part of development. It is important to understand the limits of such a project, one important one being time, as well as understand how similar projects have attempted solving the problems that may come up. For this reason the reading of various research papers which attempted to perform a similar task was essential. These helped give a guideline of what the project structure was going to look like. The design was considered in relation to the requirements of this project, however, these papers helped expedite some design choices. The final design required understanding what information is required as an input for the system, and how it is structured. Then it is important to understand what the outputs of the system are. This then allows the conceptualisation of a pipeline which will achieve the required results. Finally, the pipeline must be refined and broken down into it's various parts. This allows a comprehensive and understandable design for the project.
 
 \subsection{Obtaining \& Understanding Data-sets}
 
@@ -160,8 +160,6 @@ The overall output of this section is an array of JSON objects, ordered by the d
     \item \texttt{negativeSentiment} -- z-score of number of negative sentiment words
 \end{itemize}
 The reasoning for using z-scores is due to the fact that it allows to examine the change between days rather than the full days themselves, since this project is studying the change in market values.
-
-TODO - insert diagram
 
 \begin{figure}[h]
     \centering
