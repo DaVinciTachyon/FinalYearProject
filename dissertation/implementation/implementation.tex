@@ -485,7 +485,7 @@ The first step towards creating these graphs is inserting the objects into dataf
 
 The next step is to use the \verb|matplotlib| library in order to create the graphs themselves. The figure on which the graph will be displayed needs to be split into two subplots. These will be overlapping each other, with the x-axis being the date, and the y-axis being on one side representative of the price and the other the sentiment.
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=15cm,height=10cm,keepaspectratio]{implementation/sampleGraph.png}
     \caption{Sample Graph}
@@ -578,14 +578,14 @@ An important point to discuss is the choice of function used in order to determi
 For this component a number of models are used in order to find the most accurate model for a given dataset. The following models were all chosen because they are various different different models which are excellent at classifications. They each have different strength and weaknesses, and for that reason one the models may work better or worse depending on the dataset.
 \begin{itemize}
     \item \texttt{KNeighborsClassifier (KNN)} -- KNN is a non-parametric and lazy learning algorithm. Non-parametric means there is no assumption for underlying data distribution. In KNN, K is the number of nearest neighbors. The number of neighbors is the core deciding factor. What this means is that the decision for the output will be based on the k nearest neightbors. K is determined through hyperparameter training as described above.
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=15cm,height=5cm,keepaspectratio]{implementation/kNN.png}
         \caption{KNeighborsClassifier}
         \label{fig:kNN}
     \end{figure}
     \item \texttt{DecisionTreeClassifier} -- A decision tree is created from the training data in order to achieve the classification. A decision tree is a flowchart-like tree structure where an internal node represents a feature, the branch represents a decision rule, and each leaf node represents the outcome. This can be seen in the figure below.
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=15cm,height=5cm,keepaspectratio]{implementation/decisionTree.png}
         \caption{Decision Tree}
@@ -624,7 +624,7 @@ For this component a number of models are used in order to find the most accurat
         \item Perform a vote for each predicted result
         \item Select the prediction result with the most votes as the final prediction
     \end{enumerate}
-    \begin{figure}[h]
+    \begin{figure}[h!]
         \centering
         \includegraphics[width=15cm,height=7cm,keepaspectratio]{implementation/randomForest.png}
         \caption{RandomForestClassifier}
@@ -681,7 +681,7 @@ The menu for this component allows for the selection of the desired column. It t
     \item \texttt{Count} -- The number of data-points analysed
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=15cm,height=9cm,keepaspectratio]{implementation/descriptiveGraph.png}
     \caption{descriptiveGraph}

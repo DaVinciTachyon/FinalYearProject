@@ -1,9 +1,428 @@
 % !TEX root = ../main.tex
 
 \chapter{Appendix}
-TODO what? why? how?
 
-% You may use appendices to include relevant background information, such as calibration certificates, derivations of key equations or presentation of a particular data reduction method. You should not use the appendices to dump large amounts of additional results or data which are not properly discussed. If these results are really relevant, then they should appear in the main body of the report.
+The appendix contains extensions upon the information in the rest of the text. However, this information was not necessary to reach the desired conclusions in the text.
 
-% \section{Appendix numbering}
-% Appendices are numbered sequentially, A1, A2, A3\ldots The sections, figures and tables within appendices are numbered in the same way as in the main text. For example, the first figure in Appendix A1 would be Figure A1.1. Equations continue the numbering from the main text.
+\section{Descriptive Statistics}
+\label{appendix:descriptiveStatistics}
+
+\subsection{Closing Prices}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/closeDescMax.png}
+    \caption{Closing Prices with entire dataset}
+    \label{fig:appendix_closeDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Closing Price Descriptive Statistics with entire dataset} \\
+\hline
+Mean & 20.25539316918189 \\
+Standard Error & 0.8617871146224114 \\
+Median & 15.22 \\
+Mode & 4.14 \\
+Standard Deviation & 30.56612021354625 \\
+Sample Variance & 935.0303819398896 \\
+Kurtosis & 43.00117239290764 \\
+Skewness & 6.080884821536175 \\
+Range & 344.71 \\
+Minimum & 2.8 \\
+Maximum & 347.51 \\
+Sum & 25501.540000000005 \\
+Count & 1259  
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/closeDesc1.png}
+    \caption{Closing Prices in the last year of data}
+    \label{fig:appendix_closeDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Closing Price Descriptive Statistics in the last year of data} \\
+\hline
+Mean & 35.32043478260869 \\
+Standard Error & 4.034091200037088 \\
+Median & 10.02 \\
+Mode & 4.44 \\
+Standard Deviation & 64.03921248871352 \\
+Sample Variance & 4117.294627984817 \\
+Kurtosis & 6.11122201031286 \\
+Skewness & 2.5837008559997834 \\
+Range & 344.71 \\
+Minimum & 2.8 \\
+Maximum & 347.51 \\
+Sum & 8936.07 \\
+Count & 253
+\end{tabular}
+\end{center}
+
+\subsection{Trading Volume}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/volumeDescMax.png}
+    \caption{Trading Volume with entire dataset}
+    \label{fig:appendix_volumeDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Trading Volume Descriptive Statistics with entire dataset} \\
+\hline
+Mean & 6435867.801429706 \\
+Standard Error & 399372.9943423072 \\
+Median & 3130713 \\
+Mode & 1491760 \\
+Standard Deviation & 14165079.458700724 \\
+Sample Variance & 200808974859915.2 \\
+Kurtosis & 81.30752829995787 \\
+Skewness & 8.021781388564962 \\
+Range & 196185042 \\
+Minimum & 972904 \\
+Maximum & 197157946 \\
+Sum & 8102757562 \\
+Count & 1259
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/volumeDesc1.png}
+    \caption{Trading Volume in the last year of data}
+    \label{fig:appendix_volumeDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Trading Volume Descriptive Statistics in the last year of data} \\
+\hline
+Mean & 16731690.841897232 \\
+Standard Error & 1798626.81876273 \\
+Median & 6603951 \\
+Mode & 4568695 \\
+Standard Deviation & 28552315.58314456 \\
+Sample Variance & 818469783592652.2 \\
+Kurtosis & 16.215823114980463 \\
+Skewness & 3.730320402302758 \\
+Range & 195827485 \\
+Minimum & 1330461 \\
+Maximum & 197157946 \\
+Sum & 4233117783 \\
+Count & 253
+\end{tabular}
+\end{center}
+
+\subsection{1 Day Returns}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/1returnDescMax.png}
+    \caption{1 Day Returns with entire dataset}
+    \label{fig:appendix_1returnDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{1 Day Return Descriptive Statistics with entire dataset} \\
+\hline
+Mean & 0.0014490461774454091 \\
+Standard Error & 0.0021291609999713954 \\
+Median & 0.0 \\
+Mode & 0.0 \\
+Standard Deviation & 0.07548769098797223 \\
+Sample Variance & 0.005702924817259385 \\
+Kurtosis & 51.56501043384626 \\
+Skewness & 0.7637560467880287 \\
+Range & 1.770007043945965 \\
+Minimum & -0.916290731874155 \\
+Maximum & 0.85371631207181 \\
+Sum & 1.8229000912263227 \\
+Count & 1258
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/1returnDesc1.png}
+    \caption{1 Day Returns in the last year of data}
+    \label{fig:appendix_1returnDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{1 Day Return Descriptive Statistics in the last year of data} \\
+\hline
+Mean & 0.01617449079992721 \\
+Standard Error & 0.009609836418644279 \\
+Median & 0.005313187705878563 \\
+Mode & 0.022335953942063298 \\
+Standard Deviation & 0.15224844154955602 \\
+Sample Variance & 0.02327193691026168 \\
+Kurtosis & 12.867982373920272 \\
+Skewness & 0.32394336153811276 \\
+Range & 1.770007043945965 \\
+Minimum & -0.916290731874155 \\
+Maximum & 0.85371631207181 \\
+Sum & 4.075971681581655 \\
+Count & 252
+\end{tabular}
+\end{center}
+
+\subsection{Article Volume}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/articleDescMax.png}
+    \caption{Article Volume with entire dataset}
+    \label{fig:appendix_articleDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Article Volume Descriptive Statistics with entire dataset} \\
+\hline
+Mean & -2.2065213996409285e-17 \\
+Standard Error & 0.02196873875818734 \\
+Median & -0.2421631034547878 \\
+Mode & -0.41805802758295 \\
+Standard Deviation & 1.0 \\
+Sample Variance & 1.0004826254826256 \\
+Kurtosis & 73.76924857053827 \\
+Skewness & 7.360900854018193 \\
+Range & 15.478753323278276 \\
+Minimum & -0.41805802758295 \\
+Maximum & 15.060695295695327 \\
+Sum & -4.642022877199281e-12 \\
+Count & 2073
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/articleDesc1.png}
+    \caption{Article Volume in the last year of data}
+    \label{fig:appendix_articleDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Article Volume Descriptive Statistics in the last year of data} \\
+\hline
+Mean & 0.8623357132258448 \\
+Standard Error & 0.1325148497318309 \\
+Median & 0.1096267448015367 \\
+Mode & -0.41805802758295 \\
+Standard Deviation & 2.2527524454411254 \\
+Sample Variance & 5.092453765840419 \\
+Kurtosis & 12.21615870052046 \\
+Skewness & 3.296079615884022 \\
+Range & 15.478753323278276 \\
+Minimum & -0.41805802758295 \\
+Maximum & 15.060695295695327 \\
+Sum & 250.07735683549507 \\
+Count & 290
+\end{tabular}
+\end{center}
+
+\subsection{Words Volume}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/wordsDescMax.png}
+    \caption{Words Volume with entire dataset}
+    \label{fig:appendix_wordsDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Words Volume Descriptive Statistics with entire dataset} \\
+\hline
+Mean & 0.00013989387361311993 \\
+Standard Error & 0.021968180574674083 \\
+Median & -0.2 \\
+Mode & -0.19 \\
+Standard Deviation & 0.999974591918116 \\
+Sample Variance & 1.0004317854395641 \\
+Kurtosis & 66.70204164146547 \\
+Skewness & 6.45609886055835 \\
+Range & 17.07 \\
+Minimum & -0.61 \\
+Maximum & 16.46 \\
+Sum & 0.28999999999995796 \\
+Count & 2073
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/wordsDesc1.png}
+    \caption{Words Volume in the last year of data}
+    \label{fig:appendix_wordsDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Words Volume Descriptive Statistics in the last year of data} \\
+\hline
+Mean & -0.010758620689655175 \\
+Standard Error & 0.029379055463608056 \\
+Median & -0.19 \\
+Mode & -0.22 \\
+Standard Deviation & 0.4994439428813369 \\
+Sample Variance & 0.2503073809807899 \\
+Kurtosis & 9.61184972410166 \\
+Skewness & 2.9411586965134755 \\
+Range & 3.42 \\
+Minimum & -0.61 \\
+Maximum & 2.81 \\
+Sum & -3.1200000000000068 \\
+Count & 290
+\end{tabular}
+\end{center}
+
+\subsection{Positive Sentiment}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/positiveDescMax.png}
+    \caption{Positive Sentiment with entire dataset}
+    \label{fig:appendix_positiveDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Positive Sentiment Descriptive Statistics with entire dataset} \\
+\hline
+Mean & -0.00011577424023154774 \\
+Standard Error & 0.021969944580020426 \\
+Median & -0.21 \\
+Mode & -1.65 \\
+Standard Deviation & 1.0000548880773885 \\
+Sample Variance & 1.0005924576323273 \\
+Kurtosis & 4.061676439612937 \\
+Skewness & 1.4873401549309522 \\
+Range & 8.22 \\
+Minimum & -1.65 \\
+Maximum & 6.57 \\
+Sum & -0.23999999999965826 \\
+Count & 2073
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/positiveDesc1.png}
+    \caption{Positive Sentiment in the last year of data}
+    \label{fig:appendix_positiveDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Positive Sentiment Descriptive Statistics in the last year of data} \\
+\hline
+Mean & 0.0863103448275862 \\
+Standard Error & 0.04453127962901483 \\
+Median & -0.055 \\
+Mode & -0.1 \\
+Standard Deviation & 0.7570317536932523 \\
+Sample Variance & 0.5750801109652786 \\
+Kurtosis & 5.009115638344465 \\
+Skewness & 1.636685164397725 \\
+Range & 5.67 \\
+Minimum & -1.65 \\
+Maximum & 4.02 \\
+Sum & 25.029999999999973 \\
+Count & 290
+\end{tabular}
+\end{center}
+
+\subsection{Negative Sentiment}
+
+\subsubsection{Entire Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/negativeDescMax.png}
+    \caption{Negative Sentiment with entire dataset}
+    \label{fig:appendix_negativeDescMax}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Negative Sentiment Descriptive Statistics with entire dataset} \\
+\hline
+Mean & 0.00014471780028943782 \\
+Standard Error & 0.021964634770156394 \\
+Median & -0.17 \\
+Mode & -0.99 \\
+Standard Deviation & 0.9998131896384166 \\
+Sample Variance & 1.000108859355531 \\
+Kurtosis & 19.513842113440127 \\
+Skewness & 2.77912574439437 \\
+Range & 14.05 \\
+Minimum & -0.99 \\
+Maximum & 13.06 \\
+Sum & 0.30000000000174065 \\
+Count & 2073
+\end{tabular}
+\end{center}
+
+\subsubsection{Last Year}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/negativeDesc1.png}
+    \caption{Negative Sentiment in the last year of data}
+    \label{fig:appendix_negativeDesc1}
+\end{figure}
+\begin{center}
+\begin{tabular}{ c c }
+\hline
+\multicolumn{2}{|c|}{Negative Sentiment Descriptive Statistics in the last year of data} \\
+\hline
+Mean & 0.41293103448275864 \\
+Standard Error & 0.04888104930864328 \\
+Median & 0.27 \\
+Mode & 0.08 \\
+Standard Deviation & 0.8309778382469358 \\
+Sample Variance & 0.6929135246390645 \\
+Kurtosis & 11.895721323794636 \\
+Skewness & 2.2637110757731076 \\
+Range & 7.720000000000001 \\
+Minimum & -0.99 \\
+Maximum & 6.73 \\
+Sum & 119.74999999999997 \\
+Count & 290
+\end{tabular}
+\end{center}

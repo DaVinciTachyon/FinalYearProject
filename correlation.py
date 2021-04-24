@@ -24,7 +24,7 @@ def getAutoCorrelationWithLags(array, column, start, lag):
         i += 1
     return corr
 
-def getReturnSentimentCorrelations(prices, sentiment):
+def getReturnSentimentCorrelations(prices, sentiment, lag):
     x = []
     y = []
     j = 0
@@ -36,7 +36,14 @@ def getReturnSentimentCorrelations(prices, sentiment):
             y.append(sentiment[j]['negativeSentiment'])
         else:
             y.append(0)
-    sameDayCorr = getCorrelation(x, y)
-    returnSentCorr = getCorrelation(x[:-1], y[1:])
-    sentReturnCorr = getCorrelation(x[1:], y[:-1])
-    return sameDayCorr, returnSentCorr, sentReturnCorr
+    returnSentCorr = []
+    sentReturnCorr = []
+    for i in range(lag + 1):
+        mi = -1 * i
+        if i == 0:
+            returnSentCorr.append(getCorrelation(x, y))
+            sentReturnCorr.append(getCorrelation(x, y))
+        else:
+            returnSentCorr.append(getCorrelation(x[:mi], y[i:]))
+            sentReturnCorr.append(getCorrelation(x[i:], y[:mi]))
+    return returnSentCorr, sentReturnCorr
