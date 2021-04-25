@@ -95,8 +95,13 @@ The next column examined is the negative sentiment column. The positive and nega
 \end{itemize}
 The 1 year dataset compare in the following ways. The mean, median and mode all increase to 0.4129, 0.27 and 0.08 from 0.0001, -0.17 and -0.99. This indicates a general increase in negative sentiment in the last year. The curve flattened a small amount in the year given the change of standard error to 0.0489 from 0.0220. Unlike the rest of the examined columns however, the range of data is significantly decreased to 7.72 from 14.05, where the minimum remained the same at -0.99, and the maximum decreased from 13.06 to 6.73. These items seem to indicate that the general sentiment was more negative more regularly, however, it never reached the extremes that it previously had. It is interesting to note that a similar pattern occur when positive sentiment is examined. This seems to indicate that when there is more volatility in the market, and a larger amount of articles, the sentiment is generally higher, negative and positive.
 
+It is important to note that preceding information indicates that the examination is conditional on the timespan examined for this dataset. This is due to the fact that the descriptive statistics change significantly depending on the timespan chosen.
+
 \section{Auto Correlation}
 
+This step in understanding the dataset continues the understanding of columns by themselves. However, it examines the relationship of the cloumns with themselves. It does this by finding the correlation of a column entry with a previous entry given a lag time. For example if the lag is 5, it will find the correlation with 5 entries prior, i.e. 5 days before. This is important to understand whether previous days have any correlation, and potentially an effect on the current day.
+
+TODO
 \begin{center}
 \begin{tabular}{ c c }
 \hline
@@ -112,19 +117,6 @@ The 1 year dataset compare in the following ways. The mean, median and mode all 
 
 - Not over 90\% correlation
 - Does not -> volatile stock
-
-\begin{center}
-\begin{tabular}{ c c }
-\hline
-\multicolumn{2}{|c|}{Volume AutoCorrelation with entire dataset} \\
-\hline
-1 day lag & 0.7671358657349281 \\
-2 day lag & 0.6016152001102673 \\
-3 day lag & 0.5088130731155827 \\
-4 day lag & 0.4436850576820438 \\
-5 day lag & 0.4851104792011077
-\end{tabular}
-\end{center}
 
 \begin{center}
 \begin{tabular}{ c c }
@@ -160,19 +152,6 @@ The 1 year dataset compare in the following ways. The mean, median and mode all 
 \begin{center}
 \begin{tabular}{ c c }
 \hline
-\multicolumn{2}{|c|}{Word Volume AutoCorrelation with entire dataset} \\
-\hline
-1 day lag & 0.051170992274889686 \\
-2 day lag & 0.03166458556325291 \\
-3 day lag & 0.03701919884276331 \\
-4 day lag & 0.010590328038478676 \\
-5 day lag & 0.02852792389152282
-\end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{ c c }
-\hline
 \multicolumn{2}{|c|}{Positive Sentiment AutoCorrelation with entire dataset} \\
 \hline
 1 day lag & 0.2189007770374344 \\
@@ -197,6 +176,8 @@ The 1 year dataset compare in the following ways. The mean, median and mode all 
 \end{center}
 
 \section{Return to Sentiment Correlation}
+
+TODO graphs
 
 \begin{center}
 \begin{tabular}{ c c }

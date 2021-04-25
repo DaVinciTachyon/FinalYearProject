@@ -130,3 +130,11 @@
 \contentsline {subsection}{\numberline {A1.1.7}Negative Sentiment}{61}{subsection.A.1.7}%
 \contentsline {subsubsection}{Entire Dataset}{61}{subsection.A.1.7}%
 \contentsline {subsubsection}{Last Year}{62}{figure.caption.31}%
+\contentsline {section}{\numberline {A1.2}Auto-Correlation}{63}{section.A.2}%
+\contentsline {subsection}{\numberline {A1.2.1}Closing Prices}{63}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A1.2.2}Trading Volume}{63}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A1.2.3}1 Day Returns}{64}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A1.2.4}Article Volume}{64}{subsection.A.2.4}%
+\contentsline {subsection}{\numberline {A1.2.5}Word Volume}{64}{subsection.A.2.5}%
+\contentsline {subsection}{\numberline {A1.2.6}Positive Sentiment}{64}{subsection.A.2.6}%
+\contentsline {subsection}{\numberline {A1.2.7}Negative Sentiment}{65}{subsection.A.2.7}%

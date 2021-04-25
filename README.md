@@ -9,16 +9,13 @@ Final Year Project
   - Python packages install
   
 - Results Evaluation
-  - Use results explored in slides
   - (pos sent vs neg sent) ratio vs returns + error
   - volume vs returns - volume indicated change, change indicates sentiment
-  - Conditional (same descriptive stats no matter sample size) Vs Unconditional (descriptive stats change) Returns - Change sample size - look at different periods
   - correlation between magnitude of returns
   - correlation error, pvalue, etc.
   - Display all values then narrow down to statistically significant values
   - bring up receiver/sender bias - feedback loop
   - economic policy uncertainty index
-  - Why specific timespan? Why 7000 articles from lexisnexis
   - 0 point motion
   - bachelier
   - statistical estimation
