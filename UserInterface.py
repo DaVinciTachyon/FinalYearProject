@@ -4,9 +4,10 @@ from dataGraphing import displayPriceVsSentiment, displayHist
 from dataTabling import getExcel
 from dataCleanUp import getOverlappingSeries
 from returnEstimator import singlePointEstimator
-from correlation import getAutoCorrelationWithLags, getReturnSentimentCorrelations
+from correlation import getAutoCorrelationWithLags, getPriceSentimentCorrelations
 from descriptiveStatistics import getDescriptiveStatistics
 from dateUtil import getDashedDateTime, subtractYears, greaterThanOrEqualDate, toString
+from VectorAutoregression import VAR
 
 def getWelcomeMessage():
     print("This is an tool which aids in the analysis of return and sentiment relationships")
@@ -30,10 +31,10 @@ def UserInterface():
     while not quit:
         print("Tool Selection")
         print(
-            "1: Return Vs Sentiment Grapher",
+            "1: Price Vs Sentiment Grapher",
             "2: Single Point Estimator",
             "3: Autocorrelator",
-            "4: Return Vs Sentiment Correlator",
+            "4: Price Vs Sentiment Correlator",
             "5: Descriptive Statistics",
             "6: Vector Autoregressor",
             "7: Create Excel Sheet"
@@ -53,19 +54,19 @@ def UserInterface():
             else:
                 pV, sV, oPV, oSV = prices, sentiment, oPrices, oSentiment
         if tool == 1:
-            getReturnVsSentimentGrapherMenu(pV, sV, oPV, oSV)
+            getPriceVsSentimentGrapherMenu(pV, sV, oPV, oSV)
         elif tool == 2:
             getSinglePointEstimatorMenu(oPV, oSV)
         elif tool == 3:
             getAutoCorrelatorMenu(pV, sV)
         elif tool == 4:
-            getReturnVsSentimentCorrelatorMenu(oPV, oSV)
+            getPriceVsSentimentCorrelatorMenu(oPV, oSV)
         elif tool == 5:
             getDescriptiveStatisticsMenu(pV, sV)
         elif tool == 6:
-            getVectorAutoregressorMenu()
+            getVectorAutoregressorMenu(oPV, oSV)
         elif tool == 7:
-            getExcelMenu(pV, sV, oPV, oSV)
+            getExcelMenu(oPV, oSV)
         elif tool == 8:
             quit = True
         else:
@@ -96,8 +97,11 @@ def createMenuString(elements):
         i += 1
     return menuString
 
-def createMenuFromKeys(name, keys):
-    print(createMenuString(keys))
+def getColumns(name, keys, posNeg = False):
+    if posNeg:
+        print(createMenuString(keys), f"{len(keys) + 1}: Positive to Negative Ratio")
+    else:
+        print(createMenuString(keys))
     columns = input(f"Please select {name} columns, separated by comma: ").split(",")
     numericColumns = []
     for i in range(len(columns)):
@@ -106,7 +110,10 @@ def createMenuFromKeys(name, keys):
             numericColumns.append(int(columns[i]))
     namedColumns = []
     for n in numericColumns:
-        namedColumns.append(keys[n - 1])
+        if n == len(keys) + 1:
+            namedColumns.append("posNeg")
+        else:
+            namedColumns.append(keys[n - 1])
     return namedColumns
 
 def getPriceKeys(prices):
@@ -120,14 +127,14 @@ def getSentimentKeys(sentiment):
     sentimentKeys.remove("date")
     return sentimentKeys
 
-def getReturnVsSentimentGrapherMenu(prices, sentiment, oPrices, oSentiment):
-    print("Return Vs Sentiment Grapher")
+def getPriceVsSentimentGrapherMenu(prices, sentiment, oPrices, oSentiment):
+    print("Price Vs Sentiment Grapher")
 
     priceKeys = getPriceKeys(prices)
-    priceColumns = createMenuFromKeys("price", priceKeys)
+    priceColumns = getColumns("price", priceKeys)
     
     sentimentKeys = getSentimentKeys(sentiment)
-    sentimentColumns = createMenuFromKeys("sentiment", sentimentKeys)
+    sentimentColumns = getColumns("sentiment", sentimentKeys, True)
 
     if len(priceColumns) > 0 and len(sentimentColumns) > 0:
         priceValues = oPrices
@@ -168,15 +175,21 @@ def selectDataset(prices, sentiment):
         name = "sentiment"
     return keys, dataset, name
 
-def selectColumn(keys):
+def selectColumn(keys, posNeg = False):
     selected = False
     while not selected:
-        print(createMenuString(keys))
+        if posNeg:
+            print(createMenuString(keys), f"{len(keys) + 1}: Positive to Negative Ratio")
+        else:
+            print(createMenuString(keys))
         column = input("Please select a column: ").strip()
         if column.isdigit():
             column = int(column)
         if isinstance(column, int) and column > 0 and column <= len(keys):
             column = keys[column - 1]
+            selected = True
+        elif posNeg and isinstance(column, int) and column == len(keys) + 1:
+            column = "posNeg"
             selected = True
         else:
             print("Please try again")
@@ -209,23 +222,28 @@ def getAutoCorrelatorMenu(prices, sentiment):
     start = getStart(column)
     correlations = getAutoCorrelationWithLags(dataset, column, start, lag)
     print(f"{column} Auto Correlation")
+    print("Lag", "Correlation", "P-Value", sep="\t")
     for i in range(lag):
-        correlation, lr = correlations[i]
-        print(i + 1, "day lag", correlation, "pvalue", lr.pvalue)
+        correlation, pValue = correlations[i]
+        print(i + 1, round(correlation, 4), round(pValue, 4), sep="\t")
 
-def getReturnVsSentimentCorrelatorMenu(oPrices, oSentiment):
-    print("Return Vs Sentiment Correlator")
+def getPriceVsSentimentCorrelatorMenu(oPrices, oSentiment):
+    print("Price Vs Sentiment Correlator")
 
+    priceKeys = getPriceKeys(oPrices)
+    priceColumn = selectColumn(priceKeys)
+    sentimentKeys = getSentimentKeys(oSentiment)
+    sentimentColumn = selectColumn(sentimentKeys, True)
     lag = selectLag()
-    returnSentCorr, sentReturnCorr = getReturnSentimentCorrelations(oPrices, oSentiment, lag)
-    print("return1Day to negativeSentiment Correlation")
-    for i in range(len(returnSentCorr)):
-        correlation, lr = returnSentCorr[i]
-        print(i, "day lag", correlation, "pvalue", lr.pvalue)
-    print("negativeSentiment to return1Day Correlation")
-    for i in range(len(sentReturnCorr)):
-        correlation, lr = sentReturnCorr[i]
-        print(i, "day lag", correlation, "pvalue", lr.pvalue)
+    start = getStart(priceColumn)
+    priceSentCorr, sentPriceCorr = getPriceSentimentCorrelations(oPrices, oSentiment, priceColumn, sentimentColumn, lag, start)
+    print(priceColumn, "Vs", sentimentColumn, "Correlation")
+    print(f"& {priceColumn}/{sentimentColumn} & {sentimentColumn}/{priceColumn}", sep="\t")
+    print("Lag", "Correlation", "P-Value", "Correlation", "P-Value", sep="\t")
+    for i in range(len(priceSentCorr)):
+        correlationA, pValueA = priceSentCorr[i]
+        correlationB, pValueB = sentPriceCorr[i]
+        print(i, round(correlationA, 4), round(pValueA, 4), round(correlationB, 4), round(pValueB, 4), sep="\t")
 
 def getDescriptiveStatisticsMenu(prices, sentiment):
     keys, dataset, _ = selectDataset(prices, sentiment)
@@ -235,10 +253,33 @@ def getDescriptiveStatisticsMenu(prices, sentiment):
     getDescriptiveStatistics(column, columnName)
     displayHist(column, 100, columnName)
 
-def getExcelMenu(prices, sentiment, oPrices, oSentiment):
-    # TODO overlapping excel
-    _, dataset, name = selectDataset(prices, sentiment)
-    getExcel(dataset, f"{name}/{name}")
+def getExcelMenu(prices, sentiment):
+    dataset = []
+    for i in range(len(prices)):
+        dict = {}
+        for (key, value) in prices[i].items():
+            dict[key] = value
+        for (key, value) in sentiment[i].items():
+            dict[key] = value
+        pos = dict["positiveSentiment"]
+        if pos == 0:
+            pos = 0.0000000000000001
+        dict['posNeg'] = dict["negativeSentiment"] / pos
+        dataset.append(dict)
+    getExcel(dataset, "data")
 
-def getVectorAutoregressorMenu():
-    print("Work In Progress")
+def getVectorAutoregressorMenu(oPrices, oSentiment):
+    priceKeys = getPriceKeys(oPrices)
+    priceColumns = getColumns("price", priceKeys)
+    
+    sentimentKeys = getSentimentKeys(oSentiment)
+    sentimentColumns = getColumns("sentiment", sentimentKeys, True)
+
+    lag = selectLag()
+    mainColumn = "return1Day"
+    start = getStart(mainColumn)
+    significance = 0.9
+
+    correlation, pValue, mse = VAR(oPrices, oSentiment, mainColumn, start, lag, priceColumns, sentimentColumns, significance)
+    
+    print("correlation:", correlation, "\tpValue:", pValue, "\tmse:", mse)

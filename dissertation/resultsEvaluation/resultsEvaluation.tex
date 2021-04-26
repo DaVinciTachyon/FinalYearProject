@@ -2,7 +2,7 @@
 
 \chapter{Results Evaluation}
 
-This chapter discusses results provided by the developed system and how they answer the questions posed at the beginning of this project.
+This chapter discusses results provided by the developed system and how they answer the questions posed at the beginning of this project. The full set of data looked at is stored in the appendix \ref{appendix:dataAppendix}.
 
 \section{Examined Entity}
 
@@ -19,7 +19,7 @@ The main reason for choosing this company is due to the fact that it has histori
 
 \section{Descriptive Statistics}
 
-The first step towards understanding the dataset is to understand each of the columns by themselves. This first step that may be used is to create an outline of the dataset using descriptive statistics, alongside a graph. This lays out the data in such a way were time is not an element and simply the general trends of the data can be understood. A part of this analysis is to attempt to understand whether these general trends have remained consistent. Therefore, various time spans are examined alongside the dataset as a whole. The timespans examined here are the entire dataset and the past year worth of data. The full set of data looked at is stored in the appendix \ref{appendix:descriptiveStatistics}.
+The first step towards understanding the dataset is to understand each of the columns by themselves. This first step that may be used is to create an outline of the dataset using descriptive statistics, alongside a graph. This lays out the data in such a way were time is not an element and simply the general trends of the data can be understood. A part of this analysis is to attempt to understand whether these general trends have remained consistent. Therefore, various time spans are examined alongside the dataset as a whole. The timespans examined here are the entire dataset and the past year worth of data.
 
 \subsection{Price Columns}
 
@@ -99,122 +99,191 @@ It is important to note that preceding information indicates that the examinatio
 
 \section{Auto Correlation}
 
-This step in understanding the dataset continues the understanding of columns by themselves. However, it examines the relationship of the cloumns with themselves. It does this by finding the correlation of a column entry with a previous entry given a lag time. For example if the lag is 5, it will find the correlation with 5 entries prior, i.e. 5 days before. This is important to understand whether previous days have any correlation, and potentially an effect on the current day.
-
-TODO
-\begin{center}
-\begin{tabular}{ c c }
-\hline
-\multicolumn{2}{|c|}{Closing Price AutoCorrelation with entire dataset} \\
-\hline
-1 day lag & 0.9411935591590456 \\
-2 day lag & 0.9109376954243168 \\
-3 day lag & 0.8588675104961536 \\
-4 day lag & 0.7892956691827954 \\
-5 day lag & 0.7580804740115362
-\end{tabular}
-\end{center}
-
-- Not over 90\% correlation
-- Does not -> volatile stock
+This step in understanding the dataset continues the understanding of columns by themselves. However, it examines the relationship of the cloumns with themselves. It does this by finding the correlation of a column entry with a previous entry given a lag time. For example if the lag is 5, it will find the correlation with 5 entries prior, i.e. 5 days before. This is important to understand whether previous days have any correlation, and potentially an effect on the current day. For the purposes of this examination, the lag looked at is 5 for all items. In this section a p-value of 0.1 or smaller is going to be considered of statistical significance. The p-value indicates the probability of a non-correlated system producing datasets that have a correlation at least as extreme as the one computed from these datasets. Therefore if 0.1 is chosen as a p-value to match or surpass for statistical significance, it means that the coefficient calculated or higher will be observed up to 10\% of the time. It is important to remember that correlation is a measure of linear relationship, and given that many of the relationships may be non-linear, the following may indicate a relationship, it may not describe it appropriately however. There has been some reasearch into exploring non-linear correlation values, however, so far it is inconclusive.
 
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ c c c } 
 \hline
-\multicolumn{2}{|c|}{1 Day Return AutoCorrelation with entire dataset} \\
+\multicolumn{3}{|c|}{Closing Price AutoCorrelation with entire dataset} \\
 \hline
-1 day lag & 0.010044065231783677 \\
-2 day lag & 0.13420635746867923 \\
-3 day lag & 0.17706335839486953 \\
-4 day lag & -0.23281554097728582 \\
-5 day lag & 0.0305722042951903
+Lag & Correlation & P-Value \\
+\hline
+1 & 0.9412 & 0.0 \\
+2 & 0.9109 & 0.0 \\
+3 & 0.8589 & 0.0 \\
+4 & 0.7893 & 0.0 \\
+5 & 0.7581 & 0.0 \\
 \end{tabular}
 \end{center}
-
-- Mean Reversal
-    - Increase then negative
-- Add up to > 0, long term growth
-    - Seen in inconsistency with prices autocorrelation
+Closing Price is the first column examined. All of the values examined in this case are statistically significant. It is interesting to note how the correlation starts at over 90\%, it then quickly decreases down to 76\% over the five days. This indicates that the prices vary frequently between one day and the next. This indicates that the stock price is quite volatile. As found in paper \cite{correlationVvolatility}, the general correlation of a non-volatile stock is over 95\%, also known as a well behaved stock.
 
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ c c c }
 \hline
-\multicolumn{2}{|c|}{Article Volume AutoCorrelation with entire dataset} \\
+\multicolumn{3}{|c|}{1 Day Return AutoCorrelation with entire dataset} \\
 \hline
-1 day lag & 0.7086866740522393 \\
-2 day lag & 0.5051901969956358 \\
-3 day lag & 0.3913458079243162 \\
-4 day lag & 0.35884587791576666 \\
-5 day lag & 0.4345743036499016
+Lag & Correlation & P-Value \\
+\hline
+1 & 0.01 & 0.722 \\
+2 & 0.1342 & 0.0 \\
+3 & 0.1771 & 0.0 \\
+4 & -0.2328 & 0.0 \\
+5 & 0.0306 & 0.2795 \\
 \end{tabular}
 \end{center}
+1 Day Returns is the next column examined. The statistically significant values are those when the lag is 2, 3 and 4. There are two interesting things to note within this data. The first is that the correlation increases daily up to day 3, then flips and is greatly negative. This indicates a behaviour known as mean reversal. Mean reversal is a term for a stock price's tendency to move to the average price over time. It is however, interesting to note that the summation of the significant correlations is 0.0785, which is greater than 0, indicating that there is a general growth direction for the stock price. This may also be reflected in the closing prices' decreasing correlations.
 
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ c c c }
 \hline
-\multicolumn{2}{|c|}{Positive Sentiment AutoCorrelation with entire dataset} \\
+\multicolumn{3}{|c|}{Article Volume AutoCorrelation with entire dataset} \\
 \hline
-1 day lag & 0.2189007770374344 \\
-2 day lag & 0.16697193082109396 \\
-3 day lag & 0.13939070288175473 \\
-4 day lag & 0.1571263190342898 \\
-5 day lag & 0.12675439356211746
+Lag & Correlation & P-Value \\
+\hline
+1 & 0.7087 & 0.0 \\
+2 & 0.5052 & 0.0 \\
+3 & 0.3913 & 0.0 \\
+4 & 0.3588 & 0.0 \\
+5 & 0.4346 & 0.0 \\
 \end{tabular}
 \end{center}
+For article volume, all of the values are statistically significant. The notable item is that there is a very rapid decrease in correlation as lag is increased. It starts at 0.7087, this indicates that the article volume may be clumped in values, however, this does not last very long.
 
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ c c c }
 \hline
-\multicolumn{2}{|c|}{Negative Sentiment AutoCorrelation with entire dataset} \\
+\multicolumn{3}{|c|}{Negative Sentiment AutoCorrelation with entire dataset} \\
 \hline
-1 day lag & 0.1936071341220439 \\
-2 day lag & 0.14727144175440102 \\
-3 day lag & 0.13880100344429427 \\
-4 day lag & 0.10022996242458204 \\
-5 day lag & 0.19026511070278398
+Lag & Correlation & P-Value \\
+\hline
+1 & 0.1936 & 0.0 \\
+2 & 0.1473 & 0.0 \\
+3 & 0.1388 & 0.0 \\
+4 & 0.1002 & 0.0 \\
+5 & 0.1903 & 0.0 \\
 \end{tabular}
 \end{center}
+For negative sentiment, all of the values are statistically significant. The correlation starts relatively low, it then decreases for the first 4 days of lag, then returning to a value similar to the 1 day lag value on the 5th day. This indicates that there may be some sort of delayed feedback in sentiment, however, this is quite speculative. Interestingly enough quite a similar pattern is seen in positive sentiment.
 
 \section{Return to Sentiment Correlation}
 
-TODO graphs
+This step is when the relationship between return and sentiment is explored. This is done by exploring the correlation between given columns in the different areas. The value of 0.9 for the p-value is again chosen for statistical significance. The full tables can be found in appendix \ref{appendix:returnSentimentCorrelation}. The tables in this section will only show statistically significant values.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/1returnVsNeg.png}
+    \caption{1 Day Returns Vs Negative Sentiment with entire dataset}
+    \label{fig:1returnVsNeg}
+\end{figure}
+
+This graph shows that as the volatility of the returns increases, the negative sentiment increases. Indicating that there may be a potential relationship. It is also interesting to note that as of the end of 2018 the genral negative sentiment level increased. It may be interesting to explore why this is the case.
 
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ c|c|c }
 \hline
-\multicolumn{2}{|c|}{1 Day Return to Negative Sentiment Correlation with entire dataset} \\
+\multicolumn{3}{|c|}{1 Day Return Vs Negative Sentiment Correlation with entire dataset} \\
 \hline
-0 day lag & -0.005749086829293921 \\
-1 day lag & 0.04767256694150456 \\
-2 day lag & 0.031817132474997706 \\
-3 day lag & 0.04737555379831079 \\
-4 day lag & -0.007019212993683423 \\
-5 day lag & 0.043130405239089696
+Lag & \multicolumn{1}{|c|}{1 Day Return/Negative Sentiment} & \multicolumn{1}{|c }{Negative Sentiment/1 Day Return} \\
+\hline
+0 & & \\
+1 & 0.0477 & \\
+2 & & \\
+3 & 0.0474 & \\
+4 & & -0.0442 \\
+5 & 0.0431 & -0.0444 \\
 \end{tabular}
 \end{center}
 
+The first thing that is interesting to note is the relationship between the two directions of lag. It seems that 1 Day Return to Negative Sentiment has generally positive correlations, and for the oppposing directions the opposite is true. This indicates the potential role of mean reversal, as if return increases negative sentiment will increase the next day, then the return will decrease in turn. It is also interesting to note that all of the values are very similar. The negative values even mirror the positive ones. This shows that the current return is related to what is said in the past few days as well as what will be said for a few days. It should also be noted that return positively correlates to negative sentiment and negative sentiment negatively correlates to returns. What these mean is that an increase in returns will correlate to an increase in negative sentiment, and an increase in negative sentiment correlates to a decreased level of returns.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=15cm,height=7cm,keepaspectratio]{resultsEvaluation/1returnVsArticles.png}
+    \caption{1 Day Returns Vs Article Volume with entire dataset}
+    \label{fig:1returnVsArticle}
+\end{figure}
+
+This graph indicates that the large amount of return volatility recently works in tandem to a larger amount of articles that usual.
+
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ c|c|c }
 \hline
-\multicolumn{2}{|c|}{Negative Sentiment to 1 Day Return Correlation with entire dataset} \\
+\multicolumn{3}{|c|}{1 Day Return Vs Article Volume Correlation with entire dataset} \\
 \hline
-0 day lag & -0.005749086829293921 \\
-1 day lag & -0.01986514709858617 \\
-2 day lag & -0.01863445341486425 \\
-3 day lag & -0.031901855696982465 \\
-4 day lag & -0.04423692450337006 \\
-5 day lag & -0.04438304347685678
+Lag & \multicolumn{1}{|c|}{1 Day Return/Article Volume} & \multicolumn{1}{|c }{Article Volume/1 Day Return} \\
+\hline
+0 & & \\
+1 & & \\
+2 & 0.0926 & \\
+3 & 0.0749 & \\
+4 & & -0.07 \\
+5 & 0.1267 & -0.0679 \\
 \end{tabular}
 \end{center}
 
-- Return -> Negative Sentiment
-    - Mean Reversal?
-- Negative Sentiment -> Negative Return
+It should be noted that returns positively correlates to article volume and article volume negatively correlates to returns. This indicates that if returns increase, article volume will too, however, if article volume increases returns will decrease. This is quite similar to the correlations between returns and negative sentiment.
+
+\begin{center}
+\begin{tabular}{ c|c|c }
+\hline
+\multicolumn{3}{|c|}{1 Day Return Vs Negative to Positive Sentiment Ratio Correlation with entire dataset} \\
+\hline
+Lag & \multicolumn{1}{|c|}{1 Day Return/Negative to Positive} & \multicolumn{1}{|c }{Negative to Positive/1 Day Return} \\
+\hline
+0 & & \\
+1 & & \\
+2 & -0.0476 & \\
+3 & 0.0721 & \\
+4 & -0.0615 & \\
+5 & & \\
+\end{tabular}
+\end{center}
+
+The positive to negative sentiment ratio correlation to 1 day returns was explored. This gave a few insights. It seems that this ratio does not correlate to future returns in a statistically significant way. However, the reverse is not true. The interesting part is that for the three days with statistically significant results the direction of influence is inconsistent, while maintaning a similar absolute value.
 
 \section{Vector Autoregression}
 
-\section{}
-autoregression vs ml
+Finally all of this will be put together to explore causation.
+
+TODO 1 day return, negative
+lag = 8 picked by AIC
+stationarity test
+1 day return - p with constant = 3.842e-034, p < 0.1 -> unconditional
+negative sentiment - p with constant = 9.545e-014, p < 0.1 -> unconditional
+var
+1 day return - p = 8.07e-27, p < 0.1 -> causation
+negative sentiment - p = 2.17e-64, p < 0.1 -> causation
+
+TODO 1 day return, article volume
+lag = 9 picked by AIC
+stationarity test
+1 day return - p with constant = 2.87e-033, p < 0.1 -> unconditional
+article volume - p with constant = 8.907e-009, p < 0.1 -> unconditional
+var
+1 day return - p = 1.33e-30, p < 0.1 -> causation
+article volume - p = 3.0e-297, p < 0.1 -> causation
+
+TODO 1 day return, pos neg ratio
+lag = 18 picked by AIC
+stationarity test
+1 day return - p with constant = 1.778e-020, p < 0.1 -> unconditional
+pos neg ratio - p with constant = 8.259e-018, p < 0.1 -> unconditional
+var
+1 day return - p = 5.98e-28, p < 0.1 -> causation
+pos neg ratio - p = 0.005381, p < 0.1 -> causation
+
+TODO 1 day return, TODO
+lag =  picked by AIC
+stationarity test
+1 day return - p with constant = , p  0.1 -> 
+ - p with constant = , p  0.1 -> 
+var
+1 day return - p = , p  0.1 -> 
+ - p = , p  0.1 -> 
+
+\section{Machine Learning Exploration}
+
+TODO compare accuracies?
 
 \section{Results Evaluation Summary}
 

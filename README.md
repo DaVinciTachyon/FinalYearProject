@@ -23,25 +23,23 @@ Final Year Project
   - demand vs supply
   - statistically significant >90%
   - diffentiate between correlation and causation, causation has to be stastically significant
-  - mean reversal - movement around mean
-  - small error when market is well behaved
   - Panel Regression?
   - Fashions
   - How many std devs in sentiment for 1 std dev in price
-  - created system that is more than the sum of its parts
-  - systematically organised corpus of texts
   - negative words are important < 2,3 %, otherwise lie, if high negative sentiment, important news
   - Define:
     - LexisNexis articles and their types
-    - Gamestop - why gamestop? What happened? Why did it happen? gamestop bubble? reaction of small investors to big investors? quote? ordinary company pos->neg->pos return
+    - Gamestop - quote? ordinary company pos->neg->pos return
     - Correlation
     - Vector Autoregression
     - sentiment proxy
     - proxy
     - efficient market hypothesis
+    - pearson correlation
 - Discussion and Conclusion
   - Qualitative -> Quantitative -> Market Dynamics (description -> correlation -> causation/dependence)
   - What have I learnt? nlp, financial concepts, econometrics, behavioural psychology
+  - created system that is more than the sum of its parts
 - Background
   - research papers
 - Nomenclature
@@ -69,7 +67,26 @@ Final Year Project
   - where I found gamestop info
 
 FIXME
-- return/sentiment correlation coponent in desgin and implementation
+- vector autoregression in design and implementation
+- outline var steps in implementation
+  lag length selection -> unit root test (stationary test) -> VAR -> causality
+  - step 1 - lag selection
+    The asterisks below indicate the best (that is, minimized) values
+    of the respective information criteria, AIC = Akaike criterion,
+    BIC = Schwarz Bayesian criterion and HQC = Hannan-Quinn criterion.
+    lag = 18 picked by AIC
+
+  - step 2 - unit root test
+    stationarity test run on all vars
+    stationarity test
+    1 day return - p with constant = 1.778e-020, p < 0.1 -> unconditional
+    pos neg ratio - p with constant = 8.259e-018, p < 0.1 -> unconditional
+
+  - step 3 - var
+    all endogenous vars
+    var
+    1 day return - p = 5.98e-28, p < 0.1 -> causation
+    pos neg ratio - p = 0.005381, p < 0.1 -> causation
 
 - news source improvement: e.g. the importants of non standard media, such as social media
 - comparison between source types and even specific sources, e.g. newspaper vs social media, twitter vs facebook

@@ -1,4 +1,4 @@
-\documentclass[a4paper,oneside,12pt]{book}
+\documentclass[a4paper,oneside,11pt]{book}
 
 \newcommand{\thesistitle}{An intelligent sentiment proxy analysis system for estimating price changes in financial markets}
 \newcommand{\degree}{B.A. (Mod.) Integrated Computer Science}
@@ -10,10 +10,10 @@
 \newcommand{\supervisor}{Prof. Khurshid Ahmad}
 
 \AtBeginDocument{
-\hypersetup{pdftitle=\thesistitle} % Set the PDF's title to your title
-\hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
-\hypersetup{pdfkeywords=\keywords} % Set the PDF's keywords to your keywords
-\hypersetup{pdfsubject=\degree} % Set the PDF's keywords to your keywords
+\hypersetup{pdftitle=\thesistitle}
+\hypersetup{pdfauthor=\authorname}
+\hypersetup{pdfkeywords=\keywords}
+\hypersetup{pdfsubject=\degree}
 }
 
 %% Language and font encodings
@@ -25,24 +25,24 @@
 \usepackage[round,sort,comma,numbers]{natbib}
 
 %% Document size
-% include showframe as an option if you want to see the boxes
-\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm,headheight=16pt]{geometry}
-\setlength{\marginparwidth}{2cm}
+\usepackage[a4paper,top=25mm,bottom=25mm,left=25mm,right=25mm,headheight=11pt]{geometry}
+\setlength{\marginparwidth}{25mm}
 %% Useful packages
 \usepackage{amsmath}
-\usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
+\usepackage[autostyle=true]{csquotes}
 \usepackage[pdftex]{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
-\usepackage{caption} % if no caption, no colon
-\usepackage{sfmath} %use sans-serif in the maths sections too
-\usepackage[parfill]{parskip}    % Begin paragraphs with an empty line rather than an indent
-\usepackage{setspace} % to permit one-and-a-half or double spacing
-\usepackage{enumerate} % fancy enumerations like (i) (ii) or (a) (b) and suchlike
-\usepackage{booktabs} % To thicken table lines
+\usepackage{caption}
+\usepackage{sfmath}
+\usepackage[parfill]{parskip}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{booktabs}
 \usepackage{fancyhdr}
 \usepackage{subfigure}
 \usepackage{listings}
+\usepackage{colortbl}
 \lstset{frame=tb,
   language=Python,
   aboveskip=3mm,
@@ -64,7 +64,7 @@
 
 \renewcommand{\familydefault}{\sfdefault}
 
-\renewcommand{\theequation}{\arabic{equation}} %% use continuous equation numbers
+\renewcommand{\theequation}{\arabic{equation}}
 
 %% Format Chapter headings appropriately
 \usepackage{titlesec}

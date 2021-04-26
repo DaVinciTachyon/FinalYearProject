@@ -2,3 +2,4 @@ python-dotenv
 striprtf
 seaborn
 sklearn
+xlwt

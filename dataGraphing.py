@@ -17,7 +17,13 @@ def getDataFrames(data, names):
     for name in names:
         columnDataPoints = []
         for entry in data:
-            columnDataPoints.append(entry[name])
+            if name == "posNeg":
+                pos = entry["positiveSentiment"]
+                if pos == 0:
+                    pos = 0.0000000000000001
+                columnDataPoints.append(entry["negativeSentiment"] / pos)
+            else:
+                columnDataPoints.append(entry[name])
         dataPoints.append(columnDataPoints)
 
     frames = []
@@ -73,4 +79,12 @@ def displayHist(x, bins, name):
     sns.distplot(x, bins=bins)
     plt.xlabel(name)
     plt.ylabel("Frequency")
+    plt.show()
+
+def plot(x, y, legend):
+    colours = sns.color_palette("muted", 2)
+    sns.set_style("white")
+    plt.plot(x, color=colours[0])
+    plt.plot(y, color=colours[1])
+    plt.legend(legend)
     plt.show()

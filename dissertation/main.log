@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.19)  25 APR 2021 04:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.19)  26 APR 2021 18:27
 entering extended mode
 **c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/main.tex
 (c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/main.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18> (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
-(C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/base\bk12.clo
-File: bk12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+(C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo
+File: bk11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count179
 \c@chapter=\count180
@@ -659,19 +659,33 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+ (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+ (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/latex-tools\array.sty
+Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
+\col@sep=\dimen297
+\ar@mcellbox=\box62
+\extrarowheight=\dimen298
+\NC@list=\toks41
+\extratabsurround=\skip73
+\backup@length=\skip74
+\ar@cellbox=\box63
+)
+\everycr=\toks42
+\minrowclearance=\skip75
+) (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2019/10/16 v2.13 Sectioning titles
-\ttl@box=\box62
-\beforetitleunit=\skip73
-\aftertitleunit=\skip74
-\ttl@plus=\dimen297
-\ttl@minus=\dimen298
-\ttl@toksa=\toks41
-\titlewidth=\dimen299
-\titlewidthlast=\dimen300
-\titlewidthfirst=\dimen301
+\ttl@box=\box64
+\beforetitleunit=\skip76
+\aftertitleunit=\skip77
+\ttl@plus=\dimen299
+\ttl@minus=\dimen300
+\ttl@toksa=\toks43
+\titlewidth=\dimen301
+\titlewidthlast=\dimen302
+\titlewidthfirst=\dimen303
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
@@ -681,7 +695,7 @@ File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count333
-\l__pdf_internal_box=\box63
+\l__pdf_internal_box=\box65
 ) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\main.aux)
 \openout1 = `main.aux'.
 
@@ -712,23 +726,23 @@ LaTeX Font Info:    ... okay on input line 78.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.2698pt, 452.96826pt, 72.2698pt)
-* v-part:(T,H,B)=(72.2698pt, 700.50723pt, 72.2698pt)
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=452.96826pt
-* \textheight=700.50723pt
-* \oddsidemargin=-0.00018pt
-* \evensidemargin=-0.00018pt
-* \topmargin=-35.87398pt
-* \headheight=16.0pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-32.0119pt
+* \headheight=11.0pt
 * \headsep=19.8738pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=56.9055pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=71.13188pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -741,16 +755,16 @@ LaTeX Font Info:    ... okay on input line 78.
 (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count334
-\scratchdimen=\dimen302
-\scratchbox=\box64
+\scratchdimen=\dimen304
+\scratchbox=\box66
 \nofMPsegments=\count335
 \nofMParguments=\count336
-\everyMPshowfont=\toks42
+\everyMPshowfont=\toks44
 \MPscratchCnt=\count337
-\MPscratchDim=\dimen303
+\MPscratchDim=\dimen305
 \MPnumerator=\count338
 \makeMPintoPDFobject=\count339
-\everyMPtoPDFconversion=\toks43
+\everyMPtoPDFconversion=\toks45
 ) (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -842,7 +856,7 @@ Chapter 3.
 LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 23.
  (C:\Users\DaVinciTachyon\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [5]
+)
 
 c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\design/design.tex:50: Package inputenc Error: Unicode character ‎ (U+200E)
 (inputenc)                not set up for use with LaTeX.
@@ -856,44 +870,44 @@ l.50     \item ABI/INFORM Global‎
 You may provide a definition with
 \DeclareUnicodeCharacter 
 
-[6]
+[5] [6]
 
 LaTeX Warning: Reference `fig:overallstructure' on page 7 undefined on input line 88.
 
-[7]
-<design/OverallStructure.png, id=130, 375.20175pt x 215.00325pt>
+<design/OverallStructure.png, id=126, 375.20175pt x 215.00325pt>
 File: design/OverallStructure.png Graphic file (type png)
 <use design/OverallStructure.png>
 Package pdftex.def Info: design/OverallStructure.png  used on input line 97.
 (pdftex.def)             Requested size: 248.26367pt x 142.26344pt.
 
+LaTeX Warning: Reference `fig:pricegathererstructure' on page 7 undefined on input line 104.
 
-LaTeX Warning: Reference `fig:pricegathererstructure' on page 8 undefined on input line 104.
-
-[8 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/design/OverallStructure.png>]
-<design/PriceGathererStructure.png, id=138, 174.05025pt x 222.8325pt>
+[7 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/design/OverallStructure.png>]
+<design/PriceGathererStructure.png, id=135, 174.05025pt x 222.8325pt>
 File: design/PriceGathererStructure.png Graphic file (type png)
 <use design/PriceGathererStructure.png>
 Package pdftex.def Info: design/PriceGathererStructure.png  used on input line 125.
 (pdftex.def)             Requested size: 111.12086pt x 142.26549pt.
-
+ [8 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/design/PriceGathererStructure.png>]
 
 LaTeX Warning: Reference `fig:sentimentgathererstructure' on page 9 undefined on input line 144.
 
-[9 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/design/PriceGathererStructure.png>]
-<design/SentimentGathererStructure.png, id=146, 445.06274pt x 254.75175pt>
+<design/SentimentGathererStructure.png, id=142, 445.06274pt x 254.75175pt>
 File: design/SentimentGathererStructure.png Graphic file (type png)
 <use design/SentimentGathererStructure.png>
 Package pdftex.def Info: design/SentimentGathererStructure.png  used on input line 166.
 (pdftex.def)             Requested size: 248.54074pt x 142.2635pt.
- [10 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/design/SentimentGathererStructure.png>] [11] [12] [13]) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\implementation/implementation.tex [14]
-Chapter 4.
-[15
 
-] [16] [17] [18] [19]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9] [10 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/design/SentimentGathererStructure.png>] [11]) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\implementation/implementation.tex [12] [13]
+Chapter 4.
+[14
+
+] [15] [16] [17]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 135.
- [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30]
-<implementation/sampleGraph.png, id=366, 938.90775pt x 474.573pt>
+ [18] [19] [20] [21] [22] [23] [24] [25] [26] [27]
+<implementation/sampleGraph.png, id=353, 938.90775pt x 474.573pt>
 File: implementation/sampleGraph.png Graphic file (type png)
 <use implementation/sampleGraph.png>
 Package pdftex.def Info: implementation/sampleGraph.png  used on input line 490.
@@ -902,33 +916,26 @@ Package pdftex.def Info: implementation/sampleGraph.png  used on input line 490.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[31] [32 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/sampleGraph.png>] [33] [34]
-<implementation/kNN.png, id=428, 417.9615pt x 380.01974pt>
+[28] [29 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/sampleGraph.png>] [30]
+<implementation/kNN.png, id=392, 417.9615pt x 380.01974pt>
 File: implementation/kNN.png Graphic file (type png)
 <use implementation/kNN.png>
 Package pdftex.def Info: implementation/kNN.png  used on input line 583.
 (pdftex.def)             Requested size: 156.46732pt x 142.2635pt.
-<implementation/decisionTree.png, id=429, 452.28975pt x 248.127pt>
+ [31]
+<implementation/decisionTree.png, id=417, 452.28975pt x 248.127pt>
 File: implementation/decisionTree.png Graphic file (type png)
 <use implementation/decisionTree.png>
 Package pdftex.def Info: implementation/decisionTree.png  used on input line 590.
 (pdftex.def)             Requested size: 259.31924pt x 142.263pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[35 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/kNN.png>] [36 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/decisionTree.png>]
-<implementation/randomForest.png, id=445, 434.8245pt x 334.24875pt>
+ [32 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/kNN.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/decisionTree.png>] [33]
+<implementation/randomForest.png, id=442, 434.8245pt x 334.24875pt>
 File: implementation/randomForest.png Graphic file (type png)
 <use implementation/randomForest.png>
 Package pdftex.def Info: implementation/randomForest.png  used on input line 629.
 (pdftex.def)             Requested size: 259.10527pt x 199.17372pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[37] [38 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/randomForest.png>]
-<implementation/descriptiveGraph.png, id=479, 419.76825pt x 320.99925pt>
+ [34 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/randomForest.png>]
+<implementation/descriptiveGraph.png, id=459, 419.76825pt x 320.99925pt>
 File: implementation/descriptiveGraph.png Graphic file (type png)
 <use implementation/descriptiveGraph.png>
 Package pdftex.def Info: implementation/descriptiveGraph.png  used on input line 686.
@@ -937,151 +944,205 @@ Package pdftex.def Info: implementation/descriptiveGraph.png  used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[39]) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\resultsEvaluation/resultsEvaluation.tex [40 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/descriptiveGraph.png>]
+[35]) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\resultsEvaluation/resultsEvaluation.tex [36 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/implementation/descriptiveGraph.png>]
 Chapter 5.
-<resultsEvaluation/gamestop.png, id=498, 3854.4pt x 2168.1pt>
+
+LaTeX Warning: Reference `appendix:dataAppendix' on page 37 undefined on input line 5.
+
+<resultsEvaluation/gamestop.png, id=482, 3854.4pt x 2168.1pt>
 File: resultsEvaluation/gamestop.png Graphic file (type png)
 <use resultsEvaluation/gamestop.png>
 Package pdftex.def Info: resultsEvaluation/gamestop.png  used on input line 13.
 (pdftex.def)             Requested size: 202.31786pt x 113.80379pt.
-
-LaTeX Warning: Reference `appendix:descriptiveStatistics' on page 41 undefined on input line 22.
-
-[41
+[37
 
  <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/gamestop.png>]
-<resultsEvaluation/closeDescMax.png, id=508, 672.111pt x 409.53pt>
+<resultsEvaluation/closeDescMax.png, id=492, 672.111pt x 409.53pt>
 File: resultsEvaluation/closeDescMax.png Graphic file (type png)
 <use resultsEvaluation/closeDescMax.png>
 Package pdftex.def Info: resultsEvaluation/closeDescMax.png  used on input line 34.
-(pdftex.def)             Requested size: 221.9614pt x 113.81151pt.
-<resultsEvaluation/closeDesc1.png, id=509, 640.19176pt x 475.7775pt>
+(pdftex.def)             Requested size: 223.069pt x 113.81151pt.
+<resultsEvaluation/closeDesc1.png, id=493, 640.19176pt x 475.7775pt>
 File: resultsEvaluation/closeDesc1.png Graphic file (type png)
 <use resultsEvaluation/closeDesc1.png>
 Package pdftex.def Info: resultsEvaluation/closeDesc1.png  used on input line 35.
-(pdftex.def)             Requested size: 221.9507pt x 113.81142pt.
- [42 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/closeDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/closeDesc1.png>]
-<resultsEvaluation/1returnDescMax.png, id=521, 684.75826pt x 438.438pt>
+(pdftex.def)             Requested size: 223.06432pt x 113.81142pt.
+ [38 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/closeDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/closeDesc1.png>]
+<resultsEvaluation/1returnDescMax.png, id=505, 684.75826pt x 438.438pt>
 File: resultsEvaluation/1returnDescMax.png Graphic file (type png)
 <use resultsEvaluation/1returnDescMax.png>
 Package pdftex.def Info: resultsEvaluation/1returnDescMax.png  used on input line 50.
-(pdftex.def)             Requested size: 221.95868pt x 113.81055pt.
-<resultsEvaluation/1returnDesc1.png, id=522, 670.30424pt x 452.28975pt>
+(pdftex.def)             Requested size: 223.06622pt x 113.81055pt.
+<resultsEvaluation/1returnDesc1.png, id=506, 670.30424pt x 452.28975pt>
 File: resultsEvaluation/1returnDesc1.png Graphic file (type png)
 <use resultsEvaluation/1returnDesc1.png>
 Package pdftex.def Info: resultsEvaluation/1returnDesc1.png  used on input line 51.
-(pdftex.def)             Requested size: 221.95795pt x 113.81061pt.
- [43 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnDesc1.png>]
-<resultsEvaluation/articleDescMax.png, id=532, 698.00775pt x 473.97075pt>
+(pdftex.def)             Requested size: 223.0728pt x 113.81061pt.
+<resultsEvaluation/articleDescMax.png, id=507, 698.00775pt x 473.97075pt>
 File: resultsEvaluation/articleDescMax.png Graphic file (type png)
 <use resultsEvaluation/articleDescMax.png>
 Package pdftex.def Info: resultsEvaluation/articleDescMax.png  used on input line 68.
-(pdftex.def)             Requested size: 221.9505pt x 113.80592pt.
-<resultsEvaluation/articleDesc1.png, id=533, 625.73775pt x 469.755pt>
+(pdftex.def)             Requested size: 223.06882pt x 113.80592pt.
+<resultsEvaluation/articleDesc1.png, id=508, 625.73775pt x 469.755pt>
 File: resultsEvaluation/articleDesc1.png Graphic file (type png)
 <use resultsEvaluation/articleDesc1.png>
 Package pdftex.def Info: resultsEvaluation/articleDesc1.png  used on input line 69.
-(pdftex.def)             Requested size: 221.95227pt x 113.81151pt.
-<resultsEvaluation/negativeDescMax.png, id=534, 559.49025pt x 427.5975pt>
+(pdftex.def)             Requested size: 223.06938pt x 113.81151pt.
+ [39 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnDesc1.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/articleDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/articleDesc1.png>]
+<resultsEvaluation/negativeDescMax.png, id=524, 559.49025pt x 427.5975pt>
 File: resultsEvaluation/negativeDescMax.png Graphic file (type png)
 <use resultsEvaluation/negativeDescMax.png>
 Package pdftex.def Info: resultsEvaluation/negativeDescMax.png  used on input line 84.
-(pdftex.def)             Requested size: 221.95665pt x 113.80865pt.
-<resultsEvaluation/negativeDesc1.png, id=535, 548.0475pt x 460.119pt>
+(pdftex.def)             Requested size: 223.06647pt x 113.80865pt.
+<resultsEvaluation/negativeDesc1.png, id=525, 548.0475pt x 460.119pt>
 File: resultsEvaluation/negativeDesc1.png Graphic file (type png)
 <use resultsEvaluation/negativeDesc1.png>
 Package pdftex.def Info: resultsEvaluation/negativeDesc1.png  used on input line 85.
-(pdftex.def)             Requested size: 221.95802pt x 113.80783pt.
+(pdftex.def)             Requested size: 223.07024pt x 113.80783pt.
+ [40 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/negativeDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/negativeDesc1.png>]
+
+Package natbib Warning: Citation `correlationVvolatility' on page 41 undefined on input line 118.
+
+[41]
+
+LaTeX Warning: Reference `appendix:returnSentimentCorrelation' on page 42 undefined on input line 170.
+
+[42]
+<resultsEvaluation/1returnVsNeg.png, id=546, 1016.598pt x 537.80925pt>
+File: resultsEvaluation/1returnVsNeg.png Graphic file (type png)
+<use resultsEvaluation/1returnVsNeg.png>
+Package pdftex.def Info: resultsEvaluation/1returnVsNeg.png  used on input line 174.
+(pdftex.def)             Requested size: 376.47664pt x 199.16684pt.
+<resultsEvaluation/1returnVsArticles.png, id=547, 994.31474pt x 540.8205pt>
+File: resultsEvaluation/1returnVsArticles.png Graphic file (type png)
+<use resultsEvaluation/1returnVsArticles.png>
+Package pdftex.def Info: resultsEvaluation/1returnVsArticles.png  used on input line 201.
+(pdftex.def)             Requested size: 366.17625pt x 199.16794pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[44 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/articleDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/articleDesc1.png>] [45 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/negativeDescMax.png> <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/negativeDesc1.png>] [46]) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\conclusion/conclusion.tex [47]
+[43 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnVsNeg.png>] [44 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnVsArticles.png>]) (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\conclusion/conclusion.tex [45]
 Chapter 6.
 )
 No file main.bbl.
-(c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\appendix/appendix.tex [48
+(c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\appendix/appendix.tex [46
 
 ]
 Appendix A1.
 File: resultsEvaluation/closeDescMax.png Graphic file (type png)
 <use resultsEvaluation/closeDescMax.png>
-Package pdftex.def Info: resultsEvaluation/closeDescMax.png  used on input line 16.
+Package pdftex.def Info: resultsEvaluation/closeDescMax.png  used on input line 17.
 (pdftex.def)             Requested size: 326.87593pt x 199.1717pt.
-[49
+[47
 
 ]
 File: resultsEvaluation/closeDesc1.png Graphic file (type png)
 <use resultsEvaluation/closeDesc1.png>
-Package pdftex.def Info: resultsEvaluation/closeDesc1.png  used on input line 45.
+Package pdftex.def Info: resultsEvaluation/closeDesc1.png  used on input line 46.
 (pdftex.def)             Requested size: 267.99954pt x 199.1718pt.
- [50]
-<resultsEvaluation/volumeDescMax.png, id=591, 700.41675pt x 492.03825pt>
+ [48]
+<resultsEvaluation/volumeDescMax.png, id=590, 700.41675pt x 492.03825pt>
 File: resultsEvaluation/volumeDescMax.png Graphic file (type png)
 <use resultsEvaluation/volumeDescMax.png>
-Package pdftex.def Info: resultsEvaluation/volumeDescMax.png  used on input line 76.
+Package pdftex.def Info: resultsEvaluation/volumeDescMax.png  used on input line 77.
 (pdftex.def)             Requested size: 283.5176pt x 199.16928pt.
- [51 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/volumeDescMax.png>]
-<resultsEvaluation/volumeDesc1.png, id=599, 573.94424pt x 470.35725pt>
+ [49 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/volumeDescMax.png>]
+<resultsEvaluation/volumeDesc1.png, id=598, 573.94424pt x 470.35725pt>
 File: resultsEvaluation/volumeDesc1.png Graphic file (type png)
 <use resultsEvaluation/volumeDesc1.png>
-Package pdftex.def Info: resultsEvaluation/volumeDesc1.png  used on input line 105.
+Package pdftex.def Info: resultsEvaluation/volumeDesc1.png  used on input line 106.
 (pdftex.def)             Requested size: 243.03416pt x 199.1707pt.
- [52 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/volumeDesc1.png>]
+ [50 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/volumeDesc1.png>]
 File: resultsEvaluation/1returnDescMax.png Graphic file (type png)
 <use resultsEvaluation/1returnDescMax.png>
-Package pdftex.def Info: resultsEvaluation/1returnDescMax.png  used on input line 136.
+Package pdftex.def Info: resultsEvaluation/1returnDescMax.png  used on input line 137.
 (pdftex.def)             Requested size: 311.07442pt x 199.17516pt.
- [53]
+ [51]
 File: resultsEvaluation/1returnDesc1.png Graphic file (type png)
 <use resultsEvaluation/1returnDesc1.png>
-Package pdftex.def Info: resultsEvaluation/1returnDesc1.png  used on input line 165.
+Package pdftex.def Info: resultsEvaluation/1returnDesc1.png  used on input line 166.
 (pdftex.def)             Requested size: 295.17003pt x 199.16684pt.
- [54]
+ [52]
 File: resultsEvaluation/articleDescMax.png Graphic file (type png)
 <use resultsEvaluation/articleDescMax.png>
-Package pdftex.def Info: resultsEvaluation/articleDescMax.png  used on input line 196.
+Package pdftex.def Info: resultsEvaluation/articleDescMax.png  used on input line 197.
 (pdftex.def)             Requested size: 293.31036pt x 199.1676pt.
- [55]
+ [53]
 File: resultsEvaluation/articleDesc1.png Graphic file (type png)
 <use resultsEvaluation/articleDesc1.png>
-Package pdftex.def Info: resultsEvaluation/articleDesc1.png  used on input line 225.
+Package pdftex.def Info: resultsEvaluation/articleDesc1.png  used on input line 226.
 (pdftex.def)             Requested size: 265.30008pt x 199.16656pt.
- [56]
-<resultsEvaluation/wordsDescMax.png, id=629, 633.567pt x 458.9145pt>
+ [54]
+<resultsEvaluation/wordsDescMax.png, id=628, 633.567pt x 458.9145pt>
 File: resultsEvaluation/wordsDescMax.png Graphic file (type png)
 <use resultsEvaluation/wordsDescMax.png>
-Package pdftex.def Info: resultsEvaluation/wordsDescMax.png  used on input line 256.
+Package pdftex.def Info: resultsEvaluation/wordsDescMax.png  used on input line 257.
 (pdftex.def)             Requested size: 274.97104pt x 199.17104pt.
- [57 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/wordsDescMax.png>]
-<resultsEvaluation/wordsDesc1.png, id=637, 566.71725pt x 451.6875pt>
+ [55 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/wordsDescMax.png>]
+<resultsEvaluation/wordsDesc1.png, id=636, 566.71725pt x 451.6875pt>
 File: resultsEvaluation/wordsDesc1.png Graphic file (type png)
 <use resultsEvaluation/wordsDesc1.png>
-Package pdftex.def Info: resultsEvaluation/wordsDesc1.png  used on input line 285.
+Package pdftex.def Info: resultsEvaluation/wordsDesc1.png  used on input line 286.
 (pdftex.def)             Requested size: 249.8925pt x 199.17043pt.
- [58 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/wordsDesc1.png>]
-<resultsEvaluation/positiveDescMax.png, id=645, 672.111pt x 448.67625pt>
+ [56 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/wordsDesc1.png>]
+<resultsEvaluation/positiveDescMax.png, id=643, 672.111pt x 448.67625pt>
 File: resultsEvaluation/positiveDescMax.png Graphic file (type png)
 <use resultsEvaluation/positiveDescMax.png>
-Package pdftex.def Info: resultsEvaluation/positiveDescMax.png  used on input line 316.
+Package pdftex.def Info: resultsEvaluation/positiveDescMax.png  used on input line 317.
 (pdftex.def)             Requested size: 298.34491pt x 199.16394pt.
- [59 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/positiveDescMax.png>]
-<resultsEvaluation/positiveDesc1.png, id=653, 539.616pt x 460.119pt>
+ [57 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/positiveDescMax.png>]
+<resultsEvaluation/positiveDesc1.png, id=651, 539.616pt x 460.119pt>
 File: resultsEvaluation/positiveDesc1.png Graphic file (type png)
 <use resultsEvaluation/positiveDesc1.png>
-Package pdftex.def Info: resultsEvaluation/positiveDesc1.png  used on input line 345.
+Package pdftex.def Info: resultsEvaluation/positiveDesc1.png  used on input line 346.
 (pdftex.def)             Requested size: 233.57832pt x 199.16722pt.
- [60 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/positiveDesc1.png>]
+ [58 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/positiveDesc1.png>]
 File: resultsEvaluation/negativeDescMax.png Graphic file (type png)
 <use resultsEvaluation/negativeDescMax.png>
-Package pdftex.def Info: resultsEvaluation/negativeDescMax.png  used on input line 376.
+Package pdftex.def Info: resultsEvaluation/negativeDescMax.png  used on input line 377.
 (pdftex.def)             Requested size: 260.6042pt x 199.17006pt.
- [61]
+ [59]
 File: resultsEvaluation/negativeDesc1.png Graphic file (type png)
 <use resultsEvaluation/negativeDesc1.png>
-Package pdftex.def Info: resultsEvaluation/negativeDesc1.png  used on input line 405.
+Package pdftex.def Info: resultsEvaluation/negativeDesc1.png  used on input line 406.
 (pdftex.def)             Requested size: 237.22798pt x 199.16722pt.
- [62] [63] [64]) [65] (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\main.aux)
+ [60] [61] [62]
+File: resultsEvaluation/1returnVsNeg.png Graphic file (type png)
+<use resultsEvaluation/1returnVsNeg.png>
+Package pdftex.def Info: resultsEvaluation/1returnVsNeg.png  used on input line 560.
+(pdftex.def)             Requested size: 376.47664pt x 199.16684pt.
+File: resultsEvaluation/1returnVsArticles.png Graphic file (type png)
+<use resultsEvaluation/1returnVsArticles.png>
+Package pdftex.def Info: resultsEvaluation/1returnVsArticles.png  used on input line 587.
+(pdftex.def)             Requested size: 366.17625pt x 199.16794pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[63]
+<resultsEvaluation/1returnVsPosNeg.png, id=694, 870.8535pt x 549.252pt>
+File: resultsEvaluation/1returnVsPosNeg.png Graphic file (type png)
+<use resultsEvaluation/1returnVsPosNeg.png>
+Package pdftex.def Info: resultsEvaluation/1returnVsPosNeg.png  used on input line 614.
+(pdftex.def)             Requested size: 315.77928pt x 199.1637pt.
+ [64 <c:/Users/DaVinciTachyon/Documents/FinalYearProject/dissertation/resultsEvaluation/1returnVsPosNeg.png>] [65] [66] [67
+
+] [68
+
+] [69] [70
+
+] [71
+
+] [72] [73] [74] [75
+
+] [76])
+
+Package natbib Warning: There were undefined citations.
+
+[77
+
+] (c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1095,20 +1156,20 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  6D6849206BA70C5F60CC3AA9A869208E;9299.
+(rerunfilecheck)             After:  78F6F3014B71986F37DD97CA7EDA4C8D;11633.
  ) 
 Here is how much of TeX's memory you used:
- 26517 strings out of 479321
- 476831 string characters out of 2852290
- 976705 words of memory out of 3000000
- 43068 multiletter control sequences out of 15000+600000
- 418457 words of font info for 58 fonts, out of 8000000 for 9000
+ 26676 strings out of 479321
+ 479563 string characters out of 2852290
+ 980146 words of memory out of 3000000
+ 43193 multiletter control sequences out of 15000+600000
+ 419252 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,7n,117p,1420b,2064s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1728.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1440.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2488.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1728.pk><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi12.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
-Output written on c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\main.pdf (74 pages, 1839789 bytes).
+ 102i,10n,117p,1475b,2075s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0900.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsi1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcss1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx1440.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1095.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2488.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1200.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsx2074.pk> <C:\Users\DaVinciTachyon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1440.pk><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/DaVinciTachyon/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on c:/Users\DaVinciTachyon\Documents\FinalYearProject\dissertation\main.pdf (86 pages, 2617618 bytes).
 PDF statistics:
- 1301 PDF objects out of 1440 (max. 8388607)
- 359 named destinations out of 1000 (max. 500000)
- 229 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1441 PDF objects out of 1728 (max. 8388607)
+ 385 named destinations out of 1000 (max. 500000)
+ 244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

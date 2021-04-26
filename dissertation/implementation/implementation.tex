@@ -649,11 +649,11 @@ return1Day Auto Correlation
 5 day lag 0.0305722042951903
 \end{lstlisting}
 
-The way correlation is calculated is using linear regression. The \verb|scipy.stats| module provides a function, \verb|linregress()|, which allows this. The \verb|rvalue| extracted from the output is the correlation coefficient. The \verb|rvalue|, the coefficient of determination, is the proportion of the variance in the dependent variable that is predictable from the independent variable, i.e. correlation.
+The way correlation is calculated is using pearson correlation. The \verb|scipy.stats| module provides a function, \verb|pearsonr()|, which allows this. It outputs a tuple where the first value is the correlation coefficient and the second is the p-value. The correlation coefficient is the proportion of the variance in the dependent variable that is predictable from the independent variable, i.e. correlation.
 
 \subsubsection{Return Vs Sentiment Correlator}
 
-This component is strict in its use. It calculates the correlation between return1Day and negativeSentiment at preset lags. These being same day and 1 day lag, with return1Day one day and negativeSentiment the next day and viceversa. Correlation is calculated in the same way as within the AutoCorrelator, i.e. using linear regression.
+This component calculates the correlation between a column in the prices dataset and one in the sentiment dataset, at a lag chosen by the user. Correlation is calculated in the same way as within the AutoCorrelator, i.e. using pearson correlation.
 
 \begin{lstlisting}[caption=Example Return Vs Sentiment Output]
 return1Day/negativeSentiment Correlation
