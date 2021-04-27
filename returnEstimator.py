@@ -13,6 +13,7 @@ from dateUtil import greaterThanDate, equalDate
 from correlation import getCorrelation
 import warnings
 from time import perf_counter
+from dataGraphing import plotTimeAccuracy
 
 warnings.filterwarnings("ignore")
 
@@ -46,6 +47,8 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns):
     highestAccuracyModel = None
     kf = KFold(n_splits=2)
 
+    processed = []
+
     startTime = perf_counter()
     K = range(1, 10)
     highestAccuracyK = 0
@@ -61,8 +64,13 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns):
         if(accuracy > highestKNNAccuracy):
             highestKNNAccuracy = accuracy
             highestAccuracyK = k
-    print("Processed: ", model.__class__.__name__)
-    print("Time: ", round((perf_counter() - startTime) * 1000), "ms")
+    name = model.__class__.__name__
+    time = round((perf_counter() - startTime) * 1000)
+    accuracy = highestKNNAccuracy
+    processed.append((name, time, accuracy))
+    print("Processed:", name)
+    print("Time:", time, "ms")
+    print("Accuracy:", accuracy)
     if(highestKNNAccuracy > highestAccuracy):
         highestAccuracy = highestKNNAccuracy
         highestAccuracyModel = KNeighborsClassifier(n_neighbors=highestAccuracyK).fit(X, y)
@@ -75,8 +83,13 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns):
         accuracies.append(accuracy_score(y[test], pY))
     accuracies = np.array(accuracies)
     decisionTreeAccuracy = np.mean(accuracies)
-    print("Processed: ", model.__class__.__name__)
-    print("Time: ", round((perf_counter() - startTime) * 1000), "ms")
+    name = model.__class__.__name__
+    time = round((perf_counter() - startTime) * 1000)
+    accuracy = decisionTreeAccuracy
+    processed.append((name, time, accuracy))
+    print("Processed:", name)
+    print("Time:", time, "ms")
+    print("Accuracy:", accuracy)
     if(decisionTreeAccuracy > highestAccuracy):
         highestAccuracy = decisionTreeAccuracy
         highestAccuracyModel = DecisionTreeClassifier().fit(X, y)
@@ -90,8 +103,13 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns):
         accuracies.append(accuracy_score(y[test], pY))
     accuracies = np.array(accuracies)
     gaussianProcessAccuracy = np.mean(accuracies)
-    print("Processed: ", model.__class__.__name__)
-    print("Time: ", round((perf_counter() - startTime) * 1000), "ms")
+    name = model.__class__.__name__
+    time = round((perf_counter() - startTime) * 1000)
+    accuracy = gaussianProcessAccuracy
+    processed.append((name, time, accuracy))
+    print("Processed:", name)
+    print("Time:", time, "ms")
+    print("Accuracy:", accuracy)
     if(gaussianProcessAccuracy > highestAccuracy):
         highestAccuracy = gaussianProcessAccuracy
         highestAccuracyModel = GaussianProcessClassifier(kernel).fit(X, y)
@@ -104,8 +122,13 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns):
         accuracies.append(accuracy_score(y[test], pY))
     accuracies = np.array(accuracies)
     adaBoostAccuracy = np.mean(accuracies)
-    print("Processed: ", model.__class__.__name__)
-    print("Time: ", round((perf_counter() - startTime) * 1000), "ms")
+    name = model.__class__.__name__
+    time = round((perf_counter() - startTime) * 1000)
+    accuracy = adaBoostAccuracy
+    processed.append((name, time, accuracy))
+    print("Processed:", name)
+    print("Time:", time, "ms")
+    print("Accuracy:", accuracy)
     if(adaBoostAccuracy > highestAccuracy):
         highestAccuracy = adaBoostAccuracy
         highestAccuracyModel = AdaBoostClassifier().fit(X, y)
@@ -125,10 +148,17 @@ def singlePointEstimator(prices, sentiment, pricesColumns, sentimentColumns):
         if(accuracy > highestRandomForestAccuracy):
             highestRandomForestAccuracy = accuracy
             highestAccuracyN = n
-    print("Processed: ", model.__class__.__name__)
-    print("Time: ", round((perf_counter() - startTime) * 1000), "ms")
+    name = model.__class__.__name__
+    time = round((perf_counter() - startTime) * 1000)
+    accuracy = highestRandomForestAccuracy
+    processed.append((name, time, accuracy))
+    print("Processed:", name)
+    print("Time:", time, "ms")
+    print("Accuracy:", accuracy)
     if(highestRandomForestAccuracy > highestAccuracy):
         highestAccuracy = highestRandomForestAccuracy
         highestAccuracyModel = RandomForestClassifier(n_estimators=highestAccuracyN).fit(X, y)
+
+    plotTimeAccuracy(processed)
     
     return highestAccuracyModel, highestAccuracy

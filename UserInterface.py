@@ -280,6 +280,6 @@ def getVectorAutoregressorMenu(oPrices, oSentiment):
     start = getStart(mainColumn)
     significance = 0.9
 
-    correlation, pValue, mse = VAR(oPrices, oSentiment, mainColumn, start, lag, priceColumns, sentimentColumns, significance)
+    correlation, pValue, mse, accuracy = VAR(oPrices, oSentiment, mainColumn, start, lag, priceColumns, sentimentColumns, significance)
     
-    print("correlation:", correlation, "\tpValue:", pValue, "\tmse:", mse)
+    print("correlation:", correlation, "\tpValue:", pValue, "\tmse:", mse, "\taccuracy:", accuracy)

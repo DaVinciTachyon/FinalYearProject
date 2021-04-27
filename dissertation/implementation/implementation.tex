@@ -695,9 +695,9 @@ For this section, the Gretl software was used to gather the desired results. The
     \item Use an excel sheet created by the python program
     \item Import excel sheet into gretl
     \item Change the data to have a time-series interpretation
-    \item Select the desired VAR multi-variate model, this analysis used the base Vector Autoregression model
-    \item Add the desired endogeneous and exogenous variables
-    \item Analyse the values returned
+    \item Select a lag length, by using VAR lag selection model. For the purposes of simplicity in this project the maximum allowable lag is 10, and the lag length is chosen based on the most optimised AIC, Akaike criterion, value
+    \item Execute Unit Root Test in order to determine whether data is dependent on time, in this project the Augmented Dickey-Fuller Test was used. If the asymptotic p-value is less than desired significance level, in this case 0.1, then it is not dpendent on time.
+    \item Perform the Vector Autoregression Analysis, by inserting all the desired columns as endogeneous values. For each column causation is confirmed if the p-value of the f-value is less than the significance level, in this case 0.1.
 \end{enumerate}
 
 \section{Implementation Summary}

@@ -88,3 +88,16 @@ def plot(x, y, legend):
     plt.plot(y, color=colours[1])
     plt.legend(legend)
     plt.show()
+
+def plotTimeAccuracy(data):
+    colours = sns.color_palette("muted", 2)
+    sns.set_style("white")
+    fig, ax = plt.subplots()
+    ax.bar([x[0] for x in data], [x[2] for x in data], color=colours[0])
+    ax.set_xlabel("model")
+    ax.set_ylabel("accuracy")
+    ax2 = ax.twinx()
+    ax2.plot([x[1] for x in data], color=colours[1])
+    ax2.set_ylabel("time (ms)")
+    fig.legend(["model", "time"])
+    plt.show()

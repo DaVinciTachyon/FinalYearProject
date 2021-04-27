@@ -22,10 +22,17 @@ def VAR(prices, sentiment, mainColumn, start, lag, priceColumns, sentimentColumn
     for i in range(start + lag, len(prices)):
         returns.append(prices[i]['return1Day'])
     correlation, pvalue = getCorrelation(returns, predictions)
-    from sklearn.metrics import mean_squared_error
+    from sklearn.metrics import mean_squared_error, accuracy_score
     mse = mean_squared_error(returns, predictions)
     plot(returns, predictions, ["1 day returns", "predictions"])
-    return correlation, pvalue, mse
+    aReturns = []
+    for r in returns:
+        aReturns.append(r > 0)
+    aPredictions = []
+    for p in predictions:
+        aPredictions.append(p > 0)
+    accuracy = accuracy_score(aReturns, aPredictions)
+    return correlation, pvalue, mse, accuracy
 
 def predict(mainColumn, priceCorrs, sentimentCorrs, prices, sentiment, lag, start):
     column = []

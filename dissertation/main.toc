@@ -1,0 +1,178 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Objective}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Report Structure}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}more subsections and subsubsections}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Background Summary}{3}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Design}{4}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Brief}{4}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Requirements Gathering for System Design}{4}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Obtaining \& Understanding Data-sets}{4}{subsection.3.2.1}%
+\contentsline {subsubsection}{Price Source}{5}{subsection.3.2.1}%
+\contentsline {paragraph}{IEX Cloud}{5}{subsection.3.2.1}%
+\contentsline {subsubsection}{Sentiment Proxy Source}{5}{subsection.3.2.1}%
+\contentsline {paragraph}{Proquest}{5}{subsection.3.2.1}%
+\contentsline {paragraph}{LexisNexis}{6}{subsection.3.2.1}%
+\contentsline {paragraph}{Source Choice}{6}{subsection.3.2.1}%
+\contentsline {subsubsection}{Dictionary Source}{6}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Users Interacting with the System}{7}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}System Architecture Design}{7}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}The Price Gatherer}{8}{subsection.3.3.1}%
+\contentsline {paragraph}{The Price Source}{8}{figure.caption.7}%
+\contentsline {paragraph}{Key Filtering}{8}{figure.caption.7}%
+\contentsline {paragraph}{The Return Adder}{9}{figure.caption.7}%
+\contentsline {subsection}{\numberline {3.3.2}The Sentiment Gatherer}{9}{subsection.3.3.2}%
+\contentsline {paragraph}{The Article Source}{9}{figure.caption.8}%
+\contentsline {paragraph}{The Article Parser}{10}{figure.caption.8}%
+\contentsline {paragraph}{The Dictionary}{10}{figure.caption.8}%
+\contentsline {paragraph}{Key Filtering}{10}{figure.caption.8}%
+\contentsline {paragraph}{The Sentiment Extractor}{10}{figure.caption.8}%
+\contentsline {paragraph}{Z-Scores}{10}{figure.caption.8}%
+\contentsline {subsection}{\numberline {3.3.3}The Analyser}{10}{subsection.3.3.3}%
+\contentsline {paragraph}{The User Interface}{11}{subsection.3.3.3}%
+\contentsline {paragraph}{The Joiner}{11}{subsection.3.3.3}%
+\contentsline {paragraph}{The Period Selector}{11}{subsection.3.3.3}%
+\contentsline {paragraph}{Return Vs Sentiment Grapher}{11}{subsection.3.3.3}%
+\contentsline {paragraph}{Single Point Estimator}{11}{subsection.3.3.3}%
+\contentsline {paragraph}{Autocorrelator}{12}{subsection.3.3.3}%
+\contentsline {paragraph}{Return Vs Sentiment Correlator}{12}{subsection.3.3.3}%
+\contentsline {paragraph}{Descriptive Statistics}{12}{subsection.3.3.3}%
+\contentsline {paragraph}{Vector Autoregressor}{12}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Scope of Project}{12}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Design Summary}{13}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Implementation}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Technology Used}{14}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Python 3.9}{14}{subsection.4.1.1}%
+\contentsline {subsubsection}{File Handling}{14}{subsection.4.1.1}%
+\contentsline {subsubsection}{Data Tidying}{15}{subsection.4.1.1}%
+\contentsline {subsubsection}{Mathematical Operations}{15}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Visual Studio Code}{16}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Git and Github}{16}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Command-Line Interface}{16}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}AntConc 3.5.9}{17}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}Rocksteady 0.4}{17}{subsection.4.1.6}%
+\contentsline {subsection}{\numberline {4.1.7}Gretl}{17}{subsection.4.1.7}%
+\contentsline {section}{\numberline {4.2}Setting up the System}{17}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}The Price Gatherer}{17}{subsection.4.2.1}%
+\contentsline {subsubsection}{The Price Source}{17}{subsection.4.2.1}%
+\contentsline {subsubsection}{Key Filtering}{19}{lstnumber.4.3.1}%
+\contentsline {subsubsection}{The Return Adder}{19}{lstnumber.4.4.5}%
+\contentsline {subsection}{\numberline {4.2.2}The Sentiment Gatherer}{19}{subsection.4.2.2}%
+\contentsline {subsubsection}{The Article Source}{20}{subsection.4.2.2}%
+\contentsline {subsubsection}{The Article Parser}{21}{Item.20}%
+\contentsline {subsubsection}{The Dictionary}{23}{lstnumber.4.8.2}%
+\contentsline {subsubsection}{Key Filtering}{23}{lstnumber.4.9.1}%
+\contentsline {subsubsection}{The Sentiment Extractor}{24}{lstnumber.4.11.3}%
+\contentsline {paragraph}{Extraction}{24}{Item.31}%
+\contentsline {paragraph}{Date Joining}{24}{Item.31}%
+\contentsline {subsubsection}{Z-Scores}{25}{lstnumber.4.12.1}%
+\contentsline {paragraph}{Column Separation}{25}{Item.35}%
+\contentsline {paragraph}{Percentage Calculation}{25}{Item.35}%
+\contentsline {paragraph}{Z-Score Calculation}{25}{Item.35}%
+\contentsline {paragraph}{Object Assignment}{25}{lstnumber.4.13.1}%
+\contentsline {subsection}{\numberline {4.2.3}The Analyser}{25}{subsection.4.2.3}%
+\contentsline {subsubsection}{The User Interface}{26}{subsection.4.2.3}%
+\contentsline {paragraph}{Step 1}{26}{Item.39}%
+\contentsline {paragraph}{Step 2}{26}{lstnumber.4.14.1}%
+\contentsline {paragraph}{Step 3}{26}{lstnumber.4.15.1}%
+\contentsline {paragraph}{Step 4}{26}{lstnumber.4.16.2}%
+\contentsline {subsubsection}{The Joiner}{27}{lstnumber.4.18.2}%
+\contentsline {subsubsection}{The Period Selector}{28}{lstnumber.4.20.1}%
+\contentsline {subsubsection}{Return Vs Sentiment Grapher}{28}{lstnumber.4.21.1}%
+\contentsline {subsubsection}{Single Point Estimator}{29}{lstnumber.4.26.1}%
+\contentsline {paragraph}{Create input and output series}{29}{Item.50}%
+\contentsline {paragraph}{Input/Output Series Shuffling}{30}{Item.50}%
+\contentsline {paragraph}{Model Testing}{30}{lstnumber.4.27.1}%
+\contentsline {paragraph}{Accuracy Score vs Mean Squared Error}{31}{lstnumber.4.28.19}%
+\contentsline {paragraph}{Models Comparison}{31}{lstnumber.4.28.19}%
+\contentsline {paragraph}{Return Highest Accuracy Model and its accuracy}{34}{figure.caption.12}%
+\contentsline {subsubsection}{Autocorrelator}{34}{figure.caption.12}%
+\contentsline {subsubsection}{Return Vs Sentiment Correlator}{34}{lstnumber.4.29.6}%
+\contentsline {subsubsection}{Descriptive Statistics}{35}{lstnumber.4.30.4}%
+\contentsline {subsubsection}{Vector Autoregressor}{35}{figure.caption.13}%
+\contentsline {section}{\numberline {4.3}Implementation Summary}{36}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Results Evaluation}{37}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Examined Entity}{37}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Descriptive Statistics}{37}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Price Columns}{38}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Sentiment Columns}{39}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Auto Correlation}{41}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Return to Sentiment Correlation}{42}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Vector Auto-regression}{45}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Machine Learning Exploration}{45}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Results Evaluation Summary}{45}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Discussion \& Conclusion}{47}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Project Achievements}{47}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Challenges}{47}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Future Work}{47}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Discussion \& Conclusion Summary}{47}{section.6.4}%
+\contentsline {chapter}{\numberline {A1}Appendix}{48}{appendix.A}%
+\contentsline {section}{\numberline {A1.1}Descriptive Statistics}{48}{section.A.1}%
+\contentsline {subsection}{\numberline {A1.1.1}Closing Prices}{48}{subsection.A.1.1}%
+\contentsline {subsubsection}{Entire Dataset}{48}{subsection.A.1.1}%
+\contentsline {subsubsection}{Last Year}{49}{figure.caption.22}%
+\contentsline {subsection}{\numberline {A1.1.2}Trading Volume}{50}{subsection.A.1.2}%
+\contentsline {subsubsection}{Entire Dataset}{50}{subsection.A.1.2}%
+\contentsline {subsubsection}{Last Year}{51}{figure.caption.24}%
+\contentsline {subsection}{\numberline {A1.1.3}1 Day Returns}{52}{subsection.A.1.3}%
+\contentsline {subsubsection}{Entire Dataset}{52}{subsection.A.1.3}%
+\contentsline {subsubsection}{Last Year}{53}{figure.caption.26}%
+\contentsline {subsection}{\numberline {A1.1.4}Article Volume}{54}{subsection.A.1.4}%
+\contentsline {subsubsection}{Entire Dataset}{54}{subsection.A.1.4}%
+\contentsline {subsubsection}{Last Year}{55}{figure.caption.28}%
+\contentsline {subsection}{\numberline {A1.1.5}Words Volume}{56}{subsection.A.1.5}%
+\contentsline {subsubsection}{Entire Dataset}{56}{subsection.A.1.5}%
+\contentsline {subsubsection}{Last Year}{57}{figure.caption.30}%
+\contentsline {subsection}{\numberline {A1.1.6}Positive Sentiment}{58}{subsection.A.1.6}%
+\contentsline {subsubsection}{Entire Dataset}{58}{subsection.A.1.6}%
+\contentsline {subsubsection}{Last Year}{59}{figure.caption.32}%
+\contentsline {subsection}{\numberline {A1.1.7}Negative Sentiment}{60}{subsection.A.1.7}%
+\contentsline {subsubsection}{Entire Dataset}{60}{subsection.A.1.7}%
+\contentsline {subsubsection}{Last Year}{61}{figure.caption.34}%
+\contentsline {section}{\numberline {A1.2}Auto-Correlation}{62}{section.A.2}%
+\contentsline {subsection}{\numberline {A1.2.1}Closing Prices}{62}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A1.2.2}Trading Volume}{62}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A1.2.3}1 Day Returns}{63}{subsection.A.2.3}%
+\contentsline {subsection}{\numberline {A1.2.4}Article Volume}{63}{subsection.A.2.4}%
+\contentsline {subsection}{\numberline {A1.2.5}Word Volume}{63}{subsection.A.2.5}%
+\contentsline {subsection}{\numberline {A1.2.6}Positive Sentiment}{63}{subsection.A.2.6}%
+\contentsline {subsection}{\numberline {A1.2.7}Negative Sentiment}{64}{subsection.A.2.7}%
+\contentsline {section}{\numberline {A1.3}Return Vs Sentiment Correlation}{64}{section.A.3}%
+\contentsline {subsection}{\numberline {A1.3.1}1 Day Return Vs Negative Sentiment}{64}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A1.3.2}1 Day Return Vs Article Volume}{65}{subsection.A.3.2}%
+\contentsline {subsection}{\numberline {A1.3.3}1 Day Return Vs Negative to Positive Sentiment Ratio}{65}{subsection.A.3.3}%
+\contentsline {section}{\numberline {A1.4}Vector Autoregression}{66}{section.A.4}%
+\contentsline {subsection}{\numberline {A1.4.1}1 Day Return, Positive Sentiment}{66}{subsection.A.4.1}%
+\contentsline {subsubsection}{Lag Selection}{66}{subsection.A.4.1}%
+\contentsline {subsubsection}{Unit Root Test}{66}{subsection.A.4.1}%
+\contentsline {paragraph}{1 Day Return}{66}{subsection.A.4.1}%
+\contentsline {paragraph}{Positive Sentiment}{66}{subsection.A.4.1}%
+\contentsline {subsubsection}{Vector Autoregression}{67}{subsection.A.4.1}%
+\contentsline {subsection}{\numberline {A1.4.2}1 Day Return and Negative Sentiment}{69}{subsection.A.4.2}%
+\contentsline {subsubsection}{Lag Selection}{69}{subsection.A.4.2}%
+\contentsline {subsubsection}{Unit Root Test}{69}{subsection.A.4.2}%
+\contentsline {paragraph}{1 Day Return}{69}{subsection.A.4.2}%
+\contentsline {paragraph}{Negative Sentiment}{69}{subsection.A.4.2}%
+\contentsline {subsubsection}{Vector Autoregression}{69}{subsection.A.4.2}%
+\contentsline {subsection}{\numberline {A1.4.3}1 Day Return and Article Volume}{71}{subsection.A.4.3}%
+\contentsline {subsubsection}{Lag Selection}{71}{subsection.A.4.3}%
+\contentsline {subsubsection}{Unit Root Test}{72}{subsection.A.4.3}%
+\contentsline {paragraph}{1 Day Return}{72}{subsection.A.4.3}%
+\contentsline {paragraph}{Article Volume}{72}{subsection.A.4.3}%
+\contentsline {subsubsection}{Vector Autoregression}{72}{subsection.A.4.3}%
+\contentsline {subsection}{\numberline {A1.4.4}1 Day Return, Article Volume and Negative Sentiment}{74}{subsection.A.4.4}%
+\contentsline {subsubsection}{Lag Selection}{74}{subsection.A.4.4}%
+\contentsline {subsubsection}{Unit Root Test}{74}{subsection.A.4.4}%
+\contentsline {paragraph}{1 Day Return}{74}{subsection.A.4.4}%
+\contentsline {paragraph}{Article Volume}{74}{subsection.A.4.4}%
+\contentsline {paragraph}{Negative Sentiment}{75}{subsection.A.4.4}%
+\contentsline {subsubsection}{Vector Autoregression}{75}{subsection.A.4.4}%
+\contentsline {subsection}{\numberline {A1.4.5}1 Day Return, Article Volume, Negative Sentiment and Positive Sentiment}{79}{subsection.A.4.5}%
+\contentsline {subsubsection}{Lag Selection}{79}{subsection.A.4.5}%
+\contentsline {subsubsection}{Unit Root Test}{79}{subsection.A.4.5}%
+\contentsline {paragraph}{1 Day Return}{79}{subsection.A.4.5}%
+\contentsline {paragraph}{Article Volume}{79}{subsection.A.4.5}%
+\contentsline {paragraph}{Negative Sentiment}{79}{subsection.A.4.5}%
+\contentsline {paragraph}{Positive Sentiment}{79}{subsection.A.4.5}%
+\contentsline {subsubsection}{Vector Autoregression}{80}{subsection.A.4.5}%
