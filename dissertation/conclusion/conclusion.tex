@@ -4,28 +4,50 @@
 
 In this chapter, the questions explored and the way they are answered is explored, the success to which they have been answered, and how the challenges put in the way were overcome. There will also be an outline of potential continued work in the area.
 
-\section{Project Achievements}
+\section{Project Achievements and Challenges}
 
-TODO what? why? how?
-it should examine what has been achieved in the project and relate this to the initial aim of the project
-Do not be afraid to discuss disadvantages of your approach. Negative results are useful
+The overall goal of the project is to explore the relationship between price changes and sentiment. That is to understand how to use qualitative data in a quantitative system and following this exploring and potentially identifying causal links between these sets of data. Both of these areas are explored thoroughly within the project.
 
-restate questions
-achievements
-what I have learnt
-advantages of approach
-disadvantages of approach
+The first step in answering these questions was developing an understanding for the area, and designing a system which would allow the exploration of these questions. There was a significant amount of ground to cover when it came to understanding what was required in order to develop such a system, then put this understanding together into an appropriate design. In order to achieve the learning required to do this, a few different things were done. Papers relevant to the subject area had to be read and understood, as well as similar systems having to be broken down and understood. Both of these were requirements in order to develop the desired system, and both of these thing required putting myself in situations I had little to no experience in. For reading papers, this was the first time I had read and understand many different papers in a subject area, in order to build on that understanding. I found this procedure to be very different to any previous experience I had in the area. There was a lot more depth that had to be covered to get a thorough enough understanding. The other part of this was the breaking down of systems that do parts of what was required for this. This was quite new, as there was a development in not only the understanding of how to break down a system in order to understand it, but then also how to relate that to the more concrete information learnt in papers that have been read in order to produce a desirable design which achieves what is required. This amount of learning took a great effort, and it is quite interesting how some time was spent just learning how to learn from these sources.
 
-\section{Challenges}
+The next main area was the exploration of the data-sets required and how to use these data-sets. This was one of the areas which surprised me the most. It required a large amount of consistent effort to develop. This was done three times in three different ways in order to gather all of the required datasets. A few general important steps were identified, however, each data-set displayed it's own particular set of challenges. It is important to note that I had little to no experience in this area previously, so it required a large amount of learning to achieve the most basic tasks within this, as the procedures were all novel to me. Firstly, it is important to identify a reliable data-source by understanding the content it returns. Within this datasource it is then important to discover the information to be extracted, as depeding on the goal of the project the data-source may deliver different results. It is then important to learn how to gather the data-set, parse it into a usable format, and extract the desired information from the data-set, in the case of the sentiment data-set the correct meta-data had to be extracted from different articles. Once the only the desired information is fully extracted from the data-source, the creation of the dataset used for analysis may not be done. As in the case of sentiment, the meta-data from the articles had to be used in order to create a timeline of sentiment. To do this required an understand of what sentiment is as well as the creation of a dictionary, which is a data-set in and of itself. Once all of this is done in order to work with the price and sentiment data-sets together they had to be joined in such a way that they were covering the same days. As may be understood all of this required a large amount of learning in various different areas at each step, especially given my inexperience in the areas beforehand. However, this process helped develop and understanding for the question which explored using qualitative data in a quantitative system, as well as creating data-set that could then answer the other question.
 
-TODO what? why? how?
-Any problems encountered in the course of the project should be mentioned here
+The final step in this project was the examination of the data-sets as well as the relationship in and between them. This part required the most amount of learning by far, the data-set had to be understood in order to determine the analysis procedures that will be run on them in order to achieve the knowledge the andswer the question of causation, as in what data-points influence what other data-points. Once these procedures are run, it is then important to understand what conclusions can be drawn from the results, and how those results influence the further analysis that will be done on the data.
+
+All of this must then be put together into developing and understanding which allows the implementation of a system which allows all of the discovered procedures to be executed upon, so that we may actually learn from the data. It was important to do this in such a way such where the desired procedures are corretly implemented, but also in such a way that allows for utmost efficency. This is very important considereing the sizes of the data-sets.
+
+I find that the project answers the original questions posed in full, as well as laying out the ability to answer these questions with different data-sets. It also achieves the aim of teaching me about the area in question as thre was a very large amount of learning required to complete this project.
+
+As for explicitly answering the two questions laid out.
+\begin{enumerate}
+    \item How to examine qualitative data in a quantitative system?
+    \item Is there a causal relationship between sentiment and pirice changes? Can this relationship be used to to estimate price changes?
+\end{enumerate}
+All of these questions have been answered within this project. Briefly, question 1 is answered through the use of dictionaries, and percentages of sentiement words in relation to the whole. Question two can simply be answered with two yeses. The details of these responses are withing the paper. However, I am quite happy with the conclusion.
+
+Despite the success of the project, there are thing that may have been done better. Many of them are discussed within the relevant sections. However, one I would like to bring up is the use of correlation as a statistic. It is used since it gives and indicator of the linearity between two sets of points. However, my issue lies in the fact that these datasets are non-linear, meaning there may be a better approach to this process. I have done some research but was not currently able to find anything, but I propose that there may be a better way to analyse the relationship between two sets of non-linear data. The current way is useful, as it does simplify the procedure. However it may be executed upon in a more precise way.
+
+In regards to the distilling the main challenge of this project, it can be simply stated as volume of learning. It was a very unfamiliar area an almost every item approach required something to be learnt, if not the entire thing. It was an enjoyable experience.
+
+As for a personal statement, in my opinion, the project could be so much better and cleaner given more time, as there was a fair amount of fumbling and going down wrong paths. However, once things started to click there was a great satisfaction in understanding how and why things are done.
 
 \section{Future Work}
 
-TODO what? why? how?
-The section on future work should give some indication of how work done could be improved and developed
+The goals for this project were achieved. However, there is still work to be done.
+
+It may be summarised as improvement on the current system. There are a few main areas that may be improved, these main be summarised as depth and breadth.
+
+Simply, depth refers to the further exploration of current attributes explored. As well, as making methods and data-sets more specialised for the task at hand. A few examples of this are:
+\begin{itemize}
+    \item the specialisation of the dictionary used for sentiment in regards to financial terms, word sentiment dependent on the company being analysed
+    \item the choice in mathematical functions such as correlation
+\end{itemize}
+In general, I feel there is far greater exploration that could be done with the current available data-sets.
+
+As for breadth, this refers to the expansion of the tools and items explored. This means, exploring more sentiment columns within the dictionary, as well as increasing the sample size of articles chosen. It may also mean analysing different companies in order to find patterns between them, and potentially patterns for companies as a whole.
+
+There are always a lot of interesting directions a project could go, and this is no exception.
 
 \section{Discussion \& Conclusion Summary}
 
-TODO what? why? how?
+In this chapter, the achievements and challenges on the way to completing the project are summarised, as well as giving a brief overview of what may still be done.

@@ -69,6 +69,7 @@ Final Year Project
 
 FIXME
 - divide table over multiple pages
+- max lag should be 5?
 
 - news source improvement: e.g. the importants of non standard media, such as social media
 - comparison between source types and even specific sources, e.g. newspaper vs social media, twitter vs facebook
