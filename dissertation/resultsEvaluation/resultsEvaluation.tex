@@ -6,7 +6,7 @@ This chapter discusses results provided by the developed system and how they ans
 
 \section{Examined Entity}
 
-The entity that will examined is a company called Gamestop. Gamestop is an American video game, consumer electronics, and gaming merchandise retailer. It is the largest video game retailer worldwide.
+The entity that will examined is a company called Gamestop\cite{gamestop}. Gamestop is an American video game, consumer electronics, and gaming merchandise retailer. It is the largest video game retailer worldwide.
 
 \begin{figure}[h!]
     \centering
@@ -16,6 +16,8 @@ The entity that will examined is a company called Gamestop. Gamestop is an Ameri
 \end{figure}
 
 The main reason for choosing this company is due to the fact that it has historically been a relatively stable company. However, an interesting sentiment fuelled phenomenon happened recently. In January of 2021, the company stock prices increased by 1,500\% over the course of two weeks due to a short squeeze mainly attributed to the members of a subreddit, r/wallstreetbets. Reddit is a social news aggregation, web content rating, and discussion website, and a subreddit is a channel within this website which specialises in a given topic. In this case a subreddit dedicated to stocks with high market risk. This seems to indicate that the stock prices of Gamestop were heavily driven by sentiment. Making this an exceptional case-study for this project.
+
+\epigraph{By buying GameStop, it's kind of like beating them at their own game.\cite{gamestopNYTimes}}
 
 \section{Descriptive Statistics}
 
@@ -131,7 +133,7 @@ Lag & Correlation & P-Value \\
 5 & 0.0306 & 0.2795 \\
 \end{tabular}
 \end{center}
-1 Day Returns is the next column examined. The statistically significant values are those when the lag is 2, 3 and 4. There are two interesting things to note within this data. The first is that the correlation increases daily up to day 3, then flips and is greatly negative. This indicates a behaviour known as mean reversal. Mean reversal is a term for a stock price's tendency to move to the average price over time. It is however, interesting to note that the summation of the significant correlations is 0.0785, which is greater than 0, indicating that there is a general growth direction for the stock price. This may also be reflected in the closing prices' decreasing correlations.
+1 Day Returns is the next column examined. The statistically significant values are those when the lag is 2, 3 and 4. There are two interesting things to note within this data. The first is that the correlation increases daily up to day 3, then flips and is greatly negative. This indicates a behaviour known as mean reversion. Mean reversion is a term for a stock price's tendency to move to the average price over time. It is however, interesting to note that the summation of the significant correlations is 0.0785, which is greater than 0, indicating that there is a general growth direction for the stock price. This may also be reflected in the closing prices' decreasing correlations.
 
 \begin{center}
 \begin{tabular}{ c c c }
@@ -194,7 +196,7 @@ Lag & \multicolumn{1}{|c|}{1 Day Return/Negative Sentiment} & \multicolumn{1}{|c
 \end{tabular}
 \end{center}
 
-The first thing that is interesting to note is the relationship between the two directions of lag. It seems that 1 Day Return to Negative Sentiment has generally positive correlations, and for the opposing directions the opposite is true. This indicates the potential role of mean reversal, as if return increases negative sentiment will increase the next day, then the return will decrease in turn. It is also interesting to note that all of the values are very similar. The negative values even mirror the positive ones. This shows that the current return is related to what is said in the past few days as well as what will be said for a few days. It should also be noted that return positively correlates to negative sentiment and negative sentiment negatively correlates to returns. What these mean is that an increase in returns will correlate to an increase in negative sentiment, and an increase in negative sentiment correlates to a decreased level of returns.
+The first thing that is interesting to note is the relationship between the two directions of lag. It seems that 1 Day Return to Negative Sentiment has generally positive correlations, and for the opposing directions the opposite is true. This indicates the potential role of mean reversion, as if return increases negative sentiment will increase the next day, then the return will decrease in turn. It is also interesting to note that all of the values are very similar. The negative values even mirror the positive ones. This shows that the current return is related to what is said in the past few days as well as what will be said for a few days. It should also be noted that return positively correlates to negative sentiment and negative sentiment negatively correlates to returns. What these mean is that an increase in returns will correlate to an increase in negative sentiment, and an increase in negative sentiment correlates to a decreased level of returns.
 
 \begin{figure}[h!]
     \centering

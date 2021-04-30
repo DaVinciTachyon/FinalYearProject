@@ -10,7 +10,7 @@ The project is '\thesistitle'. It aims to understand the relationship between se
 
 \section{Requirements Gathering for System Design}
 
-Gathering the correct requirements for the system was an essential part of development. It is important to understand the limits of such a project, one important one being time, as well as understand how similar projects have attempted solving the problems that may come up. For this reason the reading of various research papers which attempted to perform a similar task was essential. These helped give a guideline of what the project structure was going to look like. The design was considered in relation to the requirements of this project, however, these papers helped expedite some design choices. The final design required understanding what information is required as an input for the system, and how it is structured. Then it is important to understand what the outputs of the system are. This then allows the conceptualisation of a pipeline which will achieve the required results. Finally, the pipeline must be refined and broken down into it's various parts. This allows a comprehensive and understandable design for the project.
+Gathering the correct requirements for the system was an essential part of development. It is important to understand the limits of such a project, for example time for completion, as well as understand how similar projects have attempted solving the problems that may come up. For this reason the reading of various research papers which attempted to perform a similar task was essential. These helped give a guideline of what the project structure was going to look like. The design was considered in relation to the requirements of this project, however, these papers helped expedite some design choices. The final design required understanding what information is required as an input for the system, and how it is structured. Then it is important to understand what the outputs of the system are. This then allows the conceptualisation of a pipeline which will achieve the required results. Finally, the pipeline must be refined and broken down into it's various parts. This allows a comprehensive and understandable design for the project.
 
 \subsection{Obtaining \& Understanding Data-sets}
 
@@ -28,7 +28,7 @@ The source chosen is IEX Cloud.
 
 \paragraph{IEX Cloud}
 
-IEX Cloud is a financial data infrastructure platform that connects developers and financial data creators. It provides an API which allows access to a large amount of data centred around stock prices, including minute by minute prices for a given stock. The particular endpoint that was required for this project returns historical prices. This endpoint was perfect as it allowed the return of up to 5 years of data-points within the free tier. If there were expansion to be made it would even allow the return of the entire lifetime of a stock if the tier were upgraded. A few more points in favour of the use of IEX Cloud are that it is available at any time of day any day of the week, and it it is simple to use with good customer support in case of issues.
+IEX Cloud\cite{iexcloud} is a financial data infrastructure platform that connects developers and financial data creators. It provides an API which allows access to a large amount of data centred around stock prices, including minute by minute prices for a given stock. The particular endpoint that was required for this project returns historical prices. This endpoint was perfect as it allowed the return of up to 5 years of data-points within the free tier. If there were expansion to be made it would even allow the return of the entire lifetime of a stock if the tier were upgraded. A few more points in favour of the use of IEX Cloud are that it is available at any time of day any day of the week, and it it is simple to use with good customer support in case of issues.
 
 \subsubsection{Sentiment Proxy Source}
 
@@ -39,11 +39,11 @@ Another source is one which allows the gathering of sentiment proxy data. The re
     \item allows extraction of sentiment proxies in a batch manner
     \item gives differing kinds sources, for example newspapers, academic articles
 \end{itemize}
-The sources explored are LexisNexis and Proquest, with the final decision having been LexisNexis.
+The source options explored are LexisNexis and Proquest.
 
 \paragraph{Proquest}
 
-Proquest provides access to many different databases containing licensed scholarly journals, newspapers, wire feeds, reports, etc. Using a trinity account, access is allowed 30 of these databases. Some of the databases included are:
+Proquest\cite{proquest} provides access to many different databases containing licensed scholarly journals, newspapers, wire feeds, reports, etc. Using a trinity account, access is allowed 30 of these databases. Some of the databases included are:
 \begin{itemize}
     \item European Newsstream
     \item ProQuest Historical Newspapers: The New York Times with Index
@@ -53,15 +53,15 @@ For a comprehensive and up to date list of databases, it can be looked up on the
 
 \paragraph{LexisNexis}
 
-LexisNexis is a research tool for news, companies and markets insights, multiple legal practice areas, and business and science biographies. For the purposes of this project, it has an extensive, reliable and quite importantly licensed library with hundreds of different sources, containing many kinds of articles including newspapers, magazines and journals. An interesting point to make is that it is recommended by the Californian Supreme Court and published Court of Appeal opinions in the US as an accurate, authentic, up-to-date, and reliable source for citing and quoting. It allows for a very detailed search of it's sources, as in it allows to search by type of source as well as allowing the use of Boolean expressions within the search parameters. For a full list of sources it can be found under the sources tab once logged in with trinity credentials. For our purposes it allows the search of these articles for a given company. It then allows the batch download of up to 500 articles at a time.
+LexisNexis\cite{lexisnexis} is a research tool for news, companies and markets insights, multiple legal practice areas, and business and science biographies. For the purposes of this project, it has an extensive, reliable and quite importantly licensed library with hundreds of different sources, containing many kinds of articles including newspapers, magazines and journals. An interesting point to make is that it is recommended by the Californian Supreme Court and published Court of Appeal opinions in the US as an accurate, authentic, up-to-date, and reliable source for citing and quoting. It allows for a very detailed search of it's sources, as in it allows to search by type of source as well as allowing the use of Boolean expressions within the search parameters. For a full list of sources it can be found under the sources tab once logged in with trinity credentials. For our purposes it allows the search of these articles for a given company. It then allows the batch download of up to 500 articles at a time.
 
 \paragraph{Source Choice}
 
 There are a few reasons for having chosen LexisNexis over Proquest as the final:
 \begin{itemize}
-    \item the quantity of news sources
-    \item the reliability of news sources
-    \item the ability to download much larger batch sizes
+    \item the quantity of news sources, 13667 vs 30
+    \item the reliability of news sources, thereis more significant backing of the product
+    \item the ability to download much larger batch sizes, 500 vs 50
 \end{itemize}
 All of these factors allow for a more reliable, and much larger set of articles available for the project, allowing for more accurate final results.
 
@@ -73,7 +73,7 @@ The final source is one which supplies words and their corresponding sentiment a
     \item it has been built in relation to sentiment proxy analysis
     \item it has generic positive and negative sentiment attributes
 \end{itemize}
-The dictionary chosen is one provided by Rocksteady. It is a generic dictionary in relation to economic terms. As far as I have understood, the information gathered for it was based on the Inquirer newspaper. It has 11,788 word entries with over 183 attributes that may be assigned to each word, including the generic positive and negative. This makes it quite an extensive and deep dictionary, on top of it fulfilling the requirements for the project.
+The dictionary chosen is one provided by Rocksteady. It is a generic dictionary in relation to economic terms. As far as I have understood, the information gathered for it was based on the Inquirer newspaper. It has 11,788 word entries with over 183 attributes that may be assigned to each word, including the generic positive and negative. This makes it quite an extensive and deep dictionary, on top of it fulfilling the requirements for the project. Other dictionaries provided by Rocksteady were considered, however, they were deemed too specialised in an area not suitable for this project. There was consideration of creating one with the corpus of text, however, this was deemed too time-comsuming.
 
 A potential expansion and focus to the dictionary may improve it. This would mean adding more words, and changing the attribute values to be more in line with the problem being looked at and even the company being examined. A more specific dictionary may be found, or even a mix of both of these suggestions may cause great improvement in the result accuracy.
 
@@ -83,7 +83,7 @@ It is important that the project has the ability to produce certain outputs. Man
 
 \section{System Architecture Design}
 
-The design of the system is very important when it comes to understanding it's functionality, and purpose. The general purpose as discussed is taking sentiment proxy data and price data, then analysing it and making estimations with it. The reasoning for having a daily separation between endpoints that the newspapers and articles are being used for the analysis. These come out on a daily basis, this would lead to a large amount of inaccuracies if broken down in to smaller chunks. It may be useful to consider breaking the data down on a weekly or monthly basic if there were to be future expansion, as this may give a longer term relationship view, however, this is unexplored within this project.
+The design of the system is very important when it comes to understanding it's functionality, and purpose. The general purpose as discussed is taking sentiment proxy data and price data, then analysing it and making estimations with it. The reasoning for having a daily separation between endpoints that the newspapers and articles are being used for the analysis. These come out on a daily basis, this would lead to a large amount of inaccuracies if broken down in to smaller chunks given that newspapers may come out at different hours, however, they represent sentiment across the last day and not just the last hour. It may be useful to consider breaking the data down on a weekly or monthly basic if there were to be future expansion, as this may give a longer term relationship view, however, this is unexplored within this project.
 
 It can be broken down into 3 main components, with the arrangement seen in figure \ref{fig:overallstructure}. These being:
 \begin{itemize}

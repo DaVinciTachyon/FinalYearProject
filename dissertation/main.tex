@@ -45,6 +45,7 @@
 \usepackage{colortbl}
 \usepackage{longtable}
 \usepackage{multirow}
+\usepackage{epigraph}
 \lstset{frame=tb,
   language=Python,
   aboveskip=3mm,
@@ -68,6 +69,15 @@
 
 \renewcommand{\theequation}{\arabic{equation}}
 
+\setlength\epigraphwidth{13cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+\makeatother
+
 %% Format Chapter headings appropriately
 \usepackage{titlesec}
 \titleformat{\chapter}[hang] 
@@ -86,11 +96,7 @@
 \input{acknowledgements/acknowledgements.tex}
 
 \tableofcontents
-\listoffigures
-\listoftables
-\lstlistoflistings
 \newpage
-\input{nomenclature/nomenclature.tex}
 
 \mainmatter
 \input{introduction/introduction.tex}
